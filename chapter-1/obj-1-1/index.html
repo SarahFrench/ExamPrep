@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+  </head>
+  <body>
+    <header>
+      <h1>Semantic HTML</h1>
+      <p>This document is made using semantic HTML for Chapter 1, objective 1.1 of my exam prep book</p>
+      <p>This is a header tag, containing info for the top of the page. E.g it could contain a nav bar, like this one below:</p>
+        <nav>
+          <ul>
+            <li><a href="#link1">Link 1</a></li>
+            <li><a href="#link2">Link2</a></li>
+            <li><a href="#link3">Link3</a></li>
+          </ul>
+        <nav>
+    </header>
+    <article style="border: solid 1px blue; padding: 10px;">
+      <header>
+        <hgroup>
+          <h2>This is an article</h2>
+          <h4> Articles made using semantic HTML can also have a header tag, as headers describe the start of any section of a HTML document (not just the whole thing)</h4>
+          <p>The above two headers were grouped into a &lt;hgroup&gt; element. This element is not supported by every browser and <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hgroup">it has been dropped from the W3C speicifcation of HTML5. It was intended to affect how grouped headings are displayed.</a></p>
+        </hgroup>
+      </header>
+      <section>
+        <h3>What are &lt;article&gt; tags used for?</h3>
+        <p>The article tag is meant to signify a self-containing document, such as a new article, blog post, recipe etc.</p>
+      </section>
+      <section>
+        <h3>What are articles made up of?</h3>
+        <p>Articles can contain text and other content, including other semantic HTML elements like  &lt;figure&gt;,  &lt;figcaption&gt;</p>
+        <p>Articles can also be separated up into  &lt;sections &gt;. In fact, this is the second section of the article in this document</p>
+      </section>
+      <section>
+        <h3>This is section 3</h3>
+        <p>Sick</p>
+      </section>
+      <section>
+        <h3>In section 4 we use more semantic tags</h3>
+        <aside>Aside, this is an &lt;aside&gt; element. It's not part of the 'flow' of the surrounding HTML</aside>
+        <figure>
+          <img src="./fig-1.png" alt="HTML can lead to unlimited fun" style="width:200px;">
+          <figcaption>This is a &lt;figcaption&gt; for the above &lt;img&gt; in the &lt;figure&gt;. Notice how the figure is indented a bit, compared to the text in the section.</figcaption>
+        </figure>
+        <p>Check out these progress bars:</p>
+        <progress value="25" max="100"></progress>
+        <progress value="50" max="100"></progress>
+        <progress value="75" max="100"></progress>
+        <progress value="100" max="100"></progress>
+        <p>They are displayed inline by browsers, and to add values to the ends you need to use things like &lt;span&gt;. Observe:</p>
+        <span>0</span><progress value="75" max="100"></progress><span>100</span>
+
+      </section>
+
+    </article>
+    <footer>
+      This is a footer, and sits at the bottom of the page. &lt;footer&gt; doesn't automatically place itself at the end, the tags just indicate the meaning/significance/whatever of that particular bit of HTML.
+    </footer>
+  </body>
+</html>
