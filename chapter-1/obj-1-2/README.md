@@ -144,9 +144,28 @@ It has .play(), .pause(), volume, and currentTime.
 ### HTML Canvas
 
 This uses a canvas element:
-
 ```
 <canvas width="600" height="400"></canvas>
 ```
+This is just blank white by default
 
-This is just blank white by default.
+You need to set the context of the canvas; what mode of drawing images is being used?
+**2d** : `canvas.getContext('2d')` - the [CanvasRenderingContext2D](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D) interface
+**3d** : canvas.getContext('webgl')
+
+Functions on the context are used to draw (think about how what you're drawing depends on the mode chosen above.)
+
+#### Functions:
+
+- `beginPath(), closePath()`
+  - start drawing a path
+- `moveTo(x,y)`
+  - define starting point of a new path
+- `lineTo(x,y)`
+  - draws a line to that point, within the current path being drawn
+- stroke()
+  - draws the line of a path previously defined with lineTo etc, applying the styles in the context instance
+- `fillStyle()`, `strokeStyle()`
+  - set the colour for fill or stroke actions
+
+For more see [all the 2d context functions here](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D);
