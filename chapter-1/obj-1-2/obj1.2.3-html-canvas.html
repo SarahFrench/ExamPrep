@@ -10,7 +10,15 @@
   canvas {
     border: solid 1px black;
   }
+  .colour-swatch{
+    width: 50px;
+    height: 50px;
+    border: solid 1px black;
+    display: inline-block;
+  }
   </style>
+  <h1>Draw something in the canvas below</h1>
+  <h3>You can choose different colours and brush size</h3>
   <canvas width="600" height="400"></canvas>
   <div>
     <input id='brush-size' type="range" list="tickmarks" min="1" max="20" step="2" value="10">
@@ -23,12 +31,32 @@
         </datalist>
     <label for="brush-size">Brush size = <span id="brush-size-display">10</span></label>
   </div>
+  <div>
+    <div id="#000000" class="colour-swatch" style="background-color:#000000;"></div>
+    <div id="#FFFFFF" class="colour-swatch" style="background-color:#FFFFFF;"></div>
+    <div id="#FF0000" class="colour-swatch" style="background-color:#FF0000;"></div>
+    <div id="#FFFF00" class="colour-swatch" style="background-color:#FFFF00;"></div>
+    <div id="#0000FF" class="colour-swatch" style="background-color:#0000FF;"></div>
+
+  </div>
 
   <script>
     let brushSize = 10;
+    let brushColour = "#000000";
 
     const brushDial = document.getElementById('brush-size');
     const brushSizeDisplay = document.getElementById('brush-size-display');
+
+    const colourSwatches = document.getElementsByClassName('colour-swatch');
+    for(let i=0; i < colourSwatches.length; i++){
+      colourSwatches[i].addEventListener('click', function(event){
+        console.log(event.target.id);
+        brushColour = event.target.id;
+      })
+    }
+
+
+
 
     brushDial.addEventListener('change', function(){
       brushSize = brushDial.value;
@@ -40,20 +68,31 @@
     let currentlyDrawing = false;
     canvas.addEventListener('mousedown', function(event){
       currentlyDrawing = true;
+      drawWithBrush(event);
     })
     canvas.addEventListener('mousemove', function(event){
       if(currentlyDrawing){
-        context.beginPath();
-        context.arc(event.x-(brushSize/2), event.y-(brushSize/2), brushSize, 0, 360);
-        context.fillStyle="Black";
-        context.fill();
+        drawWithBrush(event);
       }
     })
     canvas.addEventListener('mouseup', function(event){
-      context.stroke();
       context.beginPath();
       currentlyDrawing = false;
     })
+
+    function drawWithBrush(event){
+      // set brush position, based on mouse and take canvas offset into account
+      let brushX = (event.x - (brushSize/2) - canvas.offsetLeft)
+      let brushY = (event.y - (brushSize/2) - canvas.offsetTop)
+
+      //create the brushstroke on the canvas
+      context.beginPath();
+      context.arc(brushX, brushY, brushSize, 0, 360);
+      context.strokeStyle = brushColour;
+      context.fillStyle = brushColour;
+      context.fill();
+      context.stroke();
+    }
 
   </script>
 </body>
