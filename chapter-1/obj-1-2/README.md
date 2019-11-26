@@ -139,3 +139,14 @@ To prepare for this, you can include multiple `<source>` tags inside the video t
 Audio behaves very similarly expect there's nothing visual to show. It'll be totally invisible if you don't include the controls attribute.
 
 It has .play(), .pause(), volume, and currentTime.
+
+
+### HTML Canvas
+
+This uses a canvas element:
+
+```
+<canvas width="600" height="400"></canvas>
+```
+
+This is just blank white by default.
