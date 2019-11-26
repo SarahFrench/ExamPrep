@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testing selectors</title>
+</head>
+<body>
+  <style>
+  canvas {
+    border: solid 1px black;
+  }
+  .colour-swatch{
+    width: 50px;
+    height: 50px;
+    border: solid 1px black;
+    display: inline-block;
+  }
+  </style>
+  <h1>Testing out gradients</h1>
+  <canvas width="600" height="400"></canvas>
+
+
+
+  <script>
+
+    const canvas = document.getElementsByTagName('canvas')[0];
+    let context = canvas.getContext('2d');
+    context.lineWidth = 3;
+    let gradient = context.createLinearGradient(150, 200, 400, 200);
+    gradient.addColorStop(0.1, "Purple");
+    gradient.addColorStop(0.4, "Red");
+    gradient.addColorStop(0.7, "Orange");
+    gradient.addColorStop(1, "White");
+    context.fillStyle = gradient;
+    context.fillRect(150,150,200,125);
+
+    context.fillStyle = "Black";
+    context.fillRect(50,50,100,100);
+
+    let radGradient = context.createRadialGradient(600, 400, 5, 450, 450, 400);
+    radGradient.addColorStop(0, "Blue");
+    radGradient.addColorStop(0.3, "Cyan");
+    radGradient.addColorStop(0.7, "Yellow");
+    radGradient.addColorStop(1, "White");
+
+
+    context.fillStyle = radGradient;
+    context.fillRect(300,200,300,200);
+
+
+  </script>
+</body>
+</html>
