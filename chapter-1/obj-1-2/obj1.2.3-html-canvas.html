@@ -31,6 +31,9 @@
         </datalist>
     <label for="brush-size">Brush size = <span id="brush-size-display">10</span></label>
   </div>
+  <button id="undo-button" onclick="undo();">
+    Undo last brush stroke
+  </button>
   <div>
     <div id="#000000" class="colour-swatch" style="background-color:#000000;"></div>
     <div id="#FFFFFF" class="colour-swatch" style="background-color:#FFFFFF;"></div>
@@ -50,13 +53,9 @@
     const colourSwatches = document.getElementsByClassName('colour-swatch');
     for(let i=0; i < colourSwatches.length; i++){
       colourSwatches[i].addEventListener('click', function(event){
-        console.log(event.target.id);
         brushColour = event.target.id;
       })
     }
-
-
-
 
     brushDial.addEventListener('change', function(){
       brushSize = brushDial.value;
@@ -65,9 +64,13 @@
 
     const canvas = document.getElementsByTagName('canvas')[0];
     let context = canvas.getContext('2d');
+    let lastVersion = context.getImageData(0, 0, canvas.width, canvas.height);
     let currentlyDrawing = false;
+
+
     canvas.addEventListener('mousedown', function(event){
       currentlyDrawing = true;
+      saveUndoState();
       drawWithBrush(event);
     })
     canvas.addEventListener('mousemove', function(event){
@@ -91,6 +94,14 @@
       context.fillStyle = brushColour;
       context.fill();
       context.stroke();
+    }
+
+    function undo(){
+      context.putImageData(lastVersion,0,0);
+    }
+
+    function saveUndoState(){
+      lastVersion = context.getImageData(0, 0, canvas.width, canvas.height);
     }
 
   </script>
