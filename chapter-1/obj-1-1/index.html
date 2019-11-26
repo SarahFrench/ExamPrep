@@ -53,7 +53,8 @@
         <progress value="100" max="100"></progress>
         <p>They are displayed inline by browsers, and to add values to the ends you need to use things like &lt;span&gt;. Observe:</p>
         <span>0</span><progress value="75" max="100"></progress><span>100</span>
-
+        <p>Also if you don't specify a value it'll be an "indeterminate" progress indicator. I think these are best if animated to show lack of a bar progressing:</p>
+        <progress value="-1"></progress>
       </section>
 
     </article>
