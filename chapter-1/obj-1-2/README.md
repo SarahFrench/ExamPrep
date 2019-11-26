@@ -1,10 +1,10 @@
 # Notes
 
-## Objs:
+## Objectivess:
 
-Add or mod HTML elements
-implement media controls
-implement graphics with HTML5 canvas and SVG
+- Add or mod HTML elements
+- implement media controls
+- implement graphics with HTML5 canvas and SVG
 
 ### DOM
 
@@ -150,7 +150,9 @@ This uses a canvas element:
 This is just blank white by default
 
 You need to set the context of the canvas; what mode of drawing images is being used?
+
 **2d** : `canvas.getContext('2d')` - the [CanvasRenderingContext2D](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D) interface
+
 **3d** : canvas.getContext('webgl')
 
 Functions on the context are used to draw (think about how what you're drawing depends on the mode chosen above.)
