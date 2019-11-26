@@ -171,3 +171,60 @@ Functions on the context are used to draw (think about how what you're drawing d
   - set the colour for fill or stroke actions
 
 For more see [all the 2d context functions here](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D);
+
+#### Fill styles
+
+If you draw out lots of paths and then use context.fill() it'll apply the same style to all paths. To create something with multiple shapes with different fill/stroke/whatever styles you need to create the shapes pre-filled e.g. in obj1.2.3-html-canvas-gradients.html
+
+Or, see here: https://stackoverflow.com/questions/42004391/can-a-html-canvas-use-multiple-fillstyles-to-draw-different-colours
+
+context.createLinearGradient() or context.createRadialGradient() returns an object you can set as the context's fill style.
+
+##### createLinearGradient
+
+`createLinearGradient(x0, y0, x1, y1);`
+
+x0 and y0 define the centre point of the 'start' of the linear gradient. The centre point of the boundary of the gradient that's perpendicular to the linear gradient itself. x1 and y1 do the same for the other boundary. [See the diagram on this page](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/createLinearGradient)- its so clear when you see
+
+Colour stops e.g. `gradient.addColorStop(0, 'green');` define the percentage along the line between x0,y0 and x1,y1 where a colour will be placed. That 'stop' if the point where there's pure colour, between the blended bits either side.
+
+
+##### createRadialGradient
+
+`CanvasGradient ctx.createRadialGradient(x0, y0, r0, x1, y1, r1);`
+
+There's a start circle 0 and an end circle 1. You specify their coordinates and radii. The colourStop at 1 will cover everywhere outside the second, outer circle. [See here](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/createRadialGradient)
+
+
+#### Images
+
+You can place images in the canvas, and to do this you need to use an Image object
+
+```
+let canvas = document.getElementsByTagName('canvas')[0];
+let context = canvas.getContext('2d');
+let image = new Image();
+image.src = "path/to/image.png";
+img.onload = function() {
+  context.drawImages(img, 0, 0);
+  //coordinates to place top left corner
+  context.stroke();
+
+}
+```
+
+You can create Pattern objects using images too:
+
+```
+let canvas = document.getElementsByTagName('canvas')[0];
+let context = canvas.getContext('2d');
+let image = new Image();
+image.src = "path/to/image.png";
+img.onload = function() {
+  let pattern = context.createPattern(img, "repeat");
+  context.fillStyle = pattern;
+  context.fill();
+  context.stroke();
+}
+
+```
