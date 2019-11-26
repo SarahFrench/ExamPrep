@@ -12,17 +12,47 @@
   }
   </style>
   <canvas width="600" height="400"></canvas>
+  <div>
+    <input id='brush-size' type="range" list="tickmarks" min="1" max="20" step="2" value="10">
+      <datalist id="tickmarks">
+        <option value="1"></option>
+        <option value="5"></option>
+        <option value="10"></option>
+        <option value="15"></option>
+        <option value="20"></option>
+        </datalist>
+    <label for="brush-size">Brush size = <span id="brush-size-display">10</span></label>
+  </div>
 
   <script>
+    let brushSize = 10;
+
+    const brushDial = document.getElementById('brush-size');
+    const brushSizeDisplay = document.getElementById('brush-size-display');
+
+    brushDial.addEventListener('change', function(){
+      brushSize = brushDial.value;
+      brushSizeDisplay.innerText = brushDial.value;
+    })
+
     const canvas = document.getElementsByTagName('canvas')[0];
     let context = canvas.getContext('2d');
-
+    let currentlyDrawing = false;
+    canvas.addEventListener('mousedown', function(event){
+      currentlyDrawing = true;
+    })
     canvas.addEventListener('mousemove', function(event){
-      context.beginPath();
-      context.arc(event.x-5, event.y-5, 10, 0, 360);
-      context.fillStyle="Black";
-      context.fill();
+      if(currentlyDrawing){
+        context.beginPath();
+        context.arc(event.x-(brushSize/2), event.y-(brushSize/2), brushSize, 0, 360);
+        context.fillStyle="Black";
+        context.fill();
+      }
+    })
+    canvas.addEventListener('mouseup', function(event){
       context.stroke();
+      context.beginPath();
+      currentlyDrawing = false;
     })
 
   </script>
