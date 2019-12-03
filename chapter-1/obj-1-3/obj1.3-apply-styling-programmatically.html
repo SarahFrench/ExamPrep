@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testing CSS transformations & positioning</title>
+</head>
+<body>
+  <style>
+    body {
+      min-height: 150vh;
+    }
+    .green-box {
+      width: 100px;
+      height: 100px;
+      background-color: green;
+    }
+    .container {
+      display: flex;
+      flex-direction: row;
+      align-items: top;
+      justify-content: flex-start;
+      margin: 3em 0;
+    }
+    .box-container {
+      width: 100px;
+      height: 100px;
+      margin: 0 2em;
+    }
+    .description-box {
+      width: 100px;
+      height: 100px;
+      margin: 2em;
+    }
+    .white-box {
+      width: 100px;
+      height: 100px;
+      border: solid 3px black;
+    }
+    .white-box--big {
+      width: 150px;
+      height: 150px;
+      border: solid 3px black;
+    }
+    .white-box--tall {
+      height: 300px;
+    }
+    .red-box {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+    .blue-box--small {
+      width: 10px;
+      height: 10px;
+      background-color: blue;
+    }
+    .rotate {
+      transform: rotate(45deg);
+    }
+    .skew {
+      transform: skew(45deg, 5deg);
+    }
+    .scale {
+      transform: scale(0.5);
+    }
+    .relative {
+      position: relative;
+      top: 10%;
+      left: 80%;
+    }
+    .absolute {
+      position: absolute;
+      top: 10%;
+      left: 80%;
+    }
+    .sticky {
+      position: sticky;
+      top: 10%;
+      left: 10%;
+      margin-left: auto;
+    }
+  </style>
+  <header>
+    <h1>Here are some elements that have had transformations and positioning applied:</h1>
+    <h3>And if you use the buttons below or click the red boxes you'll see some programmatic modification of styling, directly or by changing classes on an element.</h3>
+    <button id="hide-button-visibility">Click here to see how the visibility property works</button>
+    <button id="hide-button-display">Click here to see how the display property works</button>
+  </header>
+
+  <div class="container">
+    <div id='disappearing-box' class="box-container">
+      <div class="box red-box"></div>
+      <div class="blue-box--small"></div>
+    </div>
+    <div class="box-container">
+      <div class="box red-box rotate"></div>
+    </div>
+    <div class="box-container">
+      <div class="box red-box skew"></div>
+    </div>
+    <div class="box-container">
+      <div class="box red-box scale"></div>
+    </div>
+    <div class="box-container">
+      <div class="white-box">
+        <div class="box red-box scale"></div>
+        <div class="blue-box--small"></div>
+      </div>
+    </div>
+    <div class="box-container">
+      <div class="white-box--big">
+        <div class="box red-box"></div>
+        <div class="blue-box--small"></div>
+      </div>
+    </div>
+    <div class="box-container">
+      <div class="white-box--big">
+        <div class="box red-box relative"></div>
+        <div class="blue-box--small"></div>
+      </div>
+    </div>
+    <div class="box-container">
+      <div class="white-box--big">
+        <div class="box red-box absolute"></div>
+        <div class="blue-box--small"></div>
+      </div>
+    </div>
+    <div class="box-container">
+      <div class="white-box--big white-box--tall">
+        <div class="box red-box sticky"></div>
+        <div class="blue-box--small"></div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="description-box">
+      <p>This is a red box...</p>
+      <small>(with tiny, blue sibling)</small>
+    </div>
+    <div class="description-box">
+      <p>...rotated by 45deg</p>
+    </div>
+    <div class="description-box">
+      <p>...skewed by 45deg along the x-axis, 20deg on y-axis<p>
+    </div>
+    <div class="description-box">
+      <p>...scaled down to 50% size</p>
+      <p>(but the element still occupies the space of the untransformed element)</p>
+    </div>
+    <div class="description-box">
+      <p>...scaled down to 50% size and positioned inside a parent div without margin/padding</p>
+      <p>Interestingly the space occupied by the element is the same as if it wasn't scaled down</p>
+      <p>A blue sibling div's position illustrates this</p>
+    </div>
+    <div class="description-box">
+      <p>...inside a larger parent div with default positioning</p>
+      <p>A blue sibling div's position is on a new line (display: block;) and as far top and left as possible.</p>
+    </div>
+    <div class="description-box">
+      <p>...inside a larger parent div with relative positioning</p>
+      <p>Positioned 10% from top, 80% from left relative to parent; relative to parent's top left position, and percents calc from parent dimensions.</p>
+      <p>A blue sibling div's positioned as if the red box was in its 'neutral' position; the red box is preventing elements occupying that space even though it's not there</p>
+
+    </div>
+    <div class="description-box">
+      <p>...inside a larger parent div with absolute positioning</p>
+      <p>Positioned 10% from top, 80% from left relative to the page; relative toptop left corner, and percents calc from page dimensions.</p>
+      <p>A blue sibling div's positioned as if the red box was not in the parent div; the red box's absolute positioning has prevented it affecting sibling divs</p>
+
+    </div>
+    <div class="description-box" style="padding-top: 150px;">
+      <p>...inside a larger parent div with sticky positioning</p>
+      <p>elements with sticky positioning seem to start in a position relative to their parent div. As you scroll, the top and left properties are used to define where the div should stay in relation to the page (i.e. absolute positioning.) </p>
+      <p>Note that containers can stop a sticky element from persisting over the entirity of the page </p>
+    </div>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function(){
+      let button1 = document.getElementById('hide-button-visibility');
+      let button2 = document.getElementById('hide-button-display');
+      document.querySelector('#disappearing-box .box').style.visibility = "visible";
+      document.querySelector('#disappearing-box .box').style.display == "block";
+
+      button1.addEventListener('click', function(){
+        let visibility = document.querySelector('#disappearing-box .box').style.visibility;
+        let display = document.querySelector('#disappearing-box .box').style.display;
+
+        if(display === "block"){
+          if(visibility != "visible"){
+            document.querySelector('#disappearing-box .box').style.visibility = "visible";
+            button2.disabled = false;
+          } else {
+            document.querySelector('#disappearing-box .box').style.visibility = "hidden";
+            button2.disabled = true;
+          }
+        }
+      });
+
+      button2.addEventListener('click', function(){
+        let visibility = document.querySelector('#disappearing-box .box').style.visibility;
+        let display = document.querySelector('#disappearing-box .box').style.display;
+
+        if(visibility === "visible"){
+          if(display != "block"){
+            document.querySelector('#disappearing-box .box').style.display = "block";
+            button1.disabled = false;
+          } else {
+            document.querySelector('#disappearing-box .box').style.display = "none";
+            button1.disabled = true;
+          }
+        }
+      });
+
+
+
+      let boxes = document.getElementsByClassName('box');
+      for(let i=0; i < boxes.length; i++ ){
+        boxes[i].addEventListener('click', function(){
+          if(boxes[i].classList.contains('red-box')){
+            boxes[i].classList.remove('red-box');
+            boxes[i].classList.add('green-box');
+          } else if(boxes[i].classList.contains('green-box')){
+            boxes[i].classList.remove('green-box');
+            boxes[i].classList.add('red-box');
+          }
+        })
+      }
+    });
+  </script>
+</body>
+</html>
