@@ -74,6 +74,7 @@
 
     canvas.addEventListener('mousedown', function(event){
       currentlyDrawing = true;
+      enableUndo();
       saveUndoState();
       drawWithBrush(event);
     })
@@ -101,8 +102,23 @@
       context.closePath();
     }
 
+    function disableUndo(){
+      let undoButton = document.getElementById('undo-button');
+      if(!undoButton.disabled){
+        undoButton.disabled = true;
+      }
+    }
+
+    function enableUndo(){
+      let undoButton = document.getElementById('undo-button');
+      if(undoButton.disabled){
+        undoButton.disabled = false;
+      }
+    }
+
     function undo(){
       context.putImageData(lastVersion,0,0);
+      disableUndo();
     }
 
     function saveUndoState(){
