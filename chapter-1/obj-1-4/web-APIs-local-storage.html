@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testing CSS transformations & positioning</title>
+</head>
+<body>
+
+  <header>
+    <h1>Here I use localStorage:</h1>
+  </header>
+
+  <div>
+    <p>Text typed here will be saved to localStorage</p>
+    <p>It'll be loaded from localStorage when you open the page</p>
+    <input id="local-storage" type="text" value="">
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      let input =  document.getElementById('local-storage');
+
+      if(localStorage.getItem('locally-stored-string')){
+        input.value = localStorage.getItem('locally-stored-string');
+      } else {
+        localStorage.setItem('locally-stored-string', '');
+      }
+
+      input.addEventListener('focusout', function(){
+        localStorage.setItem('locally-stored-string', input.value);
+        console.log('saved new input');
+      })
+
+    })
+  </script>
+</body>
+</html>
