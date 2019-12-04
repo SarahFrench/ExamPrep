@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testing storage APIs : session</title>
+</head>
+<body>
+
+  <header>
+    <h1>Here I use sessionStorage:</h1>
+  </header>
+
+  <div>
+    <p>Text typed here will be saved to sessionStorage</p>
+    <p>From MDN docs:</p>
+    <ul>
+      <li>A page session lasts as long as the browser is open, and survives over page reloads and restores.</li>
+      <li>Opening a page in a new tab or window creates a new session with the value of the top-level browsing context, which differs from how session cookies work.</li>
+      <li>Opening multiple tabs/windows with the same URL creates sessionStorage for each tab/window.</li>
+      <li>Closing a tab/window ends the session and clears objects in sessionStorage.</li>
+    </ul>
+    <p>Text typed here will be saved to sessionStorage and reloaded in the field</p>
+    <input id="session-storage" type="text" value="">
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      let input =  document.getElementById('session-storage');
+
+      if(sessionStorage.getItem('session-stored-string')){
+        input.value = sessionStorage.getItem('sessionly-stored-string');
+      } else {
+        sessionStorage.setItem('session-stored-string', '');
+      }
+
+      input.addEventListener('focusout', function(){
+        sessionStorage.setItem('session-stored-string', input.value);
+        console.log('saved new input');
+      })
+
+    })
+  </script>
+</body>
+</html>
