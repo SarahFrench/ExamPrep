@@ -39,6 +39,7 @@
     })
 
     function showNewLocation(data){
+      console.log("handling new location data");
       let el = document.createElement('p');
       el.innerText = `Lat: ${data.coords.latitude} Long: ${data.coords.longitude}`
       document.getElementById('watcher-output').appendChild(el);
@@ -52,12 +53,17 @@
 
     }
 
-    function stopWatcher(data){
-      geolocator.clearWatch(watcher);
-      let el = document.createElement('p');
-      el.innerText = `Watching stopped`
-      document.getElementById('watcher-output').appendChild(el);
-      console.log("watcher has stopped");
+    function stopWatcher(){
+      if(watcher){
+        geolocator.clearWatch(watcher);
+        watcher = undefined;
+        let el = document.createElement('p');
+        el.innerText = `Watching stopped`
+        document.getElementById('watcher-output').appendChild(el);
+        console.log("watcher has stopped");
+      } else {
+        console.log("watcher already stopped");
+      }
     }
 
     function displayLocation(data){
