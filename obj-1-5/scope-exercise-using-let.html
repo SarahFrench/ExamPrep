@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scope Stuff</title>
+  </head>
+  <body>
+    <p>This behaves exactly the same</p>
+    <div id="div-1" class="box red">1</div>
+    <div id="div-2" class="box green">2</div>
+    <div id="div-3" class="box blue">3</div>
+  <script>
+    var globalVar = "global";
+    window.onload = function (){
+      let localVar = "local";
+      document.getElementById('div-1').onclick = function(){
+        let insideDiv1Click = "insideDiv1";
+        alert(globalVar);
+        alert(localVar);
+        alert(insideDiv1Click);
+      };
+      document.getElementById('div-2').onclick = function(){
+        alert(globalVar);
+        alert(localVar);
+        if(globalVar != localVar){
+          var myVariable = "You can access me due to function scoping of `var`";
+          let myOtherVariable = "You cannot access me due to block scoping of `let`";
+        }
+        alert(myVariable);
+        alert(myOtherVariable);
+      };
+      document.getElementById('div-3').onclick = function(){
+        let insideDiv3Click = "insideDiv3";
+        AFunction();
+        BFunctionwithParam(insideDiv3Click);
+      };
+      function AFunction(){
+        let x;
+        //cannot access
+        alert("This function cannot access `insideDiv3Click`");
+      };
+      function BFunctionwithParam(p){
+        //can access localVar from calling functions if passed as param
+        alert(p);
+        //can access localVar as this function's defined in the same scope as it
+        alert(localVar);
+      };
+    }
+  </script>
+  <style>
+  .box {
+    width: 50px;
+    height: 50px;
+  }
+
+  .red {
+    background-color: red;
+  }
+
+  .green {
+    background-color: green;
+  }
+
+  .blue {
+    background-color: blue;
+  }
+  </style>
+  </body>
+</html>
