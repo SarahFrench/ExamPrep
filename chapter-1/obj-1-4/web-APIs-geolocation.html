@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testing web APIs : geolocation</title>
+</head>
+<body>
+
+  <header>
+    <h1>Here I use geolocation:</h1>
+  </header>
+
+  <div>
+    Your location is:
+     <span id="long"></span>
+     <span id="lat"></span>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      let geolocator = window.navigator.geolocation;
+      geolocator.getCurrentPosition(displayLocation);
+    })
+
+    function displayLocation(data){
+      document.getElementById('long').innerText = data.coords.longitude;
+      document.getElementById('lat').innerText = data.coords.latitude;
+    }
+  </script>
+</body>
+</html>
