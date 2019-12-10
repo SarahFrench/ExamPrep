@@ -17,6 +17,8 @@
     <input id="local-storage" type="text" value="">
   </div>
 
+  <button onclick="deleteStore();clearInput();">Delete localStorage</button>
+
   <script>
     document.addEventListener('DOMContentLoaded', function(){
       let input =  document.getElementById('local-storage');
@@ -33,6 +35,13 @@
       })
 
     })
+
+    function deleteStore(){
+      localStorage.removeItem('locally-stored-string')
+    }
+    function clearInput(){
+      document.getElementById('local-storage').value = "";
+    }
   </script>
 </body>
 </html>
