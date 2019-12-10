@@ -39,16 +39,16 @@
     })
 
     function showNewLocation(data){
-      console.log("handling new location data");
+      console.log(data);
       let el = document.createElement('p');
       el.innerText = `Lat: ${data.coords.latitude} Long: ${data.coords.longitude}`
       document.getElementById('watcher-output').appendChild(el);
     }
 
     function errorHandler(err){
-      console.log("Error: " + err);
+      console.log(err);
       let el = document.createElement('p');
-      el.innerText = `Error : ${err}`
+      el.innerText = `Error : ${err.message}`
       document.getElementById('watcher-output').appendChild(el);
 
     }
