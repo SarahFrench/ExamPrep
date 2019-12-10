@@ -17,11 +17,48 @@
      <span id="lat"></span>
   </div>
 
+  <div id="watcher-output">
+    <h3>Watcher output</h3>
+  </div>
+
+  <button onclick="stopWatcher();">Stop watcher</button>
+
   <script>
+    let watcher;
+    let geolocator;
+
     document.addEventListener('DOMContentLoaded', function(){
-      let geolocator = window.navigator.geolocation;
+      geolocator = window.navigator.geolocation;
       geolocator.getCurrentPosition(displayLocation);
+
+      let positionOptions = {
+        enableHighAccuracy: true,
+        timeout: 5000
+      }
+      watcher = geolocator.watchPosition(showNewLocation, errorHandler, positionOptions )
     })
+
+    function showNewLocation(data){
+      let el = document.createElement('p');
+      el.innerText = `Lat: ${data.coords.latitude} Long: ${data.coords.longitude}`
+      document.getElementById('watcher-output').appendChild(el);
+    }
+
+    function errorHandler(err){
+      console.log("Error: " + err);
+      let el = document.createElement('p');
+      el.innerText = `Error : ${err}`
+      document.getElementById('watcher-output').appendChild(el);
+
+    }
+
+    function stopWatcher(data){
+      geolocator.clearWatch(watcher);
+      let el = document.createElement('p');
+      el.innerText = `Watching stopped`
+      document.getElementById('watcher-output').appendChild(el);
+      console.log("watcher has stopped");
+    }
 
     function displayLocation(data){
       document.getElementById('long').innerText = data.coords.longitude;
