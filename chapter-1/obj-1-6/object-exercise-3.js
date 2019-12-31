@@ -15,6 +15,12 @@ Book.prototype.helloWorld = function(){
 let myFirstBook = new Book("My Memoir", "Me")
 myFirstBook.helloWorld();
 
+Book.prototype.helloWorld = function(){
+  console.log("Bonjour World");
+}
+myFirstBook.helloWorld();
+
+
 /*
 * You can change the entire prototype by setting it equal to an object
 * but this overwrites any previous changes
@@ -22,11 +28,11 @@ myFirstBook.helloWorld();
 Book.prototype = {
   whereAmI: function(){
     console.log(`I'm on shelf ${this.shelfNumber}!`);
-  },
-
+  }
 }
 
 let mySecondBook = new Book("My Second Memoir", "Me");
+
 
 /*
 * mySecondBook.helloWorld(); would not work as this instance was made with the new prototype that lacks that property.
