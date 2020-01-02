@@ -1,0 +1,28 @@
+<html>
+  <head>
+
+  </head>
+  <body>
+    <div id="element1">I've got 3 event listeners: mouseover, click and dblclick</div>
+    <script>
+      var el1 = document.getElementById('element1');
+
+      function mouse1(){
+        console.log("Mouse over event listener");
+      }
+
+      function click1(event){
+        console.log("Click event listener");
+        console.log("I remove the mouseover event listener");
+        event.target.removeEventListener('mouseover', mouse1);
+        event.target.innerText = "I've got 2 event listeners: click and dblclick"
+      }
+
+      el1.addEventListener('mouseover', mouse1);
+      el1.addEventListener('click', click1);
+      el1.addEventListener('dblclick', function(){
+        console.log("Double click event listener cannot be removed because I'm an anonymous function!");
+      });
+    </script>
+  </body>
+</html>

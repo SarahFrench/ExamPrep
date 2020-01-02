@@ -1,0 +1,32 @@
+<head>
+
+</head>
+<body>
+  <h1>Assigning event listeners to attributes of the document objects</h1>
+  <h2>On load (document) causes the background to be red</h2>
+  <h2>On click (document.body) causes the background to be blue</h2>
+  <h2>In the onclick event handler I make it reset itself after it's executed the first time; check the console.</h2>
+  <script>
+    function makeRed(){
+      console.log("on load makes the background red");
+      document.getElementsByTagName('body')[0].bgColor = "red";
+    }
+
+    function makeBlue(param){
+      console.log("on click makes the background blue");
+      console.log(param);
+      var body = document.getElementsByTagName('body')[0];
+      body.bgColor = "blue";
+      body.onclick = function(){console.log("on click doesn't change the background anymore")};
+    }
+
+    //document.onload = makeRed; //doesn't work as by the time this JS executes the onload event has already happened!
+    makeRed();
+    document.body.onclick = console.log("hello world");
+    document.body.onclick = function(){console.log("hello world")};
+
+  </script>
+
+
+
+</body>

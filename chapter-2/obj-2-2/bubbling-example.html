@@ -1,0 +1,68 @@
+<html><head>
+</head>
+<body id="bod">
+<style>
+  #outer {
+    width: 200px;
+    height: 200px;
+    background-color: red;
+  }
+
+  #middle {
+    width: 50%;
+    height: 50%;
+    position: relative;
+    top: 25%;
+    left: 25%;
+    background-color: green;
+  }
+
+  #inner {
+    width: 50%;
+    height: 50%;
+    position: relative;
+    top: 25%;
+    left: 25%;
+    background-color: blue;
+  }
+</style>
+<script>
+  window.onload = function(){
+    document.getElementById("outer").addEventListener("click", outerDivClick , false);
+    document.getElementById("middle").addEventListener("click", middleDivClick , false);
+    document.getElementById("inner").addEventListener("click", innerDivClick, false);
+    document.getElementById("clearButton").addEventListener("click", clearList);
+  }
+
+  function outerDivClick(){
+    appendText("outer div clicked");
+  }
+  function middleDivClick(){
+    appendText("middle div clicked");
+  }
+  function innerDivClick(){
+    appendText("inner div clicked");
+  }
+  function appendText(text){
+    let el = document.createElement('li');
+    el.innerText = text;
+    document.getElementById('eventOrder').appendChild(el);
+  }
+  function clearList(){
+    let ol = document.createElement('ol');
+    ol.id = 'eventOrder';
+    document.getElementById('bod').replaceChild(ol, document.getElementById('eventOrder'));
+  }
+</script>
+  <div id="outer">
+    <div id="middle">
+      <div id="inner">
+
+      </div>
+    </div>
+  </div>
+  <ol id="eventOrder"></ol>
+  <button type="button" id="clearButton">Clear</button>
+
+</body>
+</html>
