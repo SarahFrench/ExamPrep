@@ -90,3 +90,11 @@ el1.addEventListener('dblclick', function(){
 });
 
 ```
+
+
+#### Event propagation
+
+Bubble goes up from child to parent
+Cascade goes down from parent to child
+
+The third argument in add/removeEventListener methods is a boolean to control how it behaves. True = use cascade, false = bubble. Bubble is used by default.
