@@ -1,6 +1,6 @@
 let array1 = [1,2,3,4,5];
 console.log(`
-  My array is: []${array1}]`);
+  My array is: [${array1}]`);
 
 //length
 console.log(`
