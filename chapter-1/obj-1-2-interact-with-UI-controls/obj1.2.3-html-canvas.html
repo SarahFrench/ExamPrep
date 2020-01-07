@@ -88,9 +88,9 @@
     })
 
     function drawWithBrush(event){
-      // set brush position, based on mouse and take canvas offset into account
-      let brushX = (event.x - (brushSize/2) - canvas.offsetLeft)
-      let brushY = (event.y - (brushSize/2) - canvas.offsetTop)
+      // set brush position, based on mouse position within the element (offsetX/Y) and centre the brush on cursor using brushSize
+      let brushX = (event.offsetX - (brushSize/2))
+      let brushY = (event.offsetY - (brushSize/2))
 
       //create the brushstroke on the canvas
       context.beginPath();
