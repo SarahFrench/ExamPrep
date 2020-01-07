@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      var notJSON = "{lol:nope";
+      try{
+        var scope = "If you can see me I'm in scope";
+        JSON.parse(notJSON);
+      } catch(error){
+        //exception object received
+        console.log(error);
+        console.log(error.message);
+        console.log(error.number);
+        console.log(error.name);
+        if(typeof scope === 'undefined'){
+          console.log("out of scope");
+          var scope = "if you're seeing this it wasn't in scope";
+        } else {
+          console.log("in scope");
+        }
+        alert(`${error}
+
+Exception objects (like above) are passed into the catch block.
+They have:
+- a name property: ${error.name}
+- a message property: ${error.message}
+- the number property mentioned in the book appears to no longer be present
+
+Also, variables declared in the try block are out of scope for the catch block : ${scope}`);
+}
+    </script>
+  </body>
+</html>
