@@ -1,0 +1,41 @@
+<html>
+  <head></head>
+  <style>
+    input{
+      width: 50%;
+      padding: 1em 2em;
+    }
+  </style>
+  <body>
+    <input id="input" type="text" placeholder="Engage with the input field to see keyboard events"/>
+    <div>
+      <ul id="keys">
+
+      </ul>
+    </div>
+    <script>
+      window.onload = function(){
+        document.getElementById('input').addEventListener('keydown', keydownEvent)
+
+
+        function keydownEvent(){
+          console.log(event)
+          if( event.keyCode != 16 && event.keyCode != 17){
+            if(event.shiftKey >= 65 && event.shiftKey <= 90){
+              addListItem("keydown event: pressed key: " + event.key.toUpperCase());
+            } else {
+              addListItem("keydown event: pressed key: " + event.key);
+            }
+          }
+        }
+
+        function addListItem(text){
+          let el = document.createElement('li');
+          el.innerText = text;
+          document.getElementById('keys').appendChild(el);
+        }
+
+      }
+    </script>
+  </body>
+</html>

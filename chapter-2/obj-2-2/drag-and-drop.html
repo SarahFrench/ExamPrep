@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+    .dropped{
+      width: 50%;
+      height: 50%;
+      position: relative;
+      top: 25%;
+      left: 25%;
+      background-color: black;
+    }
+    .over{
+      transform: scale(1.1);
+    }
+    .bucket{
+      width: 100px;
+      height: 100px;
+      margin: 10px;
+    }
+    .chip{
+      width:20px;
+      height: 100px;
+      margin: 10px;
+      position: absolute;
+      background-color: yellow;
+    }
+    body > div:first-of-type{
+      background-color: red;
+    }
+    body > div:nth-of-type(2){
+      background-color: green;
+    }
+    body > div:nth-of-type(3){
+      background-color: blue;
+    }
+    </style>
+  </head>
+  <body>
+    <div id="bucket1" class="bucket"></div>
+    <div id="bucket2" class="bucket"></div>
+    <div id="bucket3" class="bucket"></div>
+    <div id="chip" draggable="true" class="chip"></div>
+    <script>
+      var chip = document.getElementById('chip');
+      var bucket1 = document.getElementById('bucket1');
+      var bucket2 = document.getElementById('bucket2');
+      var bucket3 = document.getElementById('bucket3');
+
+      chip.addEventListener('dragstart', function(){
+        event.dataTransfer.setData("drag-item-id", this.id);
+        event.dataTransfer.setData("test", "hello world");
+        console.log('dragstart');
+      })
+
+      chip.addEventListener('dragend', function(){
+        console.log('dragend');
+      })
+
+      bucket1.addEventListener('dragenter', dragEnterHandler )
+      bucket1.addEventListener('dragleave', dragLeaveHandler )
+      bucket1.addEventListener('drop', dropHandler )
+      bucket1.addEventListener('dragover', dragOverHandler )
+      bucket2.addEventListener('dragenter', dragEnterHandler )
+      bucket2.addEventListener('dragleave', dragLeaveHandler )
+      bucket2.addEventListener('drop', dropHandler )
+      bucket2.addEventListener('dragover', dragOverHandler )
+      bucket3.addEventListener('dragenter', dragEnterHandler )
+      bucket3.addEventListener('dragleave', dragLeaveHandler )
+      bucket3.addEventListener('drop', dropHandler )
+      bucket3.addEventListener('dragover', dragOverHandler )
+
+      function dragEnterHandler(){
+        console.log("dragEnterHandler")
+        console.log(event.dataTransfer.getData("test"));
+
+        event.preventDefault();
+        event.target.classList.add('over');
+      }
+
+      function dragLeaveHandler(){
+        console.log("dragLeaveHandler")
+        event.dataTransfer.setData("left", "true");
+        console.log(event.dataTransfer.getData("test"));
+
+        event.target.classList.remove('over');
+      }
+
+      function dragOverHandler(){
+        // console.log("dragOverHandler")
+        event.preventDefault();
+      }
+
+      function dropHandler(){
+        event.preventDefault();
+        console.log("dropHandler")
+        let data = event.dataTransfer.getData("drag-item-id");
+        console.log(event.dataTransfer.getData("test"));
+        console.log(event.dataTransfer.getData("left"));
+
+        let chip = document.getElementById(data);
+        chip.classList.remove('chip');
+        chip.classList.add('dropped');
+        this.appendChild(chip);
+      }
+    </script>
+  </body>
+</html>

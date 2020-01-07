@@ -1,4 +1,4 @@
-# Raising and handling events
+# Chapter 2 - Part 2.1: Raising and handling events
 
 Browsers process actions by a user and these can be used as triggers for code => interactive experiences.
 "DOM elements natively provide events"
@@ -20,6 +20,9 @@ Event "listeners" wait for events to fire and then trigger a set of predefined i
 When events fire an event object is available:
 - can be received as an argument for event handler functions
 - provides metadata about the event; tells you what key was pressed for a keyup event, or where the mouse clicked on a click event.
+
+In event listeners you can use the `this` keyword to refer to the element emitting the event: `this` === event.target
+
 
 Event handling can be set up in different ways:
 
@@ -98,3 +101,107 @@ Bubble goes up from child to parent
 Cascade goes down from parent to child
 
 The third argument in add/removeEventListener methods is a boolean to control how it behaves. True = use cascade, false = bubble. Bubble is used by default.
+
+in an event handler you can include `event.stopPropagation();` to block any propagation 'passing through' that element's event handler. For example in my demo (chapter-2/obj-2-2/bubbling-example.html) if you add that line to the middle div event handler it'll stop events bubbling out from the inner div or events cascading down from the outer div. In those cases the propagation will reach the middle div, that event handler will be executed, and then no further events will be fired.
+
+## Event Types
+
+### Change event
+
+`change` events happen when an elements value changes, e.g. checkboxes or input fields like text box or a slider
+
+### Focus events
+An element is in `focus` when it is being engaged with. E.g. clicking on an input field and being able to type makes it in focus. Clicking out of it again puts it out of focus (`blur`). There are a events that mark the transition between the states:
+
+Occur in this order if you click in a text input field and out again:
+- `focus` event
+- `focusin` event (but book says this should occur before an element receives focus)
+- `blur` event
+- `focusout` event
+
+### Keyboard events
+
+- `keydown` - key pushed down
+- `keyup` - key released up
+- `keypress` - key is fully pressed
+
+The event data includes:
+- `keyCode` - number for the key (e.g. A-Z = 65-90)
+- `key` - either the value or the name of the key, e.g "a" vs "Backspace"
+- `altKey` - was alt pressed when the event was fired - is true for pressing Shift or holding shift and pressing other keys
+- `shiftKey` ditto above
+- `ctrlKey` ditto above
+
+> Sometimes keyboard events don't fire (by design) when you'd expect them to. For example in a text input field left and right arrows register, but not up and down as they don't do anything in that context. Also for arrow buttons, keydown fires but not other events.
+
+### Mouse events:
+- click
+- dblclick - each constituent click fires an event too
+- mousedown
+- mouseup
+- mouseenter & mouseover (see: http://jsfiddle.net/ZCWvJ/7/ for difference)
+- mouseleave
+- mousemove
+
+### Drag events:
+
+##### Includes data transfer **
+
+Draggable element:
+- drag : CONTINUOUSLY raised while an element is dragged
+- dragstart : Raised by dragged element when drag begins
+- dragend : raised by the element being dragged when mouse is released
+
+Target element:
+- dragenter : raised by *target element* when something dragged enters its space
+- dragleave : raised by *target element* when something dragged leaves its space
+- dragover : raised CONTINUOUSLY by *target element* when something's being dragged over top
+- drop : raised by *target element* when dragged element is released
+
+Elements need to be marked as "draggable":
+```html
+<p draggable="true">I'm draggable!</p>
+```
+
+Target elements they're dropped on don't need to be configured in html attributes, but will need dragover and drop event handlers.
+
+Drag events include a `DataTransfer` object which includes the drag's data and data you can add and retrieve later. To do this, you use inbuild functions for that interface.
+
+When starting to drag an element you can save data about what's being dragged (dragstart events are fired by the draggable element)...
+
+```js
+//save data about the item being dragged; this = draggable element
+function dragstartHandler(){
+  event.dataTransfer.setItem('id-of-dragged-element', this.id);
+}
+
+```
+...and retrieve it in the separate event of the element being dropped onto a target (drop events are fired by the target)
+
+```js
+function dragoverHandler(){
+  event.preventDefault();
+}
+
+function dragenterHandler(){
+  event.preventDefault();
+}
+
+//to let drop events fire you need to suppress the default dragenter and dragover events like this
+//same achieved by event.returnValue = false;
+
+function dropHandler(){
+  let id = event.dataTransfer.getItem('id-of-dragged-element');
+  //can access data from the drag events inside the drop events
+  let draggedElement = document.getElementById(id);
+  this.appendChild(draggedElement);
+}
+
+```
+
+#### Recap:
+- To be able to drop a draggable element onto a target you need to prevent the default actions for dragenter and dragover events on that target
+  - This can be achieved by making handlers for those events that include `event.preventDefault();` or `event.returnValue = false;`
+  - Without doing this the drop event won't fire!
+- You can transfer data between the drag and drop events using the `DataTransfer` interface (`event.dataTransfer`)
+- bear in mind which events are fired by the draggable element vs the target, if you use `this`!

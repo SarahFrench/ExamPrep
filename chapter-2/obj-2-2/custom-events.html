@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      .box{
+        width: 100px;
+        height:100px;
+        background-color: grey;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Move your mouse in and out of the box several times...</h3>
+    <div id="box" class="box"></div>
+    <p id="notice"></p>
+    <script>
+      myCustomEvent = new CustomEvent(
+        'fivemouseovers',
+        {
+          detail: {
+            description: "mouse was put over the div 5 times",
+            timeofevent: new Date(),
+            eventcode: 2
+          },
+          bubbles: true,
+          cancelable: true
+        }
+      )
+
+      myEvent = new Event('threemouseovers', {
+        bubbles: false,
+        detail: {
+          hello: "world",
+          thisDetailObject: "will not be used to make the Event object"
+        },
+        ignored: "this also isn't used in the final Event object"
+      });
+      /*
+      * Events can have the default properties modified by the second argument,
+      * (will have bubbles set to false) but non-standard properties like detail will be ignored
+      */
+
+      function updateNotice(text){
+        document.getElementById('notice').innerHTML = text;
+      }
+
+      let box = document.getElementById('box');
+
+      box.addEventListener('mouseover', function(){
+        window.mouseOvers = window.mouseOvers ? (window.mouseOvers + 1) : 1;
+        updateNotice(`Mouse entered ${window.mouseOvers} time(s)`);
+        if(window.mouseOvers >= 5){
+            window.mouseOvers = 0;
+            box.dispatchEvent(myCustomEvent);
+        } else if ( window.mouseOvers === 3 ){
+          box.dispatchEvent(myEvent);
+        }
+      })
+
+      box.addEventListener('threemouseovers', function(event){
+        console.log('you put your mouse over the div 3 times in a row');
+        console.log(event.type);
+        console.log(event);
+        updateNotice(`Event fired: ${event.type}.
+        As it was made using <code>new Event</code> it lacks a <code>detail</code> property that can have custom data added`);
+      })
+
+      box.addEventListener('fivemouseovers', function(event){
+        console.log('you put your mouse over the div 5 times in a row');
+        console.log(event.type);
+        console.log(event);
+        updateNotice(`CustomEvent fired: ${event.type}.
+        As it was made using <code>new CustomEvent</code> it has a <code>detail</code> property, including a description: ${event.detail.description}`);
+      })
+
+
+
+    </script>
+  </body>
+</html>

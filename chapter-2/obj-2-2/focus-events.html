@@ -1,0 +1,53 @@
+<html>
+  <head></head>
+  <style>
+    input{
+      width: 50%;
+      padding: 1em 2em;
+    }
+  </style>
+  <body>
+    <input id="input" type="text" placeholder="Engage with the input field to see focus events"/>
+    <div>
+      <ul id="events">
+
+      </ul>
+    </div>
+    <script>
+      window.onload = function(){
+        document.getElementById('input').addEventListener('change', changeEvent)
+        document.getElementById('input').addEventListener('focusin', focusinEvent)
+        document.getElementById('input').addEventListener('focusout', focusoutEvent)
+        document.getElementById('input').addEventListener('focus', focusEvent)
+        document.getElementById('input').addEventListener('blur', blurEvent)
+
+        function changeEvent(){
+          addListItem("change event");
+        }
+
+        function focusEvent(){
+          addListItem("focus event");
+        }
+
+        function blurEvent(){
+          addListItem("blur event");
+        }
+
+        function focusinEvent(){
+          addListItem("focusin event");
+        }
+
+        function focusoutEvent(){
+          addListItem("focusiout event");
+        }
+
+        function addListItem(text){
+          let el = document.createElement('li');
+          el.innerText = text;
+          document.getElementById('events').appendChild(el);
+        }
+
+      }
+    </script>
+  </body>
+</html>

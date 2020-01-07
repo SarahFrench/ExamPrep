@@ -1,0 +1,24 @@
+<html>
+  <head></head>
+  <body>
+    <input id="slider" type="range" min="0" max="100" value="0"/>
+    <div>
+      <ul id="values">
+
+      </ul>
+    </div>
+    <script>
+      window.onload = function(){
+        document.getElementById('slider').addEventListener('change', rangeChangeEvent)
+
+        function rangeChangeEvent(){
+          console.log("this and event.target are the same: " + (this === event.target)); //true
+          let el = document.createElement('li');
+          el.innerText = this.value;
+          document.getElementById('values').appendChild(el);
+        }
+
+      }
+    </script>
+  </body>
+</html>

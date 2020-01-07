@@ -1,0 +1,56 @@
+<html>
+  <head></head>
+  <style>
+    input{
+      width: 50%;
+      padding: 1em 2em;
+    }
+    div.mousemove{
+      width: 300px;
+      height: 100px;
+      background-color: rgb(255,255,150);
+    }
+  </style>
+  <body>
+    <input id="input" type="text" placeholder="Engage with the input field to see mouse events"/>
+      <div id="mousemove" class="mousemove">
+        move your mouse in here
+      </div>
+    <div>
+      <ul id="events">
+
+      </ul>
+    </div>
+    <script>
+      window.onload = function(){
+        document.getElementById('input').addEventListener('mouseover', mouseoverEvent)
+        document.getElementById('input').addEventListener('mouseenter', mouseenterEvent)
+        document.getElementById('input').onclick = function(){addListItem("click event")};
+        document.getElementById('input').ondblclick = function(){addListItem("double click event")};
+        document.getElementById('input').onmouseleave = function(){addListItem("mouseleave event")};
+        document.getElementById('mousemove').onmousemove = function(){addListItem("mousemove event")};
+        document.getElementById('mousemove').onmouseleave = emptyList;
+
+
+        function mouseoverEvent(){
+          addListItem("mouseover event - this occurs when the mouse goes over the element OR ANY CHILDREN");
+        }
+
+        function mouseenterEvent(){
+          addListItem("mouseenter event - this occurs when the mouse first enters the element. Child elements disregarded.");
+        }
+
+        function addListItem(text){
+          let el = document.createElement('li');
+          el.innerText = text;
+          document.getElementById('events').appendChild(el);
+        }
+
+        function emptyList(){
+          document.getElementById('events').innerHTML = "";
+        }
+
+      }
+    </script>
+  </body>
+</html>
