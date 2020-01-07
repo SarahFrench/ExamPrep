@@ -1,4 +1,4 @@
-# Chapter 2 - Part 2.2: Custom Events
+# Chapter 2 - Part 2b: Custom Events
 
 Aka 'synthetic events'
 

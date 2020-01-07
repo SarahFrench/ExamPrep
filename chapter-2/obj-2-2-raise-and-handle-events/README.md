@@ -1,4 +1,4 @@
-# Chapter 2 - Part 2.1: Raising and handling events
+# Chapter 2 - Part 2a: Raising and handling events
 
 Browsers process actions by a user and these can be used as triggers for code => interactive experiences.
 "DOM elements natively provide events"
