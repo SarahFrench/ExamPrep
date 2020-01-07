@@ -53,10 +53,22 @@
         event.dataTransfer.setData("drag-item-id", this.id);
         event.dataTransfer.setData("test", "hello world");
         console.log('dragstart');
+        if(event.dataTransfer.getData("test")){
+          console.log(`    CAN access dataTransfer in ${event.type}`);
+        }
+      })
+
+      chip.addEventListener('drag', function(){
+        if(event.dataTransfer.getData("test")){
+          console.log(`    CAN access dataTransfer in ${event.type}`);
+        }
       })
 
       chip.addEventListener('dragend', function(){
         console.log('dragend');
+        if(event.dataTransfer.getData("test")){
+          console.log(`    CAN access dataTransfer in ${event.type}`);
+        }
       })
 
       bucket1.addEventListener('dragenter', dragEnterHandler )
@@ -74,32 +86,37 @@
 
       function dragEnterHandler(){
         console.log("dragEnterHandler")
-        console.log(event.dataTransfer.getData("test"));
+        if(event.dataTransfer.getData("test")){
+          console.log(`    CAN access dataTransfer in ${event.type}`);
+        }
 
         event.preventDefault();
         event.target.classList.add('over');
       }
 
       function dragLeaveHandler(){
-        console.log("dragLeaveHandler")
+        console.log("dragLeaveHandler");
+        if(event.dataTransfer.getData("test")){
+          console.log(`    CAN access dataTransfer in ${event.type}`);
+        }
         event.dataTransfer.setData("left", "true");
-        console.log(event.dataTransfer.getData("test"));
-
         event.target.classList.remove('over');
       }
 
       function dragOverHandler(){
-        // console.log("dragOverHandler")
+        if(event.dataTransfer.getData("test")){
+          console.log(`    CAN access dataTransfer in ${event.type}`);
+        }
         event.preventDefault();
       }
 
       function dropHandler(){
         event.preventDefault();
         console.log("dropHandler")
+        if(event.dataTransfer.getData("test")){
+          console.log(`    CAN access dataTransfer in ${event.type}`);
+        }
         let data = event.dataTransfer.getData("drag-item-id");
-        console.log(event.dataTransfer.getData("test"));
-        console.log(event.dataTransfer.getData("left"));
-
         let chip = document.getElementById(data);
         chip.classList.remove('chip');
         chip.classList.add('dropped');

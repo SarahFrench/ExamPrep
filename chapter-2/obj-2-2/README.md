@@ -199,9 +199,11 @@ function dropHandler(){
 
 ```
 
+**ONLY DRAGSTART AND DROP CAN ACCESS dataTransfer**
+
 #### Recap:
 - To be able to drop a draggable element onto a target you need to prevent the default actions for dragenter and dragover events on that target
   - This can be achieved by making handlers for those events that include `event.preventDefault();` or `event.returnValue = false;`
   - Without doing this the drop event won't fire!
-- You can transfer data between the drag and drop events using the `DataTransfer` interface (`event.dataTransfer`)
+- You can transfer data between the dragstart and drop events using the `DataTransfer` interface (`event.dataTransfer`)
 - bear in mind which events are fired by the draggable element vs the target, if you use `this`!
