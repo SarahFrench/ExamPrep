@@ -21,8 +21,8 @@
           */
           if( typeof wsConnection === 'undefined' || wsConnection && wsConnection.readyState != WebSocket.OPEN){
             let url = 'ws://localhost:8081/';
-            let protocols = ['soap', 'xmpp'];
-            wsConnection = new WebSocket(url, protocols);
+            let subProtocols = ['soap', 'xmpp']; //optional argument. Server picks first one that it agrees to
+            wsConnection = new WebSocket(url, subProtocols);
             setUpWebSocket(wsConnection);
           }
         }
