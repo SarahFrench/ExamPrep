@@ -33,3 +33,30 @@ TCP is more lightweight than HTTP and is fully bidirectional. It's good for situ
 Data transmitted can be text-based or binary (binary would allow stuff like video).
 
 You make a connection to a URL and it's preceded by ws:// or wss:// due to using a different protocol from https(!). Using wss is analogous to using https; it's encrypted by TLS and is secure
+
+#### WebSocket objects
+
+```js
+  let url = 'ws://localhost:8081/';
+  let protocols = ['soap', 'xmpp']; //optional argument
+  wsConnection = new WebSocket(url, subProtocols);
+```
+
+The WebSocket object has a bunch of methods and properties. e.g. status of a connection can be found by the readyState property. Takes on numerical values that can be compared to constants like:
+
+- WebSocket.CONNECTING = 0
+- WebSocket.OPEN = 1
+- WebSocket.CLOSING = 2
+- WebSocket.CLOSED = 3
+
+There are events fired by the WebSocket that can be handled like any other browser events
+
+- open
+- message
+- close
+- error
+
+You can initiate events from your end of the socket using methods like:
+
+- Send data: `myWebSocket.send("string data");`
+- Close the connection: `myWebSocket.close();``
