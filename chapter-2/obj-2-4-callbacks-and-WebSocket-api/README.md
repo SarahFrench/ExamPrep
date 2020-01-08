@@ -60,3 +60,41 @@ You can initiate events from your end of the socket using methods like:
 
 - Send data: `myWebSocket.send("string data");`
 - Close the connection: `myWebSocket.close();``
+
+#### jQuery and AJAX
+
+Plain javascript vs. additional libraries like jQuery.
+jQuery is specific to using the DOM.
+
+AJAX = "Asynchronous JavaScript And XML" (but also can use JSON)
+
+HTTP protocol requests
+
+AJAX is a combo of different technologies used together to allow:
+- sending requests to the server without reloading the page
+- receiving and handling response data
+
+jQuery isn't required for AJAX requests but it makes them easier.
+
+Example:
+
+```js
+  $.ajax({
+    url: '<url>',
+    cache: false,
+    dataType 'json',
+    success: function(data){
+      //callback for when data is received
+      $(data).find("search-word").each(function(){
+        //callback inside each function
+      }))
+    },
+    error: function(request, code, errorMessage){
+      //receives the HTTP request itself,
+      //  status code e.g. 404
+      //  error message associated with the error
+    }
+  })
+```
+
+'GET' is the default, but you can add a method property in the config object and set it to "POST", "DELETE", etc...
