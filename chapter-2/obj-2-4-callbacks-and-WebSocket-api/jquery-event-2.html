@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>Header 1</th>
+        <th>Header 2</th>
+        <th>Header 3</th>
+      </tr>
+      <tr>
+        <td>Click me</td>
+        <td>Click me</td>
+        <td>Click me</td>
+      </tr>
+    </table>
+    <p id="remove">Remove all</p>
+    <script>
+      $('td').click(function(){
+        var element = $('<p class="feedback"></p>').text("You clicked me!");
+        $(element).appendTo(this);
+      });
+
+      $('#remove').click(function(data){
+        $('.feedback').remove()
+      })
+    </script>
+  </body>
+</html>

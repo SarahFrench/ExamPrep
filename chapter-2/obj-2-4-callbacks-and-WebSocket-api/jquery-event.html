@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <button id="button">Click Me</button>
+    <script>
+      $('#button').click(function(){
+        var element = $('<p></p>').text("You clicked the button!");
+        $(element).appendTo($('body'));
+      });
+    </script>
+  </body>
+</html>

@@ -100,3 +100,5 @@ Example:
 ```
 
 'GET' is the default, but you can add a method property in the config object and set it to "POST", "DELETE", etc...
+
+jQuery is cross-browser friendly.
