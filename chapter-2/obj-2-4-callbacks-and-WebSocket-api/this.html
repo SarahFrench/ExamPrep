@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <button id="clickMe">Click Me</button>
+    <div id="div1">DIV 1</div>
+    <div id="div2">DIV 2</div>
+    <div id="div3">DIV 3</div>
+    <div id="div4">DIV 4</div>
+    <div id="div5">DIV 5</div>
+    <script>
+      var i = 0;
+      $('#clickMe').click(function(){
+        $(this).attr('color', 'red');
+        $('div').each(function(){
+          console.log("Currently editing ", this);
+          if(i%2){
+            $(this).css('background-color', 'red');
+            $(this).text(this.id);
+          } else {
+            $(this).css('background-color', 'green');
+            $(this).text(this.id);
+          }
+          i++;
+        })
+      });
+    </script>
+  </body>
+</html>

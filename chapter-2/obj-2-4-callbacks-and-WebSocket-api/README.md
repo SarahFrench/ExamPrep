@@ -102,3 +102,55 @@ Example:
 'GET' is the default, but you can add a method property in the config object and set it to "POST", "DELETE", etc...
 
 jQuery is cross-browser friendly.
+
+#### Callbacks with anonymous functions
+
+Static, named function:
+
+```
+function imNotAnonymous(){
+  //named function
+}
+```
+
+anonymous function:
+
+```
+function(){
+  //do stuff
+}
+```
+
+In JS functions are objects, so can be assigned to variables or passed into functions as parameters.
+
+Callbacks are functions provided to other functions to be invoked later. Callbacks can be supplied as anonymous functions or using the names of named functions. In other languages you may achieve this by providing a pointer to the specific function.
+
+#### Using the `this` pointer
+
+`this` is a keyword present in JS, but in jQuery it's a bit different.
+
+In jQuery `this` refers to the current object or collection that's been selected
+
+
+```
+<script>
+  var i = 0;
+  $('button#clickMe').click(function(){
+    $(this).attr('color', 'red');
+    //this refers to the button with id clickMe
+    $('div').each(function(){
+      console.log("This loop I'm editing an element with ID = " + this.id)
+      //this refers to the element for the current iteration over the selected collection
+      if(i%2){
+        $(this).css('background-color', 'red');
+        $(this).text(this.id);
+        //if using jQuery functions you need to use $(this) to edit the DOM, but don't need to use the selector to access info (like in the `text` params)
+      } else {
+        $(this).css('background-color', 'green');
+        $(this).text(this.id);
+      }
+      i++;
+    })
+  });
+</script>
+```
