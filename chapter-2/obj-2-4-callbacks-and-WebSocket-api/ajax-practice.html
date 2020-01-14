@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <h1>AJAX example</h1>
+    <img id="photo" src="#" alt="">
+    <script type="text/javascript">
+/*      $.ajax({
+        url: 'https://dog.ceo/api/breeds/image/random',
+        success: function(data){
+          console.log("Success");
+          console.log($('#photo').attr('src', data.message ));
+        },
+        error: function(){
+          console.log("Error");
+        }
+      })
+    */
+      $.ajax({
+        url: 'https://dog.ceo/api/breeds/image/random',
+        success: function(data){
+          console.log("Success");
+          $(data).each(function(x,y){
+            console.log(x,y);
+          })
+        },
+        error: function(){
+          console.log("Error");
+        }
+      })
+    </script>
+  </body>
+</html>

@@ -15,6 +15,8 @@ Event listeners are an example of using callbacks; you add an event listener by 
 
 ### WebSocket API
 
+Run the `server.js` file in the project root and then use `chapter-2/obj-2-4-callbacks-and-WebSocket-api/websocket-example-from-book.html` to test out a WebSocket example
+
 This is a good resource : https://javascript.info/websocket
 
 Supports bidirectional communication between web applications and the server.
