@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+</head>
+<body>
+
+  <h1>Web Workers Demo</h1>
+  <h3>A weird demo to work around browser security measures.</h3>
+  <p>This is an adaptation of <a href="https://www.html5rocks.com/en/tutorials/workers/basics/#toc-inlineworkers-example">this demo I found online</a>. It uses an inline script as the webworker because browsers stop use of external files as web workers when you're using local files; it needs to be hosted properly to be allowed.</p>
+
+  <div class="">
+    <p>Type a number in the box below:</p>
+    <input id="number" type="text" name="" value="">
+    <button id="activate-worker" type="button" name="button">Get the factorial for that number</button>
+    <button id="deactivate-worker" type="button" name="button">Click here to stop the worker</button>
+  </div>
+
+  <div id="log"></div>
+
+  <script id="worker1" type="javascript/worker">
+    // This script won't be parsed by JS engines
+    // because its type is javascript/worker.
+
+    self.counter = 0;
+
+    self.onmessage = function(event) {
+      if(event.data && !isNaN(event.data)){
+        let answer = factorial(event.data);
+        if(answer === "too big"){
+          self.postMessage(`${event.data}! is too large for JavaScript to calculate accurately`);
+        } else {
+          self.postMessage(`${event.data}! = ${answer}`);
+        }
+      } else {
+        self.counter += 1;
+        if(self.counter < 2){
+          self.postMessage('Make sure you enter a valid number. You entered: ' + event.data);
+        } else if(self.counter < 4) {
+          self.postMessage("If you don't stop sending invalid input I'll stop helping you");
+        } else {
+          self.postMessage("Byeeeeee bitchez");
+          self.close();
+        }
+      }
+    };
+
+    function factorial(n){
+      let answer = 1;
+      for(let i = n; i > 0; i--){
+        answer *= i;
+        if(answer > Number.MAX_SAFE_INTEGER){
+          console.log("Over MAX_SAFE_INTEGER!");
+          return "too big";
+          break;
+        }
+      }
+      return answer;
+    }
+  </script>
+
+  <script>
+    function log(msg) {
+      // Use a fragment: browser will only render/reflow once.
+      var fragment = document.createDocumentFragment();
+      fragment.appendChild(document.createTextNode(msg));
+      fragment.appendChild(document.createElement('br'));
+
+      document.querySelector("#log").appendChild(fragment);
+    }
+
+    var blob = new Blob([document.querySelector('#worker1').textContent]);
+    var worker = new Worker(window.URL.createObjectURL(blob));
+
+
+    let input = document.getElementById('number');
+    let submitButton = document.getElementById('activate-worker');
+    let closeButton = document.getElementById('deactivate-worker');
+
+    submitButton.addEventListener('click', function(){
+      let number = input.value;
+      worker.postMessage(number);
+    })
+
+    closeButton.addEventListener('click', function(){
+      worker.terminate();
+      log("Worker terminated");
+    })
+
+
+    worker.onmessage = function(e) {
+      log(e.data);
+    }
+  </script>
+</body>
+</html>

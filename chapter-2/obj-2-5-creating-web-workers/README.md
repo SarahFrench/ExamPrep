@@ -10,9 +10,16 @@
 
 See the MDN documentation: https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API
 
+Also see this guide: https://www.html5rocks.com/en/tutorials/workers/basics/
+
+NOTE: Chrome doesn't let you use web workers with a local file
+
 Web Workers are used to allow work to be run in the background on their own thread, instead of the main execution thread of your web application. Due to this, they're usually used for laborious processes.
 
-Because it's a separate thread, in a worker you cannot directly access the DOM
+Because it's a separate thread, in a worker you cannot directly access:
+- the DOM
+- `window` Object
+- `document` Object
 
 The main thread and the worker(s) communicate by sending each other messages:
 - postMessage() method
@@ -51,3 +58,21 @@ onmessage = function(data){
 ```
 
 > NOTE: the postMessage method and onmessage event listener need to be accessed via the web worker object in the main script, but in the web worker script they're in the global scope
+
+The worker can be written differently; either using `this` or `self` or neither. This because in workers `this` & `self` reference the global scope.
+
+```js
+//worker.js
+
+addEventListener('message', function(){
+  postMessage("addEventListener can be used instead of `onmessage`");
+})
+
+self.addEventListener('message', function(){
+  self.postMessage("functions can be invoked using the self keyword");
+})
+
+this.addEventListener('message', function(){
+  this.postMessage("functions can ALSO be invoked using the this keyword");
+})
+```
