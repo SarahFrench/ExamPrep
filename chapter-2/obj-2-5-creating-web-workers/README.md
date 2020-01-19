@@ -76,3 +76,42 @@ this.addEventListener('message', function(){
   this.postMessage("functions can ALSO be invoked using the this keyword");
 })
 ```
+
+To stop a web worker you can stop it from the inside or the outside:
+```js
+//inside
+self.close();
+
+//outside
+worker.terminate();
+```
+
+## Limitations of web workers
+
+### Parameters passed in
+
+Have to be native data types or JSON objects/XML. Anything sent to a worker via `postMessage` is serialised and de-serialised (turned into a string and back again). You can't send functions, and if you try you'll get this error: `Failed to execute 'postMessage' on 'Worker': function(){console.log("I can't be serialised")} could not be cloned.`
+
+### Number of workers
+
+Making workers is intensive and if you have too many at once, or forget to
+terminate finished ones, then it can affect performance. If you definitely need lots, have a finite pool that are called on when needed.
+
+### DOM access
+
+Workers have their own, separate global context versus the main thread, so they cannot access the DOM, the `window` Object, nor `document` Object.
+
+### Subworkers
+
+Workers can make their own workers just like the main thread does, but this can open up a big can of worms regarding keeping track of the number of workers in operation at one time.
+
+### Timeouts and Intervals
+
+You can make a web worker execute their code after a delay or at set intervals using `setTimeout` or `setInterval`. You create the worker and use the `postMessage` method inside the callback of these functions.
+
+```js
+let worker = new Worker('worker.js');
+setInterval(function(){
+  worker.postMessage("you better work");
+}, 3000); //does stuff every 3 seconds
+```
