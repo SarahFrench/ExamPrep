@@ -25,17 +25,23 @@
     self.counter = 0;
 
     self.onmessage = function(event) {
-      if(event.data && !isNaN(event.data)){
-        let answer = factorial(event.data);
-        if(answer === "too big"){
-          self.postMessage(`${event.data}! is too large for JavaScript to calculate accurately`);
+      //message is being delievered is an object that contains a string, an array and a number
+      //these are being serialised when being sent and de-serialised when received (turned into a string and back again), similar to stringifying and parsing JSONs
+      console.log(event.data);
+      console.log("string: ", event.data.number);
+      console.log("array: ", event.data.array);
+      console.log("number: ", event.data.int);
+      if(event.data && event.data.number && !isNaN(event.data.number)){
+        let answer = factorial(event.data.number);
+        if(answer){
+          self.postMessage(`${event.data.number}! is too large for JavaScript to calculate accurately`);
         } else {
-          self.postMessage(`${event.data}! = ${answer}`);
+          self.postMessage(`${event.data.number}! = ${answer}`);
         }
       } else {
         self.counter += 1;
         if(self.counter < 2){
-          self.postMessage('Make sure you enter a valid number. You entered: ' + event.data);
+          self.postMessage('Make sure you enter a valid number. You entered: ' + event.data.number);
         } else if(self.counter < 4) {
           self.postMessage("If you don't stop sending invalid input I'll stop helping you");
         } else {
@@ -51,7 +57,7 @@
         answer *= i;
         if(answer > Number.MAX_SAFE_INTEGER){
           console.log("Over MAX_SAFE_INTEGER!");
-          return "too big";
+          return undefined;
           break;
         }
       }
@@ -79,7 +85,7 @@
 
     submitButton.addEventListener('click', function(){
       let number = input.value;
-      worker.postMessage(number);
+      worker.postMessage({'number': number, 'array' : [1,2,3], 'int': 3 });
     })
 
     closeButton.addEventListener('click', function(){
