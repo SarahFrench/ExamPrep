@@ -35,12 +35,7 @@
     Undo last brush stroke
   </button>
   <div>
-    <div id="#000000" class="colour-swatch" style="background-color:#000000;"></div>
-    <div id="#FFFFFF" class="colour-swatch" style="background-color:#FFFFFF;"></div>
-    <div id="#FF0000" class="colour-swatch" style="background-color:#FF0000;"></div>
-    <div id="#FFFF00" class="colour-swatch" style="background-color:#FFFF00;"></div>
-    <div id="#0000FF" class="colour-swatch" style="background-color:#0000FF;"></div>
-
+    <input id="colourChoice" class="colour-swatch" type="color">
   </div>
   <button onclick="download();">
     <a id="download-button" >Download your drawing</a>
@@ -54,12 +49,10 @@
     const brushSizeDisplay = document.getElementById('brush-size-display');
     let downloadButton = document.getElementById('download-button');
 
-    const colourSwatches = document.getElementsByClassName('colour-swatch');
-    for(let i=0; i < colourSwatches.length; i++){
-      colourSwatches[i].addEventListener('click', function(event){
-        brushColour = event.target.id;
-      })
-    }
+    const colourChoice = document.getElementById('colourChoice');
+    colourChoice.addEventListener('change', function(event){
+      brushColour = event.target.value;
+    })
 
     brushDial.addEventListener('change', function(){
       brushSize = brushDial.value;
