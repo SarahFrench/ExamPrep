@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Testing inputs</title>
+    <link type="text/css" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+  </head>
+  <body>
+    <form action="" class="container mt-3">
+      <div class="mb-2">
+        <span>color: </span><input type="color"/>
+      </div>
+      <div class="mb-2">
+        <span>date: </span><input type="date">
+      </div>
+      <div class="mb-2">
+        <span>datetime-local: </span><input type="datetime-local">
+        <p>Note: datetime type has been made obsolete</p>
+      </div>
+      <div class="mb-2">
+        <span>datetime-local: </span><input type="datetime-local">
+      </div>
+
+      <div class="mb-2">
+        <span>month: </span><input type="month">
+      </div>
+      <div class="mb-2">
+        <span>week: </span><input type="week">
+      </div>
+      <div class="mb-2">
+        <span>time: </span><input type="time">
+      </div>
+      <div class="mb-2">
+        <span>number: </span><input type="number">
+      </div>
+      <div class="mb-2">
+        <span>range: </span><input type="range" max="10" min="1" value="5">
+      </div>
+      <div class="mb-2">
+        <span>tel: </span><input type="tel" pattern="[0-9]{5}-[0-9]{3}-[0-9]{3}" placeholder="12345-123-123" required><span>Format: 12345-123-123</span>
+      </div>
+      <div class="mb-2">
+        <!-- <span>url: </span><input type="url" placeholder="www.mysite.com"> -->
+        <p>NOTE: by default the validation wants there to be a protocol at the start - something like <code>&ltchar&gt://</code>. You can add a pattern attribute to enforce https but then you'll need a regex to match all URLs; better to use a regular textbox</p>
+
+      </div>
+      <div class="mb-2">
+        <span>checkbox, checked: </span><input type="checkbox" checked="checked">
+        <br/>
+        <span>checkbox, unchecked: </span><input type="checkbox">
+      </div>
+      <div class="mb-2">
+        <span>radio, checked: </span><input type="radio" checked="checked">
+        <br/>
+        <span>radio, unchecked: </span><input type="radio">
+        <br/>
+        <span>Range of radios that are linked</span> <input id="radio1" type="radio" name="radioChoices">  <input id="radio2" type="radio" name="radioChoices">  <input id="radio3" type="radio" name="radioChoices">
+      </div>
+      <div class="mb-2">
+        <span>password:</span><input type="password">
+      </div>
+      <div class="mb-2">
+        <input type="button" value="I'm a button!">
+      </div>
+      <div class="mb-2">
+        <input type="reset">
+      </div>
+      <div class="mb-2">
+        <input type="submit">
+      </div>
+    </form>
+  </body>
+</html>
