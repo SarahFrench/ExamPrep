@@ -8,40 +8,41 @@
   <body>
     <form action="" class="container mt-3">
       <div class="mb-2">
-        <span>color: </span><input type="color"/>
+        <span>text: </span><input id='text' type="text" spellcheck/>
       </div>
       <div class="mb-2">
-        <span>date: </span><input type="date">
+        <span>color: </span><input id='color' type="color"/>
       </div>
       <div class="mb-2">
-        <span>datetime-local: </span><input type="datetime-local">
-        <p>Note: datetime type has been made obsolete</p>
+        <span>date: </span><input id='date' type="date" min="2020-01-01" max="2020-08-23" step="7">
       </div>
       <div class="mb-2">
-        <span>datetime-local: </span><input type="datetime-local">
-      </div>
-
-      <div class="mb-2">
-        <span>month: </span><input type="month">
+        <span>datetime-local: </span><input id='datetime-local' type="datetime-local" min="2020-01-01T07:00:00" max="2020-08-23T19:00:00">
+        <small class="d-block">Note: datetime type has been made obsolete</small>
       </div>
       <div class="mb-2">
-        <span>week: </span><input type="week">
+        <span>month: </span><input id='month' type="month">
       </div>
       <div class="mb-2">
-        <span>time: </span><input type="time">
+        <span>week: </span><input id='week' type="week">
       </div>
       <div class="mb-2">
-        <span>number: </span><input type="number">
+        <span>time: </span><input id='time' type="time">
       </div>
       <div class="mb-2">
-        <span>range: </span><input type="range" max="10" min="1" value="5">
+        <span>number: </span><input id='number' type="number" min="0" step="0.5" required>
       </div>
       <div class="mb-2">
-        <span>tel: </span><input type="tel" pattern="[0-9]{5}-[0-9]{3}-[0-9]{3}" placeholder="12345-123-123" required><span>Format: 12345-123-123</span>
+        <span>range: </span><input id='range' type="range" max="5" min="0" value="2.5" step="0.5">
       </div>
       <div class="mb-2">
-        <!-- <span>url: </span><input type="url" placeholder="www.mysite.com"> -->
-        <p>NOTE: by default the validation wants there to be a protocol at the start - something like <code>&ltchar&gt://</code>. You can add a pattern attribute to enforce https but then you'll need a regex to match all URLs; better to use a regular textbox</p>
+        <span>tel: </span><input id='tel' type="tel" pattern="[0-9]{5}\s{1}[0-9]{6}" placeholder="12345 123456" required><span>Format: 12345 123456</span>
+      </div>
+      <div class="mb-2">
+        <span>url: </span><input type="url" placeholder="www.mysite.com" value="https://">
+        <small class="d-block">NOTE: by default the validation wants there to be a protocol at the start - something like <code>&ltchar&gt://</code>.</small>
+        <small class="d-block">You can add a pattern attribute but then you'll need a regex to match all URLs; better to use a regular textbox. Also, the pattern is secondary (and can clash with) the inbuilt validation that checks for a protocol at the start</small>
+        <small class="d-block">You can use the value attribute to put 'https://' in the box prior to anyone typing anything... but then there's the issue that that alone may be submitted via the form; need server side validation to remove value before saving input</small>
 
       </div>
       <div class="mb-2">
@@ -58,6 +59,12 @@
       </div>
       <div class="mb-2">
         <span>password:</span><input type="password">
+      </div>
+      <div class="mb-2">
+        <p>textarea with spellcheck:</p>
+        <textarea spellcheck name="name" rows="8" cols="10"></textarea>
+        <p>rows attribute = number of lines of text</p>
+        <p>cols attribute = number of chars</p>
       </div>
       <div class="mb-2">
         <input type="button" value="I'm a button!">
