@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>XMLHttpRequest</title>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous">
+    </script>
+  </head>
+  <body>
+    <h1>Testing XMLHttpRequest</h1>
+    <div id="photoContainer">
+
+    </div>
+    <ul id="xhrInfo">
+
+    </ul>
+    <script type="text/javascript">
+
+      function addListItem(parentId, message){
+        var item = $('<li></li>').text(message);
+        $(parentId).append(item);
+      }
+      function addSubList(parentId, idNumber){
+        var item = $('<ul></ul>').attr("id", "sublist-" + idNumber);
+        $(parentId).append(item);
+      }
+
+      var idNumber = 0;
+      var req = new XMLHttpRequest;
+      addListItem("#xhrInfo", "When an XHR client has been made the req.readyState = " + req.readyState);
+
+      req.open("GET", "https://dog.ceo/api/breed/dachshund/images/random", true);
+      addListItem("#xhrInfo", "When an XHR client has been opened the req.readyState = " + req.readyState);
+      addSubList("#xhrInfo", ++idNumber);
+      addListItem(`#sublist-${idNumber}`, "the open method takes in info like:");
+      addSubList(`#sublist-${idNumber}`, ++idNumber);
+      addListItem(`#sublist-${idNumber}`, "method");
+      addListItem(`#sublist-${idNumber}`, "URL");
+      addListItem(`#sublist-${idNumber}`, "boolean ; true = async, false = synchronous");
+      addListItem(`#sublist-${idNumber}`, "username");
+      addListItem(`#sublist-${idNumber}`, "password");
+
+
+
+      req.onreadystatechange = function(){
+        console.log("req.readyState = " + req.readyState);
+        if(req.readyState === 4){
+          console.log("Got it");
+          console.log(req);
+          var srcURL = JSON.parse(req.response).message;
+          var image = $('<img></img>').attr("src", srcURL);
+          $('body').append(image);
+        }
+      }
+      req.send();
+
+      addListItem("#xhrInfo", "When an XHR client has been sent the req.readyState = 2");
+      addSubList("#xhrInfo", ++idNumber);
+      addListItem(`#sublist-${idNumber}`, "The send method can take in a parameter as the body (if sending POST request)");
+
+
+
+      console.log(req.getAllResponseHeaders());
+      console.log(req.getResponseHeader('content-type'));
+
+
+
+    </script>
+  </body>
+</html>
