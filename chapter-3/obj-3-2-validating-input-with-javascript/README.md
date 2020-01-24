@@ -86,7 +86,7 @@ People can inject JavaScript code into a page, either attempting to take users' 
 You want to sanitise inputs, e.g. removing `<` and `>` chars to make text HTML safe
 
 https://stackoverflow.com/questions/6234773/can-i-escape-html-special-chars-in-javascript
-
+Example function you can use to sanitise some inputs:
 ```js
 function escapeHtml(unsafe) {
     return unsafe
@@ -98,6 +98,8 @@ function escapeHtml(unsafe) {
  }
  ```
 
+There are tons of ways for cross site scripting to occur, often exploiting HTML5 features: http://html5sec.org/, e.g. having some JS run on an onfocus event listener (inline atrr) and adding an autofocus attr to the same tag.
+
 There's a function `eval` which takes in a string and evaluates it as javascript. e.g.
 ```js
 eval("let myFunction = function (a){ return a*2}; myFunction(100);");
@@ -108,3 +110,25 @@ In the above example myFunction is undefined in the global scope after running `
 If you declared myFunction before running the `eval` statement then it'll be assigned the function in the string.
 
 How about just don't use `eval` and if you have to DON'T RUN IT ON USER INPUT YOU DUMMY
+
+## iFrames
+
+iFrames = running another document within yours.
+
+```html
+<iframe
+  title="titles are good for accessibility"
+  width="300"
+  height="300"
+  src="https://www.asite.com/document"
+  sandbox=""
+  referrerpolicy="<choice>"
+/>
+```
+
+The `sandbox` attribute controls permissions for what the contained iframe can do:
+- `""` : applies all restrictions; most secure
+- `allow-same-origin` : content of iframe treated as if it comes from the containing HTML doc
+- `allow-top-navigation` : iframe can load content from the containing HTML doc
+- `allow-forms` : iframe can submit forms
+- `allow-scripts` : iframe can run scripts
