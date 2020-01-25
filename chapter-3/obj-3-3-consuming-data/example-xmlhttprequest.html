@@ -46,8 +46,16 @@
 
 
       req.onreadystatechange = function(){
+        console.log(req);
         console.log("req.readyState = " + req.readyState);
+        if(req.readyState === 3){
+          addListItem("#xhrInfo", "When an XHR client begins downloading data, the req.readyState = " + req.readyState);
+
+        }
+
         if(req.readyState === 4){
+          addListItem("#xhrInfo", "When an XHR client has received the whole response, the req.readyState = " + req.readyState);
+
           console.log("Got it");
           console.log(req);
           var srcURL = JSON.parse(req.response).message;
