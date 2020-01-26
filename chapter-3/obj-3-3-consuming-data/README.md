@@ -4,7 +4,7 @@
 
 - Consume JSON and XML data
 - retrieve data by using web services
-- load data or get data from other sources by using XMLHTTPRequest
+- load data or get data from other sources by using XMLHttpRequest
 
 ## Consume JSON and XML data by using web services
 
@@ -70,7 +70,8 @@ The XML document is made of elements and attributes within those. Tags MUST be c
 
 XMLHttpRequest is an object that can handle HTTP requests
 - Supports both async and sync calls
-- emits events, so can have event listeners attached:
+- Whereas the fetch API returns promises, the XMLHttpRequest API handles async requests using event listeners.
+- Events emitted, and able to be handled by event listeners:
   - `onreadystatechange` : handle a req that changes state; different state values exist and only one means data received.
   - `ontimeout` : handle a req that cannot be completed
 
@@ -87,8 +88,21 @@ XMLHttpRequest is an object that can handle HTTP requests
 
 Methods:
 - `open`
-  - `setRequestHeader` - set header while preparing the req
+  - `setRequestHeader` - set header while preparing the req. Can only be done when the request is OPENED but not SENT
 - `send`
-  - `getResponseHeader`
-  - `getAllResponseHeaders`
-- `abort`
+  - `getResponseHeader` - get a specific header from response (pass in header name as argument)
+  - `getAllResponseHeaders` - get all the headers from response (no arguments)
+- `abort` - stop the request when it's partway through.
+
+
+Properties:
+- `readyState` - integer indicating how the request has progressed
+- `response`
+  - `responseText` - response as DOMString
+  - `responseType` - type can be text, json, xml, document, blob, etc...
+  - `responseXML` - response as XML document
+  - `responseBody` - gone? Can't see this option in the docs
+- `timeout` - milliseconds that will wait for a response. Request will terminate if a response hasn't come back in that timeframe.
+  - not to be used for synchronous requests.
+  - use for async
+  - use the ontimeout event listener to handle a timed out request.
