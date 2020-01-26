@@ -1,5 +1,7 @@
 # Consume Data
 
+IN THIS FOLDER - to test XMLHttpRequest locally I've got a NodeJS script that can run a server on localhost:8082. Using html files from that directory (accessible in the browser at localhost:8082/<filename>.html ) you can try out XMLHttpRequests for files stored locally.
+
 ## Objectives:
 
 - Consume JSON and XML data

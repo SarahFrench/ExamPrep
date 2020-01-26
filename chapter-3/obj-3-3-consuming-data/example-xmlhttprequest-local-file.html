@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+      <h1>Requesting myXML.xml from the project folder</h1>
+      <p>Info from the XMLHttpRequest is below:</p>
+      <div id="xmlData">
+
+      </div>
+      <script type="text/javascript">
+        var req = new XMLHttpRequest;
+        req.open("GET", "/myXML.xml", true);
+        req.onload = function(){
+          document.getElementById('xmlData').innerText = req.response;
+          console.log(req);
+        }
+        req.onerror = function(){
+          console.log('ERROR');
+          console.log(req);
+        }
+        req.send();
+      </script>
+  </body>
+</html>
