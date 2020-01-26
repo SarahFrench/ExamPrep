@@ -79,13 +79,13 @@ XMLHttpRequest is an object that can handle HTTP requests
 
 - readyState property has number value matching these:
 
-  | Value | State            | Description                                                   |
+  | Value | JS constant for that value / Name | Description                                                   |
   |-------|------------------|---------------------------------------------------------------|
-  | 0     | UNSENT           | Client has been created. open() not called yet.               |
-  | 1     | OPENED           | open() has been called.                                       |
-  | 2     | HEADERS_RECEIVED | send() has been called, and headers and status are available. |
-  | 3     | LOADING          | Downloading; responseText holds partial data.                 |
-  | 4     | DONE             | The operation is complete.                                    |  
+  | 0 | XMLHttpRequest.**UNSENT** | Client has been created. open() not called yet.               |
+  | 1 | XMLHttpRequest.**OPENED** | open() has been called.                                       |
+  | 2 | XMLHttpRequest.**HEADERS_RECEIVED** | send() has been called, and headers and status are available. |
+| 3 | XMLHttpRequest.**LOADING** | Downloading; responseText holds partial data.                 |
+| 4 | XMLHttpRequest.**DONE** | The operation is complete.                                    |  
 
 
 Methods:
@@ -108,3 +108,7 @@ Properties:
   - not to be used for synchronous requests.
   - use for async
   - use the ontimeout event listener to handle a timed out request.
+  - if set to `0` then there isn't a timeout set
+- `withCredentials` - boolean
+  - if you wanted to use credentials then username and password would be included as 3rd/4th arguments of `open` method
+  - **these are only used in response to a `401` security response from the server after you `send` the request** 
