@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var req = new XMLHttpRequest();
+      req.open("GET", "dachshund-123503_640.jpg", true);
+      req.responseType = "blob"; //if not included then you get the data as a string and it's not readable (apart from some EXIF data)
+      req.send();
+      req.onreadystatechange =  function(){
+        if(req.readyState === XMLHttpRequest.DONE){
+          let el = document.createElement('img');
+          el.src = URL.createObjectURL(req.response);
+          document.body.appendChild(el);
+        }
+      }
+  </script>
+
+  </body>
+</html>
