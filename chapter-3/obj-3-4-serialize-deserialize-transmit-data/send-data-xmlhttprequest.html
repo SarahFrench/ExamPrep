@@ -5,6 +5,11 @@
     <title></title>
   </head>
   <body>
+    <h1>Examples of deserializing data through XMLHttpRequest</h1>
+    <h3>Press the button to play/pause music loaded via blob</h3>
+    <h3>Below that is an image loaded via blob</h3>
+    <button type="button" name="button" onclick="document.getElementById('audioXHR').play()">Play</button>
+    <button type="button" name="button" onclick="document.getElementById('audioXHR').pause()">Pause</button>
     <script type="text/javascript">
       var req = new XMLHttpRequest();
       req.open("GET", "dachshund-123503_640.jpg", true);
@@ -14,7 +19,25 @@
         if(req.readyState === XMLHttpRequest.DONE){
           let el = document.createElement('img');
           el.src = URL.createObjectURL(req.response);
+          el.style.display = "block";
+          el.style.marginTop = "2em";
           document.body.appendChild(el);
+        }
+      }
+
+      var req2 = new XMLHttpRequest();
+      req2.open("GET", "Orpheus-in-der-Unterwelt-Can-Can.m4a", true);
+      req2.responseType = 'blob';
+      req2.send();
+      req2.onreadystatechange =  function(){
+        if(req.readyState === XMLHttpRequest.DONE){
+          var music = req2.response;
+          var musicURI = URL.createObjectURL(music);
+          console.log(musicURI);
+          var audioElement = document.createElement('audio');
+          audioElement.id = "audioXHR";
+          audioElement.src = musicURI;
+          document.body.appendChild(audioElement);
         }
       }
   </script>
