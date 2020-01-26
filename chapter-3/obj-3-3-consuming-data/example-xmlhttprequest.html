@@ -11,12 +11,13 @@
   </head>
   <body>
     <h1>Testing XMLHttpRequest</h1>
-    <div id="photoContainer">
-
-    </div>
     <ul id="xhrInfo">
 
     </ul>
+    <button type="button" name="button" onclick="addDog()">Add a dog</button>
+    <div id="photoContainer">
+
+    </div>
     <script type="text/javascript">
 
       function addListItem(parentId, message){
@@ -26,6 +27,18 @@
       function addSubList(parentId, idNumber){
         var item = $('<ul></ul>').attr("id", "sublist-" + idNumber);
         $(parentId).append(item);
+      }
+
+      function addDog(){
+        var newReq = new XMLHttpRequest();
+        newReq.open("GET", "https://dog.ceo/api/breed/dachshund/images/random", true);
+        newReq.onload = function(){
+          console.log("Request loaded!");
+          var srcURL = JSON.parse(newReq.response).message;
+          var image = $('<img></img>').attr("src", srcURL);
+          $('#photoContainer').append(image);
+        };
+        newReq.send();
       }
 
       var idNumber = 0;
@@ -60,7 +73,7 @@
           console.log(req);
           var srcURL = JSON.parse(req.response).message;
           var image = $('<img></img>').attr("src", srcURL);
-          $('body').append(image);
+          $('#photoContainer').append(image);
         }
       }
       req.send();
