@@ -71,6 +71,8 @@ The XML document is made of elements and attributes within those. Tags MUST be c
 
 XMLHttpRequest is event driven, vs fetch API that uses promises. Internet Explorer doesn't implement it, so you're stuck with AJAX/XHR or using a polyfill.
 
+Axios is supported by Internet Explorer; it makes XHR requests and uses promises. May need a promise polyfill in older browsers
+
 
 `var request = new XMLHttpRequest();`
 
