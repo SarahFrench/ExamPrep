@@ -138,4 +138,6 @@ $('document').ready(
 
 WARNING: `serialize` only works for input fields that are in a valid state; unchecked checkboxes aren't passed into the serialized data, only checked ones etc.
 
+NOTE: `serialize` escapes user input, e.g. `<` becomes `%3C`
+
 Also, for radio buttons they all have the same `name` attribute. To distinguish between them, set their `value` attribute to stuff, e.g. 'male', 'female', 'other'

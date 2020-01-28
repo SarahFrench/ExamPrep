@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Practicing 'this'</title>
+    <style>
+      .clicked{
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>this is this when this invokes a function, see?</h1>
+    <p>When using a global function assigned as an onclick for an element, `this` = window, and need to pass this in as param from tag.</p>
+    <p>When using an event listener, this refers to the event target</p>
+    <button id="thisThis" onclick="disable(this)">Click me for some 'this' action</button>
+    <script>
+        /*
+        document.getElementById('thisThis').addEventListener('click', function(){
+          console.log("In the click event listener, this === event.target");
+          this.classList.toggle('clicked');
+        })
+        */
+
+        function disable(element){
+          console.log("In the disable function, this === window");
+          element.disabled = true;
+        }
+    </script>
+  </body>
+</html>
