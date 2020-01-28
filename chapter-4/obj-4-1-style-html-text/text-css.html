@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>GREEN</title>
+    <style media="screen">
+      h1.green{
+        color: #00FF00;
+      }
+
+      h2{
+        color: Lime;
+      }
+
+      h3{
+        color: rgb(0,255,0);
+      }
+
+      .indent{
+        text-indent: 1em;
+      }
+
+      section{
+        margin-left: 1em;
+        margin-right: 1em;
+        margin-top: 1em;
+        padding: 1em 2em;
+        border: solid 1px black;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <hgroup>
+        <h1><code>color</code></h1>
+        <h1 class="green">Green</h1>
+        <h2>GREEN!</h2>
+        <h3>Green...?</h3>
+      </hgroup>
+      <p>The book said that h1/h2/h3 have different appearances with the same colour added to them, but the book was wrong.</p>
+      <p>The h2 was coloured differently because the CSS3 'green' != #00FF00, but instead 'lime' is...</p>
+    </section>
+    <section>
+      <hgroup>
+        <h1><code>font-weight</code></h1>
+      </hgroup>
+          <p style="font-weight: bold;">This text is bold</p>
+          <p style="font-weight: bolder;">This text is bolder...?</p>
+          <p style="font-weight: normal;">This text is normal</p>
+          <p style="font-weight: lighter;">This text is lighter</p>
+          <small>I'm unconvinced by bolder, and lighter</small>
+    </section>
+    <section>
+      <hgroup>
+        <h1><code>font-style</code></h1>
+      </hgroup>
+          <p style="font-style: italic;">This text is italic</p>
+          <p>Other possible values for <code>font-style</code> include 'oblique' (?) and 'normal'</p>
+          <i>This text is in an &lti&gt tag </i>
+          <p>i tages are discouraged and instead should use semantic tags like <code>&ltem&gt &ltcite&gt &ltdfn&gt &ltabbr&gt</code></p>
+    </section>
+    <section>
+      <hgroup>
+        <h1><code>font-family</code></h1>
+      </hgroup>
+          <p style="font-family: Arial, 'Times New Roman';">This text has fonts: Arial/Times New Roman. The first one available is use</p>
+          <div class="">
+            <p>If I wanted to import a font from a file on my server, I could do that in CSS. You can define a font for use in CSS using the <code>@font-face</code> keyword</p>
+            <code>
+              @font-face{ <br/>
+                <span class="indent"></span>font-family: 'Name of Font';<br/>
+                <span class="indent"></span>src: url('path/to/file.woff');<br/>
+                <span class="indent"></span>src: url('fallback/file/path.eot');<br/>
+              }<br/>
+
+              p {<br/>
+                <span class="indent"></span>font-family: 'Name of Font';<br/>
+              }<br/>
+            </code>
+            <p><abbr title="Web Open Font Format">WOFF</abbr> format meants <dfn>Web Open Font Format</dfn></p>
+          </div>
+    </section>
+    <section>
+      <hgroup>
+        <h1><code>font-size</code></h1>
+      </hgroup>
+          <p style="font-size: xx-small;">This text is font-size: xx-small</p>
+          <p style="font-size: x-small;">This text is font-size: x-small</p>
+          <p style="font-size: small;">This text is font-size: small</p>
+          <p style="font-size: smaller;">This text is font-size: smaller</p>
+          <p style="font-size: large;">This text is font-size: large</p>
+          <p style="font-size: x-large;">This text is font-size: x-large</p>
+    </section>
+    <section>
+      <hgroup>
+        <h1><code>text-align</code></h1>
+      </hgroup>
+          <p style="text-align: left;">This text is aligned left</p>
+          <p style="text-align: center;">This text is aligned 'center'</p>
+          <p style="text-align: right;">This text is aligned right</p>
+          <p style="text-align: justify;">This text is aligned 'justify'</p>
+    </section>
+    <section>
+      <hgroup>
+        <h1><code>text-indent</code></h1>
+      </hgroup>
+          <p style="text-indent: 1em;">This text is indented</p>
+    </section>
+
+  </body>
+</html>
