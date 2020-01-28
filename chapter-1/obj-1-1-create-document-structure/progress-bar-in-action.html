@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Progress Bar for XHR</title>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous">
+    </script>
+  </head>
+  <body>
+    <progress id="myProgressBar" max="100"></progress>
+    <img id="myPhoto" src="" alt="There should be picture of a dog here when it has loaded">
+    <script>
+      var request;
+
+      $('document').ready(function(){
+
+        request = new XMLHttpRequest;
+        request.responseType ='text';
+        request.open("GET", "https://dog.ceo/api/breed/dachshund/images/random/5", true);
+        request.onprogress = function(progressEvent){
+          console.log(progressEvent);
+          $('#myProgressBar').attr('max', progressEvent.total);
+          $('#myProgressBar').attr('value', progressEvent.loaded);
+        }
+        request.onreadystatechange = function(){
+          if(this.readyState === XMLHttpRequest.DONE){
+            console.log("Done");
+            var photoUrl = JSON.parse(request.responseText).message[0];
+            $(`#myPhoto`).attr('src', photoUrl);
+          }
+        }
+        request.send();
+      })
+    </script>
+  </body>
+</html>
