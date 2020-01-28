@@ -68,6 +68,10 @@ The XML document is made of elements and attributes within those. Tags MUST be c
 
 ## XMLHttpRequest Object
 
+
+XMLHttpRequest is event driven, vs fetch API that uses promises. Internet Explorer doesn't implement it, so you're stuck with AJAX/XHR or using a polyfill.
+
+
 `var request = new XMLHttpRequest();`
 
 XMLHttpRequest is an object that can handle HTTP requests
@@ -111,4 +115,4 @@ Properties:
   - if set to `0` then there isn't a timeout set
 - `withCredentials` - boolean
   - if you wanted to use credentials then username and password would be included as 3rd/4th arguments of `open` method
-  - **these are only used in response to a `401` security response from the server after you `send` the request** 
+  - **these are only used in response to a `401` security response from the server after you `send` the request**
