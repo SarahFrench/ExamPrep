@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Using vanilla JavaScript to submit data</title>
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous">
+    </script>
+  </head>
+  <body>
+    <form action="/">
+        <div><label for="firstName">First Name: </label><input id="firstName" type="text"/></div>
+        <div><label for="lastName">Last Name: </label><input id="lastName" type="text"/></div>
+        <input type="submit" onclick="formHandler()" >
+    </form>
+
+    <script>
+      function formHandler(){
+        event.preventDefault();
+        let data = {
+          firstName: $('#firstName').val(),
+          lastName: $('#lastName').val()
+        }
+        let req = new XMLHttpRequest();
+        req.open("POST", "http://www.example.com", true);
+        req.onreadystatechange = function(){
+          console.log(event);
+          console.log(req);
+        }
+        req.send(JSON.stringify(data));
+      }
+    </script>
+  </body>
+</html>
