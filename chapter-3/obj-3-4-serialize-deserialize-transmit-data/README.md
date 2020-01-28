@@ -69,3 +69,73 @@ URL.createObjectURL() takes in a blob and then makes an object from that data an
   }
 
 ```
+
+## Submitting form data using Form.submit() and jQuery's serialize method
+
+### vanilla JS submit method
+
+`document.getElementsByTagName('form')[0].submit();`
+
+Acts the same as clicking a submit button, but doesn't fire a click or submit event. Function is much more basic than the jQuery one, takes no parameters.
+
+### jQuery's form.submit() method
+```javascript
+$('document').ready(
+  //once page loaded
+  $('form').submit(function(){
+    //first form identified, run submit method on it
+    event.preventDefault(); //stops submission via default form behaviour
+
+    //callback:
+    // select the input fields by id and put values in data object
+    var data = {
+      firstName: $('#firstName').val(),
+      lastName: $('#lastName').val()
+    }
+    $.ajax({
+      url: 'https://www.example.com',
+      type: "POST",
+      data: JSON.stringify(data),
+      success: function(response){
+        console.log(response);
+      },
+      error: function(err){
+        alert("error!")
+      }
+    })
+  })
+)
+```
+
+
+
+```javascript
+$('document').ready(
+  //once page loaded
+  $('form').submit(function(){
+    //first form identified, run submit method on it
+
+    event.preventDefault(); //stops submission via default form behaviour
+
+    var serializedData = $('form').serialize();
+    //to use the serialize method you need every input to have a name attribute.
+
+    $.ajax({
+      url: "https://www.example.com",
+      type: "POST",
+      data: serializedData,
+      success: function(response){
+        console.log(response);
+      },
+      error: function(err){
+        alert("error!")
+      }
+    })
+
+  })
+);
+```
+
+WARNING: `serialize` only works for input fields that are in a valid state; unchecked checkboxes aren't passed into the serialized data, only checked ones etc.
+
+Also, for radio buttons they all have the same `name` attribute. To distinguish between them, set their `value` attribute to stuff, e.g. 'male', 'female', 'other'
