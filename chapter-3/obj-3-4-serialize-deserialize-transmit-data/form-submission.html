@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Using vanilla JavaScript to submit data</title>
+    <title>Using less jQuery-ish JavaScript to submit data</title>
 
     <script
       src="https://code.jquery.com/jquery-3.4.1.min.js"
@@ -11,20 +11,44 @@
     </script>
   </head>
   <body>
+    <h1>Using vanilla JavaScript to submit data</h1>
+
     <form action="/">
         <div><label for="firstName">First Name: </label><input id="firstName" type="text"/></div>
         <div><label for="lastName">Last Name: </label><input id="lastName" type="text"/></div>
-        <input type="submit" onclick="formHandler()" >
+        <input type="submit">
     </form>
 
     <script>
+      $('document').ready(
+        $('form').submit(function(){
+          event.preventDefault() //need this otherwise the form submits as usual after the alert
+          var firstName = $('#firstName').val();
+          var lastName = $('#lastName').val();
+          alert(firstName + " " + lastName);
+          var data = {
+            firstName: firstName,
+            lastName: lastName
+          }
+          var req = new XMLHttpRequest();
+          req.open("POST", "http://www.example.com", true);
+          req.onreadystatechange = function(){
+            console.log(event);
+            console.log(req);
+          }
+          req.send(JSON.stringify(data));
+
+        })
+      )
+
+      /*
       function formHandler(){
         event.preventDefault();
-        let data = {
+        var data = {
           firstName: $('#firstName').val(),
           lastName: $('#lastName').val()
         }
-        let req = new XMLHttpRequest();
+        var req = new XMLHttpRequest();
         req.open("POST", "http://www.example.com", true);
         req.onreadystatechange = function(){
           console.log(event);
@@ -32,6 +56,7 @@
         }
         req.send(JSON.stringify(data));
       }
+      */
     </script>
   </body>
 </html>

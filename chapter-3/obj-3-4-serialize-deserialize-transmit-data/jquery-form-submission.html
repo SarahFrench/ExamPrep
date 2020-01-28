@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Using jQuery to submit data</title>
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous">
+    </script>
+  </head>
+  <body>
+    <h1>Using jQuery to submit data</h1>
+    <form id="myForm" action="/">
+        <div><label for="firstName">First Name: </label><input id="firstName" name="firstName" type="text"/></div>
+        <div><label for="lastName">Last Name: </label><input id="lastName" name="lastName" type="text"/></div>
+        <input type="submit">
+    </form>
+
+    <script>
+      $('#myForm').submit(function(){
+        event.preventDefault();
+        var formData = $(this).serialize();
+        alert(formData);
+        console.log(formData);
+        console.log($(this));
+      })
+    </script>
+  </body>
+</html>
