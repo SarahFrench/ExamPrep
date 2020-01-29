@@ -29,4 +29,33 @@ Can be done with
 
 ## Apply styles to text alignment, spacing and indentation
 
-Text alignment: right, left, center, justify
+`text-align` :
+- right
+- left
+- center
+- justify
+
+`word-spacing` :
+- px/em etc
+
+`letter-spacing` :
+- px/em etc
+
+`text-indent` :
+- px/em etc
+
+## Hyphenation
+
+`hyphens` :
+- none
+- auto
+- manual
+
+If manual hyphens are used then 'soft hyphen' marks `&ampshy;` are put in text to indicate where text should break if it needs to
+
+## Text shadow
+
+`text-shadow` :
+- < left px > < top px > < color >
+
+Basically makes a copy of the text that sits beneath it, can be positioned relative to the texts original position;
