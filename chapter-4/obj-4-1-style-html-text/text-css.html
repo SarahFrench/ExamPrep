@@ -30,6 +30,7 @@
     </style>
   </head>
   <body>
+    <h1 style="text-align: center; letter-spacing: 1em; font-family: monospace; text-shadow: 2px 4px lightgrey">Styling text</h1>
     <section>
       <hgroup>
         <h1><code>color</code></h1>
@@ -105,6 +106,45 @@
         <h1><code>text-indent</code></h1>
       </hgroup>
           <p style="text-indent: 1em;">This text is indented</p>
+          <p style="text-indent: 0;">This text is not</p>
+    </section>
+    <section>
+      <hgroup>
+        <h1><code>word-spacing</code></h1>
+      </hgroup>
+          <p style="word-spacing: 1em;">These words are spaced out</p>
+    </section>
+    <section>
+      <hgroup>
+        <h1><code>letter-spacing</code></h1>
+      </hgroup>
+          <p style="letter-spacing: 1em;">Spaced letters</p>
+    </section>
+    <section>
+      <hgroup>
+        <h1><code>hyphens</code></h1>
+      </hgroup>
+        <p style="hyphens: auto; max-width: 100px; display: inline-block;">This affects how text wraps when it's wider than the containing div</p><code style="display: inline-block;">hyphens: auto;</code>
+        <br/>
+        <p style="hyphens: none; max-width: 100px; display: inline-block;">This affects how text wraps when it's wider than the containing div</p><code style="display: inline-block;">hyphens: none;</code>
+        <br/>
+        <p style="hyphens: manual; max-width: 100px; display: inline-block;">This affects how text wraps when it's wider than the containing div</p><code style="display: inline-block;">hyphens: manual;</code>
+        <small style="display: block;">For 'manual' hyphens, you add <code>&ampshy;</code> inside text to signal break points. <code>shy</code> stands for soft hyphen</small>
+    </section>
+    <section>
+      <hgroup>
+        <h1 style="text-shadow: 2px 2px lightblue"><code>text-shadow</code></h1>
+      </hgroup>
+        <p >Oh shit, text shadow looking cooooool af</p>
+        <p style="font-family: Cursive; font-weight: bolder; font-size: large; text-shadow: 2px 2px yellow;" >like, damn</p>
+        <p>text-shadow: <small>&lt position across from left &gt &lt position down from top &gt &lt colour &gt </small></p>
+    </section>
+    <section>
+      <hgroup>
+        <h1><code>font</code></h1>
+      </hgroup>
+        <p>C-c-c-combo those CSS properties with the font property; it's like using border instead of border-width, border-color etc</p>
+        <p>fonts: <small>&lt font-weight value &gt &lt font-size value &gt &lt font-family value &gt </small></p>
     </section>
 
   </body>
