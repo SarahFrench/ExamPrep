@@ -35,3 +35,23 @@
 
  Margin works the same way
 
+
+## Applying styles to alter graphic effects
+
+`opacity`
+0 to 1.0, 0 is 100% transparent, 1 is 100% visible
+
+
+`background-image : url('path/of/image.png');`
+
+`background-size` : set how the image is used; dimensions
+- `auto` : image shows as is and gets cropped by element dimensions or the image will repeat if dimension(s) is larger than the image size.
+- `cover` : height of photo set to height of element; clipped round sides
+- `contain` : width of photo is set to width of element; image repeated to cover rest of background.
+
+`background-repeat`: set how the image is used; repeating if dimensions larger than image
+- `repeat` : it repeats in all directions
+- `repeat-x` : will only repeat on x axis
+- `repeat-y` : will only repeat on y axis
+- `no-repeat` : it doesn't repeat
+- `round` : it'll repeat but will only show whole versions of the image. To achieve this the img dimensions are distorted.
