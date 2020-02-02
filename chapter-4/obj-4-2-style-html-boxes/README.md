@@ -65,3 +65,7 @@ NOTE: `border-spacing` in book but doesn't seem to work in browser. Seems redund
 
 
 NOTE: `background-clip` in book but doesn't seem to work in browser. Set to `border-box`, `padding-box`, `content-box`
+
+`background` can also be set as a colour gradient, using: `linear-gradient()`
+- e.g. `linear-gradient(black, grey);` `radial-gradient(red, yellow);`
+- Option to set the angle of the linear gradient but an optional first argument, e.g: `linear-gradient(45deg, red, yellow)`, or `linear-gradient( to-left, red, yellow)`, `linear-gradient( to-top-left, red, yellow)`, `linear-gradient( to-bottom-left, red, yellow)`
