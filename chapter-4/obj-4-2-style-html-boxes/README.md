@@ -40,9 +40,11 @@ NOTE: `border-spacing` in book but doesn't seem to work in browser. Seems redund
 
 ## Applying styles to alter graphic effects
 
+### Opacity
 `opacity`
 0 to 1.0, 0 is 100% transparent, 1 is 100% visible
 
+### Background image
 
 `background-image : url('path/of/image.png');`
 
@@ -66,6 +68,12 @@ NOTE: `border-spacing` in book but doesn't seem to work in browser. Seems redund
 
 NOTE: `background-clip` in book but doesn't seem to work in browser. Set to `border-box`, `padding-box`, `content-box`
 
+### Background gradient
+
 `background` can also be set as a colour gradient, using: `linear-gradient()`
 - e.g. `linear-gradient(black, grey);` `radial-gradient(red, yellow);`
 - Option to set the angle of the linear gradient but an optional first argument, e.g: `linear-gradient(45deg, red, yellow)`, or `linear-gradient( to-left, red, yellow)`, `linear-gradient( to-top-left, red, yellow)`, `linear-gradient( to-bottom-left, red, yellow)`
+
+For the colour arguments you can also include a stop value - a position along the gradient axis where the colour stops
+
+### Box shadow
