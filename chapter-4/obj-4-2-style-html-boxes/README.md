@@ -25,6 +25,8 @@
 `border-right-width`
 `border-top-left-radius` //border radii can only be specified by top/bottom then left/right
 
+NOTE: `border-spacing` in book but doesn't seem to work in browser. Seems redundant to using margins.
+
 ### Padding & margins
 
 `padding-top`, `...-bottom` etc
@@ -48,6 +50,7 @@
 - `auto` : image shows as is and gets cropped by element dimensions or the image will repeat if dimension(s) is larger than the image size.
 - `cover` : height of photo set to height of element; clipped round sides
 - `contain` : width of photo is set to width of element; image repeated to cover rest of background.
+- `<width> <height, optional>` : you can set the bg image to specific dimensions  
 
 `background-repeat`: set how the image is used; repeating if dimensions larger than image
 - `repeat` : it repeats in all directions
@@ -55,3 +58,10 @@
 - `repeat-y` : will only repeat on y axis
 - `no-repeat` : it doesn't repeat
 - `round` : it'll repeat but will only show whole versions of the image. To achieve this the img dimensions are distorted.
+
+`background-position` : position a background image. If it's a non-repeating image then that image is placed in the position specified. If image repeats then one of the images is put there and the repeats emanate from that spot.
+- `center`, `top`, `bottom`, `left`, `right`. These refer to positions within x/y axes.
+- better control if you use axis-specific CSS properties `background-position-x` and `background-position-y`
+
+
+NOTE: `background-clip` in book but doesn't seem to work in browser. Set to `border-box`, `padding-box`, `content-box`

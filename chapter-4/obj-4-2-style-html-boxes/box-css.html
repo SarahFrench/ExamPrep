@@ -20,6 +20,15 @@
         background-image: url('dachshund.jpg');
         background-size: auto;
       }
+      .background-image-small {
+        background-size: 100px;
+      }
+
+      .text-white {
+        color: white;
+        font-size: 2em;
+        font-weight: bolder;
+      }
     </style>
   </head>
   <body>
@@ -27,7 +36,11 @@
     <div class="border-test" style="background-color: red; width: 50px; height: 25px;"></div>
     <div class="border-test padding" style="background-color: red; width: 50px; height: 25px;"> I've got padding set</div>
     <div class="border-test margin" style="background-color: red; width: 50px; height: 25px;"> I've got margins set</div>
-    <div class="background-image" style="width: 200px; height: 200px;">
+    <div class="background-image text-white" style="width: 200px; height: 200px; opacity: 0.5;">
+      dachshund.jpg
+    </div>
+    <div class="background-image text-white background-image-small" style="width: 200px; height: 200px;">
+      dachshund.jpg
     </div>
   </body>
 </html>
