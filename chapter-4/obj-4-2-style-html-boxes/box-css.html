@@ -3,9 +3,25 @@
   <head>
     <meta charset="utf-8">
     <title>CSS Box Styling</title>
+    <style media="screen">
+      .border-test {
+        border-color: black;
+        border-width: 5px;
+        border-style: solid;
+        border-spacing: 1em;
+      }
+      .padding {
+        padding: 50px 5px 15px 100px;
+      }
+      .margin {
+        margin: 50px 5px 15px 100px;
+      }
+    </style>
   </head>
   <body>
-    <div style="background-color: blue; width: 100px; height: 50px;"></div>
-    <div style="background-color: red; width: 50px; height: 25px;"></div>
+    <div style="background-color: blue; width: 100px; height: 50px; border: solid 3px yellow;"></div>
+    <div class="border-test" style="background-color: red; width: 50px; height: 25px;"></div>
+    <div class="border-test padding" style="background-color: red; width: 50px; height: 25px;"> I've got padding set</div>
+    <div class="border-test margin" style="background-color: red; width: 50px; height: 25px;"> I've got margins set</div>
   </body>
 </html>
