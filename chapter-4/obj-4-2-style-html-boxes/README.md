@@ -77,3 +77,14 @@ NOTE: `background-clip` in book but doesn't seem to work in browser. Set to `bor
 For the colour arguments you can also include a stop value - a position along the gradient axis where the colour stops
 
 ### Box shadow
+Box shadow takes a LOT of parameters. They're all distance (in px etc) except for the last one, which is colour.
+
+`box-shadow` : <offset-x> <offset-y> <distance outside the shadow's box that the blur should extend (all sides)> <adjustment to size of shadow, param value added to x/y lengths> <colour of shadow>
+
+The CSS is interpreted as 'the number of distance parameters present before the colour parameter', eg:
+
+- The minimum is the x/y offsets and the colour: `box-shadow: 10px 10px grey;`
+- If you add a further measurement param then that'll be interpreted as the blur distance outwards: `box-shadow: 10px 10px 10px grey;`
+- Finally, if you add one more measurement then that'll add to the dimensions of the shadow: `box-shadow: 10px 10px 10px 10px grey;`
+- You can't 'skip' an optional param (expect entering `0` in its place).
+- colour MUST be present
