@@ -97,3 +97,30 @@ The CSS is interpreted by reading the (uninterrupted) sequence of measurement pa
 Shadows are usually centred on the div they're under.
 
 Colour can be hex code, rgb, string
+
+### Clipping
+
+- Image tags can have a CSS property called `clip` applied to them
+- Changes what portion of the image is showing
+- Rectangular, use rect() function
+- requires that the element have `absolute` or `fixed` positioning
+
+`rect(<top>, <right>, <bottom>, <left>)`
+
+e.g.
+In a 100x100 image if you use clip(10px, 20px, 20px, 10px);
+Then you'll see a 10px x 10px square, where the upper left corner is at position 10,10 in the original image's dimensions.
+
+1) The <top> value, 10px, means that the top of the resulting rectangle will be 10px below the top of the image.
+2) The <right> value is the number of pixels between the left hand side of the image and the right hand side of the clipping rectangle
+3) The <bottom> value is the number of pixels between the image's top edge and the bottom edge of the clipping rectangle
+4) <left> is the number of pixels between the left edge of the image and left edge of the clipping rectangle.
+
+As a result, <bottom> - <top> = height of clipped rectangle
+As a result, <right> - <left> = width of clipped rectangle
+
+If the entered values are screwy you might end up 'over-clipping' and be left with nothing; what do you see if the righthand edge of the clipped view is further left than the lefthand edge?
+
+Don't think coordinates, think CSS-y relative to the top left corner positioning.
+
+The element takes up all its original space, but doesn't show anything outside the clipping rectangle

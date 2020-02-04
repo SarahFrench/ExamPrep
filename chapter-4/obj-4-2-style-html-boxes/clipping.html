@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Clipping</title>
+    <style>
+      .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+      }
+
+      .container img {
+        margin: 1em;
+      }
+
+      .container p {
+        margin: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <h>Clip CSS property only works if the img has position: absolute;</h>
+    <div class="container">
+      <img src="dachshund.jpg" alt="A Dachshund">
+      <p>Default image</p>
+    </div>
+    <div class="container">
+      <img src="dachshund.jpg" alt="A Dachshund" style="position:absolute; clip: rect(0px 50px 50px 0px);">
+      <p>With clip rect(0px, 50px, 50px, 0px)</p>
+    </div>
+    <div class="container">
+      <img src="dachshund.jpg" alt="A Dachshund" style="position:absolute; clip: rect(200px 300px 250px 200px);">
+      <p>With clip rect(200px, 300px, 250px, 200px)</p>
+    </div>
+  </body>
+</html>
