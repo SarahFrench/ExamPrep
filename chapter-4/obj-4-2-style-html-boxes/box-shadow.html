@@ -19,6 +19,21 @@
         overflow: scroll;
         margin: 2em;
       }
+      .box-black {
+        width: 100px;
+        height: 100px;
+        background-color: black;
+        border: solid 1px lightgrey;
+        color: lightgrey;
+        font-family: Arial;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: small;
+        overflow: scroll;
+        margin: 2em;
+      }
     </style>
   </head>
   <body>
@@ -27,8 +42,24 @@
       <p>with no shadow</p>
     </div>
     <div class="box" style="box-shadow: 10px 10px;">
-      <p>I'm a box</p>
-      <p>with no shadow</p>
+      <p>Shadow</p>
+      <p>params: xxoo</p>
+    </div>
+    <div class="box" style="box-shadow: 0px 0px 10px 10px;">
+      <p>No offset</p>
+      <p>params: ooxx</p>
+    </div>
+    <div class="box-black" style="box-shadow: 0px 0px 15px 5px white inset;">
+      <p>Inset shadow</p>
+      <p>params: ooxxci</p>
+    </div>
+    <div class="box" style="box-shadow: 0px 0px 15px 5px #B00B1E;">
+      <p>Shadow</p>
+      <p>using hexcode</p>
+    </div>
+    <div class="box" style="box-shadow: 0px 0px 15px 5px rgb(4,20,69);">
+      <p>Shadow</p>
+      <p>using rgb</p>
     </div>
   </body>
 </html>

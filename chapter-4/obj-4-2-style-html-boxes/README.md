@@ -79,12 +79,21 @@ For the colour arguments you can also include a stop value - a position along th
 ### Box shadow
 Box shadow takes a LOT of parameters. They're all distance (in px etc) except for the last one, which is colour.
 
-`box-shadow` : <offset-x> <offset-y> <distance outside the shadow's box that the blur should extend (all sides)> <adjustment to size of shadow, param value added to x/y lengths> <colour of shadow>
+`box-shadow` : <offset-x> <offset-y> <blur radius (all sides)> <expand radius (all sides)> <inset?> <colour of shadow>
 
-The CSS is interpreted as 'the number of distance parameters present before the colour parameter', eg:
+> NOTE: the inset keyword or the colour info can be put either side of the distance parameters and it still works, but you cannot put them inside the sequence of distance parameters; it'll break the way the CSS is read and no shadow will be rendered.
 
-- The minimum is the x/y offsets and the colour: `box-shadow: 10px 10px grey;`
-- If you add a further measurement param then that'll be interpreted as the blur distance outwards: `box-shadow: 10px 10px 10px grey;`
-- Finally, if you add one more measurement then that'll add to the dimensions of the shadow: `box-shadow: 10px 10px 10px 10px grey;`
-- You can't 'skip' an optional param (expect entering `0` in its place).
-- colour MUST be present
+The CSS is interpreted by reading the (uninterrupted) sequence of measurement parameters from left to right.
+
+- When all params are are their default nothing is visible.
+- To see something, set x/y offsets or the blur. All other values default
+- For the 4 possible measurement params you can enter fewer than 4 values but they'll be read from left to right:
+  -  `box-shadow: 10px 10px;` is set 10px down and to the right. No blur, size matches div.
+- You can 'skip' a measurement param by entering `0` in place of missing ones
+  - `box-shadow: 0px 0px 10px 10px;` is blurred out by 10px and has an extra 10px dimensions around the div. Shadow is centred on the div.
+- By default the shadow is "outset", i.e. behind the dix like it's a floating square. If you add the inset keyword then the shadow appears inside the div.
+  - depending on the offset of the
+
+Shadows are usually centred on the div they're under.
+
+Colour can be hex code, rgb, string
