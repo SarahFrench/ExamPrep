@@ -1,4 +1,4 @@
-# Styling HTML text with CSS
+# Styling HTML boxes with CSS
 
 ## Objectives
 - apply styles to alter appearance attributes
@@ -10,7 +10,7 @@
 
 `height`
 `width`
-- cm, px, %
+- cm, px, %, in, em
 
 ### Borders
 `border-style`
