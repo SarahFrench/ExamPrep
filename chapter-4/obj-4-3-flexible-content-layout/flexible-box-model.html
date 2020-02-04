@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Flexible Box Model Layout</title>
+    <style>
+      .flexbox{
+        width: 100%;
+        display: flex;
+        border: 1px solid black;
+        min-height: 15px;
+      }
+      .dot{
+        background-color: red;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+      }
+      .column-of-containers{
+        margin-top: 2em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+      }
+      .loud-code{
+        background-color: black;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Flexbox</h1>
+    <p>You have "flex containers" and "flex items" inside them</p>
+    <p><code>flex-direction</code> sets the main axis/<em>layout axis</em> of the 1D styling</p>
+    <p>Outdated stuff mentioned in the book that doesn't work anymore:</p>
+    <ul>
+      <li><code>display: <em>flexbox</em>;</code></li>
+      <li><code>flex-pack</code></li>
+        <ul>
+          <li>This seems to be the old version of <code>justify-content</code></li>
+        </ul>
+      <li><code>flex-order</code></li>
+        <ul>
+          <li>This seems to be the old version of <code>order</code></li>
+        </ul>
+    </ul>
+    <div class="column-of-containers">
+      <h3><code>justify-content</code></h3>
+      <p style="align-self: flex-start">This moves where flex items are positioned along the main axis. When flex-direction = row the axis is horizontal, and vice versa for column.</p>
+      <p style="align-self: flex-start">"start" of the axis is top/left, unless you use flex-direction <code>row-reverse</code> or <code>column-reverse</code></p>
+
+      <div class="flexbox" style="flex-direction: row; justify-content: flex-end;">
+        <p>Here</p>
+        <div class="dot"></div>
+        <p><code>justify-content:</code></p>
+        <div class="dot"></div>
+        <p><code class="loud-code">flex-end</code></p>
+      </div>
+
+      <div class="flexbox" style="flex-direction: row; justify-content: flex-start;">
+        <p>Here</p>
+        <div class="dot"></div>
+        <p><code>justify-content:</code></p>
+        <div class="dot"></div>
+        <p><code class="loud-code">flex-start</code></p>
+      </div>
+
+      <div class="flexbox" style="flex-direction: row; justify-content: space-between;">
+        <p>Here</p>
+        <div class="dot"></div>
+        <p><code>justify-content:</code></p>
+        <div class="dot"></div>
+        <p><code class="loud-code">space-between</code></p>
+      </div>
+
+      <div class="flexbox" style="flex-direction: row; justify-content: space-around;">
+        <p>Here</p>
+        <div class="dot"></div>
+        <p><code>justify-content:</code></p>
+        <div class="dot"></div>
+        <p><code class="loud-code">space-around</code></p>
+      </div>
+
+      </div>
+
+      <div class="column-of-containers">
+        <h3><code>flex-direction</code> and <code>order</code></h3>
+        <p style="align-self: flex-start">Row (default), column, row-reverse, column-reverse</p>
+        <p style="align-self: flex-start">"start" of the axis is top/left, unless you use flex-direction <code>row-reverse</code> or <code>column-reverse</code>. Below are row and row-reverse flex containers, both with justify-content set to flex-start</p>
+
+        <div class="flexbox" style="flex-direction: row; justify-content: flex-start;">
+          <h4>flex-direction: row;</h4>
+          <p>Here</p>
+          <div class="dot"></div>
+          <p><code>flex-direction:</code></p>
+          <div class="dot"></div>
+          <p><code class="loud-code">row</code></p>
+        </div>
+
+        <div class="flexbox" style="flex-direction: row-reverse; justify-content: flex-start;">
+          <h4>flex-direction: row-reverse;</h4>
+          <p>Here</p>
+          <div class="dot"></div>
+          <p><code>flex-direction:</code></p>
+          <div class="dot"></div>
+          <p><code class="loud-code">row-reverse</code></p>
+        </div>
+
+        <p>flex items can have a say about where they go in the order, using the order CSS property.</p>
+        <p>Order goes along the layout axis, from wherever flex-start is...:</p>
+
+        <div class="flexbox" style="flex-direction: row; justify-content: flex-start;">
+          <h4>flex-direction: row;</h4>
+          <p style="order:2">Element 1 with <code>order:2</code></p>
+          <div class="dot"></div>
+          <p style="order:1">Element 2 with <code>order:1</code></p>
+          <div class="dot"></div>
+          <p style="order:3">Element 3 with <code>order:3</code></p>
+        </div>
+
+        <div class="flexbox" style="flex-direction: row-reverse; justify-content: flex-start;">
+          <h4>flex-direction: row-reverse;</h4>
+          <p style="order:2">Element 1 with <code>order:2</code></p>
+          <div class="dot"></div>
+          <p style="order:1">Element 2 with <code>order:1</code></p>
+          <div class="dot"></div>
+          <p style="order:3">Element 3 with <code>order:3</code></p>
+        </div>
+
+      </div>
+  </body>
+</html>
