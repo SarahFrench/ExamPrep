@@ -124,3 +124,34 @@ If the entered values are screwy you might end up 'over-clipping' and be left wi
 Don't think coordinates, think CSS-y relative to the top left corner positioning.
 
 The element takes up all its original space, but doesn't show anything outside the clipping rectangle
+
+### Positioning
+
+Done relative to a coordinate. E.g. top left of screen, top left of parent div, top left of viewport etc.
+
+Uses top and left properties to define the offsets:
+```
+  img {
+    position: absolute;
+    left: 50px;
+    top: 50px;
+  }
+  //all img will have top left corner at 50px from the left and 50px down from top
+```
+
+- `static` : the DEFAULT. Defined as distance from top left of the document and any previous elements
+- `absolute`: defined as distance from top left of the first parent with relative/absolute/fixed (anything but static?) positioning. If one of these isn't found when travelling up through the DOM, then it'll default to the <html> parent element, and positioning will be done relative to the document.
+- `fixed` : defined as distance from top left of the _viewport_
+- `relative` : move elements relative to where they _would_ be in a normal static flow. Relative TO ITSELF.
+- `sticky` : 'Sticks' to the edges of the screen when scrolled past. If in a parent div, it'll travel until it reaches the end of the parent's space
+
+**z-index** determines order when elements are made to overlap.
+Overlapping elements will be positioned from back to front in the same order they appear in the HTML document (from top to bottom). Z-indices with higher values = show further towards the front.
+
+#### Float
+
+Elements can have float set as a CSS attribute. They 'travel' to the furthest right or left position available within their containing div
+
+If two elements are side by side and float the same way, e.g. left, then the first element in the HTML document will 'get there first' and be the left-most element of the two.
+
+Floats shouldn't really be used for layouts (use CSS Grid or Flexbox), instead they're good for **positioning images within chunks of text**

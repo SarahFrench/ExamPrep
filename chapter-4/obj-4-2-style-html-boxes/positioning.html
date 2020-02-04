@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Positioning with CSS</title>
+    <style>
+    .box{
+      background-color: blue;
+      width: 300px;
+      min-height: 100px;
+      color: white;
+      margin-top: 10px;
+    }
+    .child-box{
+      background-color: yellow;
+      width: 100px;
+      min-height: 30px;
+      color: black;
+    }
+    .fixed-position{
+      position: fixed;
+      left: 600px;
+      top: 500px;
+    }
+    .relative-position{
+      position: relative;
+      left: 50px;
+      top: 50px;
+    }
+    .orange {
+      background-color: orange;
+    }
+
+    .test{
+      position: fixed;
+      top: 80%;
+      left: 80%;
+
+    body{
+      height: 2000px;
+    }
+    <!-- Force ability to scroll -->
+    </style>
+  </head>
+  <body>
+    <h1>Positioning is relative to the top left corner, (0px, 0px), (&lttop&gt,&ltleft&gt)</h1>
+    <div class="box">
+      <p>I'm a box sitting in my natural position</p>
+      <p>(and so does this text; up in top left of the parent div, and under previous sibling elements)</p>
+    </div>
+    <div class="box">
+      <div class="child-box">
+        <p>I'm position:static by default. I'm chilling in my parent</p>
+      </div>
+      <div class="child-box">
+        <p>Me too</p>
+      </div>
+    </div>
+    <div class="box">
+        <p>My child is position:absolute but I dont't affect my child as I'm position:static</p>
+      <div class="child-box" style="position: absolute; top: 5%; left: 50%;">
+        <p>I ignore my parent when being absolutely positioned</p>
+      </div>
+    </div>
+    <div class="box" style="position: relative; top: 0px; left: 0px;">
+        <p>My child is position:absolute and I should affect my child as I'm position:relative</p>
+      <div class="child-box" style="position: absolute; top: 5%; left: 50%;">
+        <p>I'm absolutely positioned but affected by my parent as they're relatively positioned</p>
+      </div>
+    </div>
+    <div class="box">
+      <p>I miss my position:fixed child, who doesn't care about me when being positioned</p>
+      <div class="child-box fixed-position">
+        <p>I'm in a fixed position.</p>
+        <p>I stay here when you scroll, and my position is unaffected by my parent div</p>
+      </div>
+    </div>
+    <div class="box">
+      <div class="child-box relative-position">
+        I'm positioned relative to where I should be, with +50px to left and top
+        <div style="background-color: lime; position: absolute; top: 10px; left: 10px;">
+          I'm a test.
+          I'm absolutely positioned within a relative parent element. My position is affected by it
+        </div>
+      </div>
+    </div>
+    <div class="box">
+      <div class="child-box relative-position">
+        I'm positioned like the child above
+      </div>
+      <div class="child-box relative-position orange">
+        I'm positioned relative to where I would be, which is affected by my sibling
+      </div>
+    </div>
+    <div style="margin-top: 75px; border: solid 2px black; height: 500px; width: 100%;">
+      text content in the parent div starts here
+      <div class="child-box"> I'm just sitting where I am</div>
+      and is also here in the html document under the first box element
+      <div class="child-box" style="float: left;"> I'm floating left</div>
+      and is also here in between the elements floating in opposite directions
+      <div class="child-box" style="float: right;"> I'm floating right</div>
+      <div class="child-box" style="float: right;"> I'm also floating right, will we collide? YUP</div>
+
+    </div>
+    <div class="test" style="padding: 1em; min-width: 50px; min-height: 50px; background-color: pink;">
+      My class is defined with the last } missing and it's a-OK
+      <div style="background-color: lime; position: absolute; top: 10px; left: 100px;">
+        I'm a test too.
+        I'm absolutely positioned within a fixed parent element. My position is affected by it
+      </div>
+    </div>
+  </body>
+</html>
