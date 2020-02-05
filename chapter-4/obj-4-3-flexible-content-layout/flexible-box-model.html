@@ -27,6 +27,11 @@
         background-color: black;
         color: white;
       }
+
+      .display-div-boundaries {
+        background-color: lightgrey;
+        border: black solid 2px;
+      }
     </style>
   </head>
   <body>
@@ -109,6 +114,7 @@
 
         <p>flex items can have a say about where they go in the order, using the order CSS property.</p>
         <p>Order goes along the layout axis, from wherever flex-start is...:</p>
+        <p>Unordered items are put in 'first' (according to flex direction etc) and then ordered items places in ascending order</p>
 
         <div class="flexbox" style="flex-direction: row; justify-content: flex-start;">
           <h4>flex-direction: row;</h4>
@@ -129,5 +135,179 @@
         </div>
 
       </div>
-  </body>
+
+      <div class="column-of-containers">
+        <h3><code>flex</code></h3>
+        <p>flex property of flex items sets their width as parts of 100% width</p>
+
+        <div class="flexbox" style="flex-direction: row; justify-content: flex-start;">
+          <p class="display-div-boundaries" style="flex: 2">flex-item with flex: 2</p>
+          <div class="dot"></div>
+          <p class="display-div-boundaries" style="flex: 15">flex-item with flex: 15</p>
+          <div class="dot"></div>
+          <p class="display-div-boundaries" style="flex: 3">flex-item flex: 3</p>
+        </div>
+
+        <p>Here there are a total of 15+2+3 parts = 20</p>
+        <p>If there are 20 parts of the width available then 1 part = 5% of the width. If you change the total values of flex in a flex container then the width/part calculation will change!</p>
+      </div>
+
+      <div class="column-of-containers">
+        <h3><code>flex-wrap</code> (and <code>flex-flow</code>)</h3>
+        <p>flex containers don't wrap their items by default. Can be set to no-wrap, wrap, wrap-reverse.</p>
+
+        <h3>flex-flow is a shorthand that combines flex-direction and flex-wrap</h3>
+        <h3><code>flex-flow: &ltflex-direction&gt &ltflex-wrap&gt</code></h3>
+
+        <div class="flexbox" style="flex-direction: row; justify-content: flex-start; flex-wrap: no-wrap;">
+          <p style="width:300px; height:100px; background-color: blue;">no-wrap</p>
+          <div class="dot"></div>
+          <p style="width:300px; height:100px; background-color: red;">no-wrap</p>
+          <div class="dot"></div>
+          <p style="width:300px; height:100px; background-color: turquoise;">no-wrap</p>
+          <div class="dot"></div>
+          <p style="width:300px; height:100px; background-color: yellow;">no-wrap</p>
+          <div class="dot"></div>
+          <p style="width:300px; height:100px; background-color: purple;">no-wrap</p>
+          <div class="dot"></div>
+          <p style="width:300px; height:100px; background-color: lime;">no-wrap</p>
+          <div class="dot"></div>
+          <p style="width:300px; height:100px; background-color: orange;">no-wrap</p>
+          <div class="dot"></div>
+          <p style="width:300px; height:100px; background-color: pink;">no-wrap</p>
+        </div>
+
+        <div class="flexbox" style="flex-direction: row; justify-content: flex-start; flex-wrap: wrap;">
+          <p style="width:300px; height:100px; background-color: blue;">wrap</p>
+          <div class="dot"></div>
+          <p style="width:300px; height:100px; background-color: red;">wrap</p>
+          <div class="dot"></div>
+          <p style="width:300px; height:100px; background-color: turquoise;">wrap</p>
+          <div class="dot"></div>
+          <p style="width:300px; height:100px; background-color: yellow;">wrap</p>
+          <div class="dot"></div>
+          <p style="width:300px; height:100px; background-color: purple;">wrap</p>
+          <div class="dot"></div>
+          <p style="width:300px; height:100px; background-color: lime;">wrap</p>
+          <div class="dot"></div>
+          <p style="width:300px; height:100px; background-color: orange;">wrap</p>
+          <div class="dot"></div>
+          <p style="width:300px; height:100px; background-color: pink;">wrap</p>
+        </div>
+
+        <div class="flexbox" style="flex-direction: row; justify-content: flex-start; flex-wrap: wrap-reverse;">
+          <p style="width:300px; height:100px; background-color: blue;">wrap-reverse</p>
+          <div class="dot"></div>
+          <p style="width:300px; height:100px; background-color: red;">wrap-reverse</p>
+          <div class="dot"></div>
+          <p style="width:300px; height:100px; background-color: turquoise;">wrap-reverse</p>
+          <div class="dot"></div>
+          <p style="width:300px; height:100px; background-color: yellow;">wrap-reverse</p>
+          <div class="dot"></div>
+          <p style="width:300px; height:100px; background-color: purple;">wrap-reverse</p>
+          <div class="dot"></div>
+          <p style="width:300px; height:100px; background-color: lime;">wrap-reverse</p>
+          <div class="dot"></div>
+          <p style="width:300px; height:100px; background-color: orange;">wrap-reverse</p>
+          <div class="dot"></div>
+          <p style="width:300px; height:100px; background-color: pink;">wrap-reverse</p>
+        </div>
+      </div>
+
+      <div class="column-of-containers">
+        <h3><code>align-content</code></h3>
+
+        <code>align-content: center;</code>
+        <div class="flexbox" style=" height: 400px; flex-direction: row; align-content: center; flex-wrap: wrap;">
+          <p style="width:300px; height:100px; background-color: blue;">aligned items</p>
+          <div class="dot"></div>
+          <p style="width:300px; height:100px; background-color: red;">aligned items</p>
+          <div class="dot"></div>
+          <p style="width:300px; height:100px; background-color: turquoise;">aligned items</p>
+          <div class="dot"></div>
+          <p style="width:300px; height:100px; background-color: yellow;">aligned items</p>
+          <div class="dot"></div>
+          <p style="width:300px; height:100px; background-color: orange;">aligned items</p>
+          <div class="dot"></div>
+          <p style="width:300px; height:100px; background-color: pink;">aligned items</p>
+        </div>
+        <code>align-content: flex-end;</code>
+        <div class="flexbox" style=" height: 400px; flex-direction: row; align-content: flex-end; flex-wrap: wrap;">
+          <p style="width:300px; height:100px; background-color: blue;">aligned items</p>
+          <div class="dot"></div>
+          <p style="width:300px; height:100px; background-color: red;">aligned items</p>
+          <div class="dot"></div>
+          <p style="width:300px; height:100px; background-color: turquoise;">aligned items</p>
+          <div class="dot"></div>
+          <p style="width:300px; height:100px; background-color: yellow;">aligned items</p>
+          <div class="dot"></div>
+          <p style="width:300px; height:100px; background-color: orange;">aligned items</p>
+          <div class="dot"></div>
+          <p style="width:300px; height:100px; background-color: pink;">aligned items</p>
+        </div>
+
+      </div>
+
+      <div class="column-of-containers">
+        <h3><code>align-items</code></h3>
+        <p>align-items treats items relative to where they 'should' be, I think? They're not moved in one big block like align-content.</p>
+
+        <code>align-items: stretch;</code>
+        <div class="flexbox" style=" height: 400px; flex-direction: row; align-items: stretch;">
+          <p style="min-width:300px; min-height:100px; background-color: blue;">aligned items</p>
+          <div class="dot"></div>
+          <p style="min-width:300px; min-height:100px; background-color: red;">aligned items</p>
+        </div>
+
+        <code>align-items: baseline;</code>
+        <div class="flexbox" style=" height: 400px; flex-direction: row; align-items: baseline;">
+          <p style="min-width:300px; min-height:100px; background-color: blue;">aligned items</p>
+          <div class="dot"></div>
+          <p style="min-width:300px; min-height:100px; background-color: red;">aligned items</p>
+        </div>
+
+        <code>align-items: center;</code>
+        <div class="flexbox" style=" height: 400px; flex-direction: row; align-items: center;">
+          <p style="min-width:300px; min-height:100px; background-color: blue;">aligned items</p>
+          <div class="dot"></div>
+          <p style="min-width:300px; min-height:100px; background-color: red;">aligned items</p>
+        </div>
+
+      </div>
+
+      <div class="column-of-containers">
+        <h3>Example of align-content and align-items interacting</h3>
+
+        <p><code>align-content: flex-end;</code> only</p>
+        <div class="flexbox" style=" height: 400px; flex-direction: row; flex-wrap: wrap; align-content: flex-end;">
+          <p style="min-width:300px; min-height:100px; background-color: blue;">aligned items</p>
+          <div class="dot"></div>
+          <p style="min-width:300px; min-height:100px; background-color: red;">aligned items</p>
+          <div class="dot"></div>
+          <p style="min-width:300px; min-height:100px; background-color: yellow;">aligned items</p>
+          <div class="dot"></div>
+          <p style="min-width:300px; min-height:100px; background-color: lime;">aligned items</p>
+          <div class="dot"></div>
+          <p style="min-width:300px; min-height:100px; background-color: purple;">aligned items</p>
+          <div class="dot"></div>
+          <p style="min-width:300px; min-height:100px; background-color: cyan;">aligned items</p>
+        </div>
+        <p><code>align-content: flex-end; <span class="loud-code">align-items: center;</span></code> combined; see red dot positions</p>
+        <div class="flexbox" style=" height: 400px; flex-direction: row; flex-wrap: wrap; align-content: flex-end; align-items: center;">
+          <p style="min-width:300px; min-height:100px; background-color: blue;">aligned items</p>
+          <div class="dot"></div>
+          <p style="min-width:300px; min-height:100px; background-color: red;">aligned items</p>
+          <div class="dot"></div>
+          <p style="min-width:300px; min-height:100px; background-color: yellow;">aligned items</p>
+          <div class="dot"></div>
+          <p style="min-width:300px; min-height:100px; background-color: lime;">aligned items</p>
+          <div class="dot"></div>
+          <p style="min-width:300px; min-height:100px; background-color: purple;">aligned items</p>
+          <div class="dot"></div>
+          <p style="min-width:300px; min-height:100px; background-color: cyan;">aligned items</p>
+        </div>
+
+      </div>
+
+
 </html>
