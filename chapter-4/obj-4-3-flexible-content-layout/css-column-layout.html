@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>CSS columns</title>
+    <style>
+      .column-container {
+        column-count: 3;
+        column-gap: 2em;
+        column-rule: black dashed 2px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>CSS Columns</h1>
+    <h2>Here's an example with 3 columns and a mixture of text and images</h2>
+    <div class="column-container">
+      <p style="column-span: all; border: solid pink 3px;">yo</p>
+      <p>waddup this is CSS columns. Pretty retro huh? It's mimicking printed copy like a -OH SHIT I SPILLED OVER COLUMNS- newspaper or article.</p>
+      <p>guess what I'm in the next column. Mad huh? We keep spilling over again. Guess it's cos I haven't got a <code style="color: white; background-color: black">column-span: all;</code> CSS styling like the pink bands</p>
+      <p>This is reminding me of the float property in CSS; reminiscent of printed type principles <img style="width: 200px; float: right;" src='dachshund.jpg'/> being replicated on the web</p>
+      <p>I'm just typing and typing to see how the columns adapt to all the p elements in the container div with column-count: 3;</p>
+      <p>So I'm just typing some stuff to fill these columns, could use some Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo mollitia, eligendi eius ducimus recusandae quasi excepturi. Maxime neque molestias, architecto adipisci hic. Nobis debitis, error recusandae! Repellat amet, odit optio.</p>
+      <p>As I type more the text keeps getting shunted back into previous columns and the height of the columns is increased to accommodate the expanding text while keeping the three column rule going.</p>
+      <p>Lorem-to-the-ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      <p>A cool thing is that the paragraph elements keep a space between them throughout the yoga to fit content in the columns.</p>
+
+      <p style="column-span: all; border: solid pink 3px;">i'm spanning all columns cos i think outside the box</p>
+    </div>
+
+    <h2>This example uses the <code>column</code> CSS property, which replaces both <code>column-count</code> and <code>column-width</code></h2>
+    <div style="columns: 3 auto; column-rule: solid black 1px;">
+      <p style="column-span: all; border: black solid 1px;">I should span everything</p>
+      <p>I'm gonna be in one column</p>
+
+    </div>
+  </body>
+</html>
