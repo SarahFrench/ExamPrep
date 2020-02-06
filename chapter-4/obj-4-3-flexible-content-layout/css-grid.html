@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>CSS Grid</title>
+    <style>
+      .container {
+        height: 100vh;
+        display: grid;
+        grid-template-columns: 150px 150px auto 150px;
+        grid-template-rows: 75px auto;
+
+      }
+      .container > div:nth-child(1){
+        grid-column: 1;
+        grid-row-start: 1;
+        grid-row-end: 3;
+        background-color: blue;
+      }
+      .container > div:nth-child(2){
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row: 1;
+        background-color: lime;
+      }
+      .container > div:nth-child(3){
+        grid-column: 3;
+        grid-row: 2;
+        background-color: red;
+      }
+
+
+      .container-two {
+        height: 500px;
+        display: grid;
+        grid-template-columns: [col-start] 33% [col-1] 33% [col-2] 33% [col-end];
+        grid-template-rows: [row-start] 33% [row-1] 33% [row-2] 33% [row-end];
+      }
+
+      .box1 {
+        grid-column-start: col-start;
+        grid-column-end: col-end;
+        grid-row-start: row-start;
+        grid-row-end: row-2;
+        background-color: purple;
+      }
+
+      .box2 {
+        grid-column-start: col-start;
+        grid-column-end: col-1;
+        grid-row-start: row-start;
+        grid-row-end: row-end;
+        background-color: yellow;
+      }
+
+      .box3 {
+        grid-column-start: col-2;
+        grid-column-end: col-end;
+        grid-row-start: row-2;
+        grid-row-end: row-end;
+        background-color: lime;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div>I span an entire column</div>
+      <div>I span an entire row!</div>
+      <div>I just sit in the far corner</div>
+    </div>
+    <div class="container-two">
+      <div class="box1">We are positioned using grid line nicknames</div>
+      <div class="box2">We are positioned using grid line nicknames</div>
+      <div class="box3">We are positioned using grid line nicknames</div>
+    </div>
+  </body>
+</html>

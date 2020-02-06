@@ -95,3 +95,97 @@ If you had an `img` tag inside a long block of text in a `p` tag and you styled 
 ##### what a waste of time that was
 
 ## Implement a layout using grid alignment
+
+CSS3 has the 'CSS Grid' layout functionality that mimic the old way of laying out webpages in tables. It'a more flexible and maintainable.
+
+Again, there's a container where you need to specify that the display style is grid, not flex/block/static/whatever. Also, you need to specify the structure of the grid in that container; the positions and numbers of columns and rows. These are used to align child elements to:
+
+```css
+.container {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 150px 150px auto 150px;
+  grid-template-rows: 75px auto;
+}
+```
+
+NOTE: Book says `grid-columns` and `grid-rows` but those are outdated. Also the shorthand tips are out of date.
+
+You also need to apply CSS to the child elements to tell them where to position themselves within the parent element's grid. Without instructions they'll occupy the cells left to right, top to bottom in the order they're written in the HTML by default.
+
+```css
+.container > div:nth-child(1){
+  grid-column: 3;
+  grid-row: 2;
+}
+```
+
+The above will tell the element to occupy the cell in 3rd column and row 2. If another element is told to go there then it'll sit perfectly on top and hide the first element positioned there.
+
+To have an element *span* multiple columns or rows of the CSS Grid you *used* to use `grid-column` and `grid-row` to position the element's top left corner, and then use `grid-column-span` or `grid-row-span` to let the element span multiple columns/rows. This is similar to HTML properties colspan and rowspan.
+
+IN THE FUTURE (the present) these properties will be replaced and the way positioning is done in general was changed:
+
+Positioning is done by the dividing grid-lines between columns and rows, not the cols/rows themselves. So instead of spanning x number of columns, you specify the number (or name) of the grid-line the element starts at and where it ends.
+
+```css
+  .container{
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 33% 33% 33%;
+  }
+
+  .box1 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }
+
+  .box2 {
+    grid-column-start: 2;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 3;
+  }
+```
+```
+The container makes a 3x3 grid, where the left side of the first column is line 1, and line 4 is the opposite side of the layout, etc.
+1   2   3   4
+ [ ] [ ] [ ]
+2
+ [ ] [ ] [ ]
+3
+ [ ] [ ] [ ]
+4           .
+
+box1 would span these positions. Col 1 to 3 = first two columns, Row 1 to 2 = first row only:
+
+1   2   3   4
+ [XXXXX]  
+2|XXXXX|
+ [XXXXX]
+3
+
+4           .
+
+box2 would span these positions. Col 2 to 4 = last two columns, Row 1 to 3 = first two rows:
+
+1   2   3   4
+     [XXXXX]
+2    |XXXXX|
+     [XXXXX]
+3
+
+4           .
+```
+
+You can name the grid lines between cols/rows to make using them easier:
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: [col-start] 33% [col-1] 33% [col-2] 33% [col-end];
+  grid-template-rows: [row-start] 33% [row-1] 33% [row-2] 33% [row-end];
+}
+
+```
