@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>CSS Transitions</title>
+    <style>
+      div {
+        margin: 1em;
+      }
+      .div {
+        width: 150px;
+        min-height: 150px;
+        background-color: grey;
+        border: 1px black solid;
+      }
+      .div:hover {
+        background-color: white;
+      }
+      .div-transition1 {
+        background-color: grey;
+        width: 150px;
+        min-height: 150px;
+        border: 1px black solid;
+        transition: background-color 1s;
+      }
+      .div-transition2 {
+        background-color: grey;
+        width: 150px;
+        min-height: 150px;
+        border: 1px black solid;
+        transition: background-color 1s 1s;
+      }
+      .div-transition1:hover, .div-transition2:hover {
+        background-color: white;
+      }
+
+      .div-transition3 {
+        background-color: grey;
+        width: 150px;
+        min-height: 150px;
+        border: 1px black solid;
+        transition: background-color 1s;
+      }
+      .div-transition3:hover {
+        background-color: white;
+        transition: background-color 3s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="div">I have no CSS transitions; only :hover styling that abruptly changes the background color</div>
+    <div class="div-transition1"> I transition immediately </div>
+    <div class="div-transition2"> I transition after 1 second delay (both ways) </div>
+    <div class="div-transition3"> I transition at different speeds depending on whether the mouse is entering or leaving the hover space. This is because `transition` is set differently for the div's class and the hover pseudoselector</div>
+  </body>
+</html>

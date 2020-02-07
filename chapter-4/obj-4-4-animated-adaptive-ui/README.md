@@ -6,6 +6,41 @@
 - Adjust UI based on media queries
 - Hide or disable controls
 
+## Animate objects by applying CSS transitions
+
+Example: div that changes colour when mouse hovers over top
+
+```css
+.before {
+  width: 150px;
+  height: 150px;
+  background-color: grey;
+  border: 1px black solid;
+  transition: background-color 1s 1s;
+}
+
+.before:hover {
+  background-color: white;
+}
+```
+
+Without the transition CSS property the CSS here would cause the div to immediately change colour when there's a hover event. By adding the transition property this change is 'smoothed over'; the div is set to handle any changes in the background-color property gradually over the duration of one second, after a delay of one second.
+
+`transition: <property> <duration> <delay> <timing function>`
+- `property` = the CSS property whose change will by animated
+- `duration` = how long the animation takes place
+- `delay` = Default none
+- `timing-function` = how is the animation timed? Default = linear. Others e.g. ease, ease-in, ease-out etc...
+
+The `transition` CSS property is a shorthand for all the above things in one, separately you can use:
+- `transition-property`
+- `transition-duration`
+- `transition-delay`
+- `transition-timing-function`
+
+**NOTE: an advantage of using the transition shorthand is that you can have a comma separated list of multiple properties. If you use the separate `transition-` properties then you can only specify one**
+
+I think when using the shorthand the first duration will always be animation duration, and second will always be the delay.
 
 ## Hide or disable controls
 
