@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Media Query</title>
+    <style>
+      .border {
+        border: solid 1px black;
+        padding: 1em 2em;
+      }
+
+      .layout{
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 100px auto auto 100px;
+        min-height: 100vh;
+        height: fit-content;
+      }
+      .header-positioning{
+        grid-row-start: 1;
+        grid-row-end: 2;
+        grid-column-start: 1;
+        grid-column-end: 2;
+      }
+      .footer-positioning{
+        grid-row-start: 4;
+        grid-row-end: 5;
+        grid-column-start: 1;
+        grid-column-end: 2;
+      }
+      .article-positioning{
+        grid-row-start: 2;
+        grid-row-end: 3;
+        grid-column-start: 1;
+        grid-column-end: 2;
+      }
+      .aside-positioning{
+        grid-row-start: 3;
+        grid-row-end: 4;
+        grid-column-start: 1;
+        grid-column-end: 2;
+      }
+
+      @media screen and (min-width: 800px){
+        .layout {
+          display: grid;
+          grid-template-columns: 75% 25%;
+          grid-template-rows: 100px auto 100px;
+          min-height: 100vh;
+          height: fit-content;
+        }
+        .header-positioning {
+          grid-row-start: 1;
+          grid-row-end: 2;
+          grid-column-start: 1;
+          grid-column-end: 3;
+        }
+        .footer-positioning {
+          grid-row-start: 3;
+          grid-row-end: 4;
+          grid-column-start: 1;
+          grid-column-end: 3;
+        }
+        .article-positioning {
+          grid-row-start: 2;
+          grid-row-end: 3;
+          grid-column-start: 1;
+          grid-column-end: 2;
+          min-height: 500px;
+        }
+        .aside-positioning {
+          grid-row-start: 2;
+          grid-row-end: 3;
+          grid-column-start: 2;
+          grid-column-end: 3;
+        }
+      }
+
+
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <header class="border header-positioning">
+        <h2>Header</h2>
+      </header>
+      <article class="border article-positioning">
+        <h1>Article</h1>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident velit id ad eaque beatae cum accusantium explicabo asperiores, optio quia minima atque vero cumque, earum. Assumenda quibusdam maxime reiciendis corporis.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident velit id ad eaque beatae cum accusantium explicabo asperiores, optio quia minima atque vero cumque, earum. Assumenda quibusdam maxime reiciendis corporis.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident velit id ad eaque beatae cum accusantium explicabo asperiores, optio quia minima atque vero cumque, earum. Assumenda quibusdam maxime reiciendis corporis.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident velit id ad eaque beatae cum accusantium explicabo asperiores, optio quia minima atque vero cumque, earum. Assumenda quibusdam maxime reiciendis corporis.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident velit id ad eaque beatae cum accusantium explicabo asperiores, optio quia minima atque vero cumque, earum. Assumenda quibusdam maxime reiciendis corporis.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident velit id ad eaque beatae cum accusantium explicabo asperiores, optio quia minima atque vero cumque, earum. Assumenda quibusdam maxime reiciendis corporis.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident velit id ad eaque beatae cum accusantium explicabo asperiores, optio quia minima atque vero cumque, earum. Assumenda quibusdam maxime reiciendis corporis.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident velit id ad eaque beatae cum accusantium explicabo asperiores, optio quia minima atque vero cumque, earum. Assumenda quibusdam maxime reiciendis corporis.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident velit id ad eaque beatae cum accusantium explicabo asperiores, optio quia minima atque vero cumque, earum. Assumenda quibusdam maxime reiciendis corporis.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident velit id ad eaque beatae cum accusantium explicabo asperiores, optio quia minima atque vero cumque, earum. Assumenda quibusdam maxime reiciendis corporis.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident velit id ad eaque beatae cum accusantium explicabo asperiores, optio quia minima atque vero cumque, earum. Assumenda quibusdam maxime reiciendis corporis.
+
+      </article>
+      <aside class="border aside-positioning">
+        <h3>Aside</h3>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </aside>
+      <footer class="border footer-positioning">
+        <h4>Footer</h4>
+      </footer>
+    </div>
+  </body>
+</html>

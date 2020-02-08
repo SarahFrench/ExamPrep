@@ -68,6 +68,33 @@ There's `translate3d(<x>, <y>, <z>);`
 
 scale and translate on the z axis don't do anything if the element is just a 2d element.
 
+## Adjust UI based on media queries
+
+Here's an example CSS file:
+
+```css
+.layout{
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 100px auto auto 100px;
+  min-height: 100vh;
+  height: fit-content;
+}
+
+@media screen and (min-width: 800px){
+  .layout {
+    display: grid;
+    grid-template-columns: 75% 25%;
+    grid-template-rows: 100px auto 100px;
+    min-height: 100vh;
+    height: fit-content;
+  }
+}
+```
+
+The `layout` class will use CSS grid with 1 column and 4 rows by default (no media query affecting those CSS styles). The media query becomes active if the document is viewed on a screen that is >800px wide. The contained CSS definitions are used and the `layout` class is 'over-written' by the version that has 2 columns and 3 rows.
+Here I've used a mobile-first approach, because the default CSS is for mobile and the media queries detect desktop viewers. This allows added complexity via media queries vs trying to simplify.
+
 ## Hide or disable controls
 
 ### Hiding
