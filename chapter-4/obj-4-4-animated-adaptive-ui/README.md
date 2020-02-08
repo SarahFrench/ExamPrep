@@ -42,6 +42,32 @@ The `transition` CSS property is a shorthand for all the above things in one, se
 
 I think when using the shorthand the first duration will always be animation duration, and second will always be the delay.
 
+### Apply 3D and 2D transformations
+
+See Obj 1.3 for 2D transformations.
+
+3D transformations are similar but now allow it to occur through the z axis:
+
+- `translate`
+- `rotate`
+- `scale`
+- `matrix` (all previous 3 in one).
+
+```css
+.rotate-me {
+  transform: rotateX(45deg) rotateY(45deg) rotateZ(45deg);
+}
+```
+
+The rotate-me class above will rotate elements by 45deg through all 3 axes. rotateZ means rotating around Z; the element will spin around while facing the viewer at all times. Same for rotateX and Y.
+
+There's a shorthand `rotate3d(<X>, <Y>, <Z>, <deg>);` where X Y and Z are booleans of 0 or 1.
+
+There's `scale3d(<x>, <y>, <z>);`
+There's `translate3d(<x>, <y>, <z>);`
+
+scale and translate on the z axis don't do anything if the element is just a 2d element.
+
 ## Hide or disable controls
 
 ### Hiding

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Transformations 2D/3D</title>
+    <style>
+
+      .row {
+        display: flex;
+        justify-content: space-around;
+      }
+      .shape {
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+        color: white;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        border-top-left-radius: 50%;
+        border-top-right-radius: 50%;
+        margin: 2em;
+      }
+
+      .rotateX {
+        transform: rotateX(45deg);
+      }
+
+      .rotateY {
+        transform: rotateY(45deg);
+      }
+
+      .rotateZ {
+        transform: rotateZ(45deg);
+      }
+
+      .rotateXYZ {
+        transform: rotateX(45deg) rotateY(45deg) rotateZ(45deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shape">
+      Hi, I'm a shape
+    </div>
+    <div class="shape rotateX">
+      I'm rotating around X
+    </div>
+    <div class="shape rotateY">
+      I'm rotating around Y
+    </div>
+    <div class="shape rotateZ">
+      I'm rotating around Z
+    </div>
+    <div class="shape rotateXYZ">
+      I'm rotating around XYZ
+    </div>
+    <div class="row">
+      <div id="rotator1" class="shape" style="background-color: red;">
+        I'm rotating around X
+      </div>
+      <div id="rotator2" class="shape" style="background-color: red;">
+        I'm rotating around Y
+      </div>
+      <div id="rotator3" class="shape" style="background-color: red;">
+        I'm rotating around Z
+      </div>
+      <div id="rotator4" class="shape" style="background-color: red;">
+        I'm rotating around XY
+      </div>
+      <div id="rotator5" class="shape" style="background-color: red;">
+        I'm rotating around YZ
+      </div>
+      <div id="rotator6" class="shape" style="background-color: red;">
+        I'm rotating around XZ
+      </div>
+      <div id="rotator7" class="shape" style="background-color: red;">
+        I'm rotating around XYZ
+      </div>
+    </div>
+
+    <script>
+      let rotator1 = document.getElementById('rotator1');
+      let rotator2 = document.getElementById('rotator2');
+      let rotator3 = document.getElementById('rotator3');
+      let rotator4 = document.getElementById('rotator4');
+      let rotator5 = document.getElementById('rotator5');
+      let rotator6 = document.getElementById('rotator6');
+      let rotator7 = document.getElementById('rotator7');
+
+      let deg = 0;
+      document.addEventListener('keydown', function(){
+        if(event.code === "Space"){
+          deg = deg === 360 ? 10 : deg+10;
+          console.log(`${deg}deg`);
+          rotator1.style.transform = `rotate3d(1, 0, 0, ${deg}deg`;
+          rotator2.style.transform = `rotate3d(0, 1, 0, ${deg}deg`;
+          rotator3.style.transform = `rotate3d(0, 0, 1, ${deg}deg`;
+          rotator4.style.transform = `rotate3d(1, 1, 0, ${deg}deg`;
+          rotator5.style.transform = `rotate3d(0, 1, 1, ${deg}deg`;
+          rotator6.style.transform = `rotate3d(1, 0, 1, ${deg}deg`;
+          rotator7.style.transform = `rotate3d(1, 1, 1, ${deg}deg`;
+
+        }
+      })
+    </script>
+  </body>
+</html>
