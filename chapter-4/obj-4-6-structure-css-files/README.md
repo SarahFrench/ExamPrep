@@ -42,4 +42,29 @@ apple:not(.small) selects all apples that don't have the class `small`
 
 Some properties inherit and some don't. E.g. color will inherit, border or width will not.
 
-Inheritance can be stopped by the use of more specific rules, e.g. if color is set for a ul all li elements will inherit it, unless they have a class (etc.) that over-rides the inherited CSS styles.
+Inheritance can be stopped by the use of more specific rules, e.g. if color is set for a ul all li elements will inherit it, unless some li elements have a class, id, inline style on them that over-rides the inherited CSS styles.
+
+There could be a situation where multiple rules may be cascading down and have the potential to affect a given element. How is one rule selected as the winner? This is done by calculating its specificity score:
+
+[Specificity](https://css-tricks.com/specifics-on-css-specificity/)
+```
+style attribute
+|     ID
+|     |    (pseudo)class/attr
+\/    \/   \/   \/elements
+[ ], [ ], [ ], [ ]
+```
+e.g. `ul#nav li.active a`
+3 elements
+1 ID
+1 class
+
+Score: 0,1,1,3
+
+vs `ul#nav li a` would be Score: 0,1,0,3 and would be over-ruled by the rule above.
+
+# Override inheritance using !important
+
+!important at the end of a CSS rule is like adding a fifth column on the far left of the above scores.
+
+!important flags mean CSS rules always win. Only way it loses is if another competitor rule is declared later in the document and the CSS rule would have greater specificity when compared without !important flags.
