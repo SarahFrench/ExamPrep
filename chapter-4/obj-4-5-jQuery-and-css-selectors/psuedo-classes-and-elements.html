@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Pseudo classes and elements</title>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+    <style media="screen">
+      .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-content: flex-start;
+        align-items: center;
+      }
+
+      .text {
+          text-align: justify;
+          color: black;
+          font-family: sans-serif;
+      }
+
+      a:link {
+        color: green;
+      }
+
+      a:hover {
+        color: red;
+        background-color: black;
+      }
+
+      a:visited {
+        color: purple;
+        background-color: yellow;
+      }
+
+      input[type=checkbox]:checked {
+        display: none;
+      }
+
+      input[type=checkbox] {
+        display: block;
+      }
+
+      input:required {
+        background-color: red;
+      }
+
+      div:empty {
+        width: 50%;
+        height: 50px;
+        background-color: lightblue;
+        margin: 2em;
+      }
+
+      p:hover {
+        transform: scale(0.5);
+      }
+
+      .only-got-one-kid > ul:first-child {
+        background-color: lime;
+      }
+
+      ul li:first-child {
+        background-color: pink;
+      }
+
+      ul li:last-child {
+        background-color: lightblue;
+      }
+
+      ul li:nth-child(2n+4) {
+        background-color: orange;
+      }
+
+      .container p:first-letter {
+        font-family: cursive;
+        font-size: 3em;
+        text-shadow: 2px 2px red;
+      }
+
+      h1:before {
+        content: "This is the :before pseudo element";
+        font-size: 0.5em;
+      }
+      h1:after {
+        content: "This is the :after pseudo element";
+        font-size: 0.5em;
+      }
+
+      p:first-line{
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text">Pseudo classes and pseudo elements</h1>
+      <div class="text">
+        <p>Here is a <a href="#">hyperlink</a> that has been visited</p>
+        <p>Here is a <a href="###">hyperlink</a> that has not</p>
+      </div>
+      <div style="width: 300px">
+        <p>NOTE: the <code>:empty</code> pseudoclass only works if there are zero chars between start and end tags. Whitespace stops an element from being empty</p>
+        <p>This div is cramped to force text onto multiple lines, so you can see the absence of underlining on text that isn't selected by the :first-line pseudoselector</p>
+      </div>
+      <div class="empty-parent"></div>
+      <div class="checkboxes">
+        <label for="checkbox1">Checkbox 1 is required</label><input id="checkbox1" type="checkbox" name="checkbox1" value="a" required>
+        <label for="checkbox2">Checkbox 2 is not</label><input id="checkbox2" type="checkbox" name="checkbox2" value="b">
+        <label for="input1">Input 1</label><input id="input1" type="text" name="input1" value="readonly isn't a pseudo selector but can be used with CSS selectors and jQuery" readonly>
+        <label for="input2">Input 2</label><input id="input2" type="text" name="input2" placeholder="Input here pls" required>
+      </div>
+      <div class="">
+        <p>jQuery statements to select a subset of elements:</p>
+        <p><code>document.querySelector() and document.querySelectorAll() take similar arguments </code></p>
+        <p>Check out this sweet styling of the <code>:first-letter</code> pseudo-element</p>
+        <ul>
+          <li><code>$('[type=checkbox]:not(:checked)')</code></li>
+          <li><code>$('[type=checkbox]:checked')</code></li>
+          <li><code>$('[type=checkbox]:first')</code></li>
+          <li><code>$('[type=checkbox]:last')</code></li>
+          <li><code>$('div:empty')</code></li>
+          <li><code>$(':empty')</code></li>
+          <li><code>$('[readonly]')</code></li>
+          <li><code>$('[required]')</code></li>
+          <li><code>$(':required')</code></li>
+        </ul>
+        <div class="only-got-one-kid">
+          <ul>
+            <li>This ul is the first child in its containing div</li>
+            <li>Item</li>
+            <li>Item</li>
+            <li>Item</li>
+            <li>Item</li>
+            <li>Item</li>
+            <li>Item</li>
+            <li>Item</li>
+            <li>Item</li>
+            <li>Item</li>
+            <li>Item</li>
+            <li>Item</li>
+            <li>Item</li>
+            <li>Item</li>
+            <li>This ul is the last child in its containing div</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
