@@ -10,7 +10,7 @@ console.log(`
 let array2 = [6,7,8,9];
 let array3 = array1.concat(array2);
 console.log(`
-  Concatenating array 1: [${array1}] and array2: []${array2}]
+  Concatenating array 1: [${array1}] and array2: [${array2}]
   makes: [${array3}]`);
 
 console.log(`  This doesn't affect the original array, which still contains only 5 elements: ${array1}`);
@@ -29,7 +29,7 @@ console.log(`
 //join makes a string with all array elements joined by a delimiter you choose. Default: comma
 console.log(`
   Joining arrays using the join method creates strings from all the elements. The default delimiter is a comma, but you can change it by passing in a string argument to join:
-  [1,2,3,4].join => ${[1,2,3,4].join()}
+  [1,2,3,4].join() => ${[1,2,3,4].join()}
   [1,2,3,4].join('+') => ${[1,2,3,4].join('+')}
   [1,2,3,4].join(' and-a ') => ${[1,2,3,4].join(' and-a ')}
   The original array is unaffected
@@ -39,7 +39,7 @@ console.log(`
 let x = [1,2,3,4];
 console.log(`
   Arrays can be reversed
-  [1,2,3,4].reverse => [${x.reverse()}]
+  [1,2,3,4].reverse() => [${x.reverse()}]
   The original array IS AFFECTED: [${x}]
   `);
 
@@ -47,7 +47,7 @@ console.log(`
 let y = [3,2,1,4,7,5,6];
 console.log(`
   Arrays can be sorted
-  [${y}].sort => [${y.sort()}]
+  [${y}].sort() => [${y.sort()}]
   The original array IS AFFECTED: [${y}]
   `);
 
@@ -59,6 +59,7 @@ console.log(`
   [${z }].slice(1,1) => [${z.slice(1,1)}] //from index 1 by not including index 1
   [${z }].slice(1,2) => [${z.slice(1,2)}] //from index 1 to 2, not including 2
   [${z }].slice(1) => [${z.slice(1)}] //from index 1. No second arg; until end of array
+  The original array is unaffected: [${z}]
   `);
 
 //splice
