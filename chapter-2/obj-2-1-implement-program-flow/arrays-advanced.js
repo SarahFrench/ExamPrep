@@ -15,6 +15,9 @@ console.log(`
 
   [1,2,3,4,5].every(isEven, this)) => ${[1,2,3,4,5].every(isEven, this)}
   [2,4,6,8,10].every(isEven, this) => ${[2,4,6,8,10].every(isEven, this)}
+
+  NOTE: the this param is optional
+
   `);
 
 //some method
