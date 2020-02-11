@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>CSS tests - Cascading and Specificity</title>
+    <style>
+      body h1 {
+        color: red;
+      }
+      h1 {
+        color: blue;
+      }
+      ul {
+        color: purple; //inherited
+        height: 400px; //not inherited
+      }
+    </style>
+  </head>
+  <body>
+    <h1>I have multiple CSS rules trying to style me</h1>
+    <ul>
+      <li>list item 1</li>
+      <li>list item 2</li>
+      <li>list item 3</li>
+      <li>list item 4</li>
+    </ul>
+  </body>
+</html>

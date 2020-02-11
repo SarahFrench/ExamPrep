@@ -29,18 +29,53 @@ Try this game: https://flukeout.github.io/
 `ul li:first` would select the first li in ul elements
 `ul li:last` would select the last li in ul elements
 
-p:first-of-type would select first p element on the page
-p:last-of-type would select last p element on the page
+`p:first-of-type` would select first p element
+`p:last-of-type` would select last p element
 
-plate > apple:only-of-type selects the apples that are the only apples in a plate
+`plate > apple:only-of-type` selects the apples that are the only apples in a plate
 
-div:empty selects div elements with no children
+`div:empty` selects div elements with no children
 
-apple:not(.small) selects all apples that don't have the class `small`
+`apple:not(.small)` selects all apples that don't have the class `small`
+
+## The 'Cascading' in cascading style sheets
+
+If two rules conflict then the last one declared in the CSS file is the one used:
+
+```css
+h1 {
+  color: red;
+}
+h1 {
+  color: blue;
+}
+```
+
+Outcome: h1 elements will be blue
+
+BUT... that's only true if the rules have the same specificity. A rule that's more specific will not be overwritten by a rule that comes after it in a CSS file
+
+```css
+body h1 {
+  color: red;
+}
+h1 {
+  color: blue;
+}
+```
+
+Outcome: h1 elements (in the body, though where else would they be?) will be red
 
 ## Implementing inheritance
 
 Some properties inherit and some don't. E.g. color will inherit, border or width will not.
+
+```css
+ul {
+  color: purple; //inherited by li
+  height: 400px; //not inherited by li
+}
+```
 
 Inheritance can be stopped by the use of more specific rules, e.g. if color is set for a ul all li elements will inherit it, unless some li elements have a class, id, inline style on them that over-rides the inherited CSS styles.
 
