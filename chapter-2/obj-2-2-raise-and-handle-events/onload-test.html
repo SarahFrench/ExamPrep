@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Test assigning event handlers in HTML attrs</title>
+    <script>
+      function doStuff(x){
+        alert("onload event triggered");
+        console.log(x);
+      }
+    </script>
+  </head>
+  <body onload="doStuff(this)" >
+
+  </body>
+</html>
