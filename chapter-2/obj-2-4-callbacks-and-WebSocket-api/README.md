@@ -1,6 +1,6 @@
-## Chapter 2 - Part 4: Implementing callbacks
+# Chapter 2 - Part 4: Implementing callbacks
 
-### Objectives:
+## Objectives:
 - implement bidirectional communication with the WebSocket API
 - make webpages dynamic with jQuery and AJAX
 - wire up an event with jQuery
@@ -13,7 +13,7 @@ Basically you pass a function into another function to be used during or after a
 
 Event listeners are an example of using callbacks; you add an event listener by saying what event should be listened for and what function should be invoked when that happens.
 
-### WebSocket API
+## WebSocket API
 
 Run the `server.js` file in the project root and then use `chapter-2/obj-2-4-callbacks-and-WebSocket-api/websocket-example-from-book.html` to test out a WebSocket example
 
@@ -36,7 +36,7 @@ Data transmitted can be text-based or binary (binary would allow stuff like vide
 
 You make a connection to a URL and it's preceded by ws:// or wss:// due to using a different protocol from https(!). Using wss is analogous to using https; it's encrypted by TLS and is secure
 
-#### WebSocket objects
+### WebSocket objects
 
 ```js
   let url = 'ws://localhost:8081/';
@@ -63,7 +63,7 @@ You can initiate events from your end of the socket using methods like:
 - Send data: `myWebSocket.send("string data");`
 - Close the connection: `myWebSocket.close();``
 
-#### jQuery and AJAX
+## jQuery and AJAX
 
 Plain javascript vs. additional libraries like jQuery.
 jQuery is specific to using the DOM.
@@ -103,7 +103,22 @@ Example:
 
 jQuery is cross-browser friendly.
 
-#### Callbacks with anonymous functions
+## Wire up an event with jQuery
+
+```JavaScript
+  $('#button').click(function(){
+    var element = $('<p></p>').text("You clicked the button!").addClass('hoverOverMe');
+    $(element).dblclick(function(){
+      console.log("dblclick...");
+    });
+    $(element).appendTo($('body'));
+  });
+```
+
+This example shows adding click and dblclick event listeners to elements using jQuery. You can add them to elements selected from the DOM or new ones you've made and yet to add to the DOM.
+
+
+## Callbacks with anonymous functions
 
 Static, named function:
 
@@ -132,7 +147,7 @@ Callbacks are functions provided to other functions to be invoked later. Callbac
 In jQuery `this` refers to the current object or collection that's been selected
 
 
-```
+```javascript
 <script>
   var i = 0;
   $('button#clickMe').click(function(){

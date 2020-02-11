@@ -143,7 +143,10 @@ The event data includes:
 - dblclick - each constituent click fires an event too
 - mousedown
 - mouseup
-- mouseenter & mouseover (see: http://jsfiddle.net/ZCWvJ/7/ for difference)
+- mouseenter & mouseover
+  - see: http://jsfiddle.net/ZCWvJ/7/ for difference
+  - see also: https://developer.mozilla.org/en-US/docs/Web/API/Element/mouseenter_event#Usage_notes
+  - mouseenter doesnt bubble
 - mouseleave
 - mousemove
 
