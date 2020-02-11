@@ -12,7 +12,13 @@
     <button id="button">Click Me</button>
     <script>
       $('#button').click(function(){
-        var element = $('<p></p>').text("You clicked the button!");
+        var element = $('<p></p>').text("You clicked the button!").addClass('hoverOverMe');
+        $(element).dblclick(function(){
+          console.log("dblclick...");
+        });
+        $(element).dblclick(function(){
+          console.log("multiple event listeners can be added this way");
+        });
         $(element).appendTo($('body'));
       });
     </script>

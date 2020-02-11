@@ -18,7 +18,10 @@
     <script>
       var i = 0;
       $('#clickMe').click(function(){
-        $(this).attr('color', 'red');
+        $(this).attr('disabled', 'disabled');
+        $(this).addClass('myClass');
+        $(this).addClass('removedClass');
+        $(this).removeClass('removedClass');
         $('div').each(function(){
           console.log("Currently editing ", this);
           if(i%2){
