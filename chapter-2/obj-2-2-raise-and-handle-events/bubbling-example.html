@@ -28,7 +28,7 @@
   }
 </style>
 <script>
-  let cascadeOn = false;
+  let captureOn = false;
 
   window.onload = function(){
     document.getElementById("outer").addEventListener("click", outerDivClick , false);
@@ -39,20 +39,20 @@
 
   function toggleEventListeners(){
     let status = document.getElementById('status');
-    if (cascadeOn){
+    if (captureOn){
       console.log("Swapping to Bubble propagation");
       status.innerText = "Bubble";
     } else {
-      console.log("Swapping to Cascade propagation");
-      status.innerText = "Cascade";
+      console.log("Swapping to capture propagation");
+      status.innerText = "capture";
     }
-    document.getElementById("outer").removeEventListener("click", outerDivClick, cascadeOn);
-    document.getElementById("middle").removeEventListener("click", middleDivClick, cascadeOn);
-    document.getElementById("inner").removeEventListener("click", innerDivClick,cascadeOn);
-    document.getElementById("outer").addEventListener("click", outerDivClick , !cascadeOn);
-    document.getElementById("middle").addEventListener("click", middleDivClick , !cascadeOn);
-    document.getElementById("inner").addEventListener("click", innerDivClick, !cascadeOn);
-    cascadeOn = !cascadeOn;
+    document.getElementById("outer").removeEventListener("click", outerDivClick, captureOn);
+    document.getElementById("middle").removeEventListener("click", middleDivClick, captureOn);
+    document.getElementById("inner").removeEventListener("click", innerDivClick,captureOn);
+    document.getElementById("outer").addEventListener("click", outerDivClick , !captureOn);
+    document.getElementById("middle").addEventListener("click", middleDivClick , !captureOn);
+    document.getElementById("inner").addEventListener("click", innerDivClick, !captureOn);
+    captureOn = !captureOn;
   }
 
   function outerDivClick(){
@@ -76,11 +76,11 @@
   }
 
 </script>
-<h1>Bubble vs Cascade event propagation</h1>
+<h1>Bubble vs Capture event propagation</h1>
 <p>Currently in use: <span id="status">Bubble</span></p>
 <div>
   <input type="checkbox" id="toggle" onchange="toggleEventListeners();"/>
-  <label for="toggle">Use cascade propagation instead of bubble</label>
+  <label for="toggle">Use capture propagation instead of bubble</label>
 </div>
 
 <div id="outer">

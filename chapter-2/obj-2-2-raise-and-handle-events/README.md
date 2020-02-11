@@ -98,11 +98,15 @@ el1.addEventListener('dblclick', function(){
 #### Event propagation
 
 Bubble goes up from child to parent
-Cascade goes down from parent to child
+Capture goes down from parent to child
 
-The third argument in add/removeEventListener methods is a boolean to control how it behaves. True = use cascade, false = bubble. Bubble is used by default.
+The third argument in add/removeEventListener methods is a boolean to control how it behaves. True = use capture, false = bubble. Bubble is used by default.
 
 in an event handler you can include `event.stopPropagation();` to block any propagation 'passing through' that element's event handler. For example in my demo (chapter-2/obj-2-2/bubbling-example.html) if you add that line to the middle div event handler it'll stop events bubbling out from the inner div or events cascading down from the outer div. In those cases the propagation will reach the middle div, that event handler will be executed, and then no further events will be fired.
+
+```event.preventDefault();```
+```event.stopPropagation();```
+
 
 ## Event Types
 
