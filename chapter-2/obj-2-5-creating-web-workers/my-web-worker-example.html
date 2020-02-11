@@ -34,9 +34,9 @@
       if(event.data && event.data.number && !isNaN(event.data.number)){
         let answer = factorial(event.data.number);
         if(answer){
-          self.postMessage(`${event.data.number}! is too large for JavaScript to calculate accurately`);
-        } else {
           self.postMessage(`${event.data.number}! = ${answer}`);
+        } else {
+          self.postMessage(`${event.data.number}! is too large for JavaScript to calculate accurately`);
         }
       } else {
         self.counter += 1;
