@@ -27,8 +27,11 @@
         url: 'https://dog.ceo/api/breeds/image/random',
         success: function(data){
           console.log("Success");
+          console.log(this); //here this refers to the AJAX object
+
           $(data).each(function(x,y){
             console.log(x,y);
+            console.log(this); //here this refers to the data object
           })
         },
         error: function(){
