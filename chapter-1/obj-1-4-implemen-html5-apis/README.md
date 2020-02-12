@@ -18,7 +18,7 @@ Stores key:value pairs, values are only strings; use `JSON.stringify`.
 - `getItem(<key>)`
 - `removeItem(<key>)`
 
-## Local Storage
+## Session Storage
 
 Same functions as the above but the storage only lasts for a session. Survives refreshes/resets of a page but a new session is made when you open a new tab. If you close a tab and then revisit the page then it's also a new session.
 
