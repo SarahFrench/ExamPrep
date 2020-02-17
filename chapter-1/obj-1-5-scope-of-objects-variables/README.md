@@ -1,3 +1,36 @@
+# Lexical scoping
+
+If a variable is referenced in a nested scope but it's not declared in that scope, the program will look up through the 'parent' scopes up to the global scope. If that variable isn't found in the global scope, then an exception will be thrown.
+
+```
+program A;
+var I:integer;
+    K:char;
+
+    procedure B;
+    var K:real;
+        L:integer;
+
+        procedure C;
+        var M:real;
+        begin
+         (*scope A+B+C*)
+        end;
+
+     (*scope A+B*)
+    end;
+
+ (*scope A*)
+end.
+```
+From: https://en.wikipedia.org/wiki/Scope_(computer_science)#Lexical_scoping
+
+# Hoisting
+
+In JS all declarations of variables are hoisted to the top of the local scope. The initialisation is not, though. Initialisation only occurs at the 'place' in the code where it's written, but variables are all declared at the start.
+
+`let`/`const` are hoisted differently to `var`; Variables declared with `var` are automatically initialised as equal to `undefined`, so if you try to access the value of a hoisted variable before it's explicitly assigned a variable there will not be an exception thrown. On the other hand, `let` and `const` declare variables but do not initialise them, so if you try to evaluate the values of those variables an exception WILL be thrown.
+
 # Establishing object and variable scope
 
 Variables are declared with var/let/const
