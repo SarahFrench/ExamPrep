@@ -2,20 +2,55 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Testing XHR with XML files</title>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+  <style>
+    .title {
+      font-weight: bolder;
+    }
+    .year {
+      color: darkgray;
+    }
+  </style>
   </head>
   <body>
       <h1>Requesting myXML.xml from the project folder</h1>
       <p>Info from the XMLHttpRequest is below:</p>
       <div id="xmlData">
-
       </div>
+      <section id="filmList">
+      </section>
       <script type="text/javascript">
+        var info = "";
+        function addFilm(filmXML){
+          var filmList = document.getElementById('filmList');
+
+          //make div
+          let film = document.createElement('div');
+          film.id = "film-" + $(filmXML).find('id')[0].textContent;
+
+          var fields = ['title', 'year', 'genre', 'description'];
+          fields.forEach(function(field){
+            $(filmXML).find(field).each(function(){
+              var el = document.createElement('p');
+              el.innerText = this.textContent;
+              el.classList.add(field);
+              film.appendChild(el);
+            });
+          });
+
+          filmList.appendChild(film);
+
+        }
         var req = new XMLHttpRequest;
         req.open("GET", "/myXML.xml", true);
         req.onload = function(){
           document.getElementById('xmlData').innerText = req.response;
-          console.log(req);
+          addFilm(req.responseXML);
+          console.log(req.responseXML);
         }
         req.onerror = function(){
           console.log('ERROR');

@@ -1,4 +1,7 @@
-<document>
-  <title>My example XML document</title>
-  <content>I'm bored</content>
-</document>
+<film>
+  <id>1</id>
+  <title>Alien</title>
+  <genre>Science Fiction</genre>
+  <year>1979</year>
+  <description>Alien is a 1979 science-fiction horror film directed by Ridley Scott and written by Dan O'Bannon. Based on a story by O'Bannon and Ronald Shusett, it follows the crew of the commercial space tug Nostromo, who encounter the eponymous Alien, a deadly and aggressive extraterrestrial set loose on the ship.</description>
+</film>
