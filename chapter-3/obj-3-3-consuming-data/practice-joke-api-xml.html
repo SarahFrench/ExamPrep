@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Joke</title>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous">
+    </script>
+  </head>
+  <body>
+    <h1>Joke Generator</h1>
+    <div>Click here to get a joke:</div>
+    <button id="getJokeButton">Get a joke</button>
+    <div id="jokeContainer">
+      <p id="setup" class="twopart"></p>
+      <p id="delivery" class="twopart"></p>
+      <p id="joke" class="single"></p>
+    </div>
+    <script>
+      function showJoke(setup=undefined, delivery=undefined, joke=undefined){
+        var setupElement = document.getElementById('setup');
+        var deliveryElement = document.getElementById('delivery');
+        var jokeElement = document.getElementById('joke');
+
+        if(joke){
+          $('.twopart').each(function(){this.innerText = ""})
+          jokeElement.innerText = joke;
+        } else if (setup && delivery){
+          $('.single').each(function(){this.innerText = ""})
+          setupElement.innerText = setup;
+          deliveryElement.innerText = delivery;
+        }
+      }
+
+      function getJoke(){
+        let request = new XMLHttpRequest;
+        request.open("GET", "https://sv443.net/jokeapi/category/Any?format=xml");
+        request.send();
+        request.onload = function(response){
+          var jokeType = $(response.srcElement.responseXML).find('type')[0].innerHTML;
+          if( jokeType === "twopart"){
+            var setup = $(response.srcElement.responseXML).find('setup')[0].innerHTML
+            var delivery = $(response.srcElement.responseXML).find('delivery')[0].innerHTML
+            showJoke(setup, delivery, 0);
+          } else if (jokeType === "single"){
+            var joke = $(response.srcElement.responseXML).find('joke')[1].innerHTML
+            showJoke(0, 0, joke);
+          } else {
+            alert('got an unexpected type of joke!');
+          }
+
+        }
+      }
+
+      document.getElementById('getJokeButton').addEventListener('click', getJoke);
+    </script>
+  </body>
+</html>
