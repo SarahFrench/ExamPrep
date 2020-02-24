@@ -15,16 +15,21 @@
     <form id="myForm" action="/">
         <div><label for="firstName">First Name: </label><input id="firstName" name="firstName" type="text"/></div>
         <div><label for="lastName">Last Name: </label><input id="lastName" name="lastName" type="text"/></div>
+        <div><label for="checkBoxChecked">Check me: </label><input id="checkBoxChecked" name="checkBoxChecked" type="checkbox" value="true" /></div>
+        <div><label for="checkBoxUnchecked">DON'T check me: </label><input id="checkBoxUnchecked" name="checkBoxUnchecked" type="checkbox" /></div>
         <input type="submit">
     </form>
 
     <script>
+    var dataSerialize;
+    var dataSerializeArray;
       $('#myForm').submit(function(){
         event.preventDefault();
-        var formData = $(this).serialize();
-        alert(formData);
-        console.log(formData);
-        console.log($(this));
+        dataSerialize = $(this).serialize();
+        dataSerializeArray = $(this).serializeArray();
+        alert("Look in the console for the output from jQuery's serialize and serializeArray methods.\nPlay around with global variables dataSerialize and dataSerializeArray");
+        console.log("Output from serialize:", dataSerialize);
+        console.log("Output from serializeArray:", dataSerializeArray);
       })
     </script>
   </body>
