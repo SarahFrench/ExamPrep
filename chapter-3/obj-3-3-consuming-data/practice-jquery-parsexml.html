@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Joke</title>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous">
+    </script>
+  </head>
+  <body>
+    <h1>Trying out XML parsing in command line</h1>
+    <div>Click here to trigger a XHR request to a Joke API:</div>
+    <button id="getJokeButton">Get a joke</button>
+    <p>In the console you can play around with these variables:</p>
+    <ul>
+      <li><code>jokeXMLObject</code> : request.responseXML return value</li>
+      <li><code>jokeString</code> : request.responseText return value</li>
+      <li><code>request</code> : the XHR Object</li>
+    </ul>
+    <p>Try parsing the string with <code>$.parseXML(&ltstring&gt)</code></p>
+    <p>Try parsing navigating the XML document object with <code>$(jokeXML).find('&lttag name in xml&gt')</code></p>
+    <script>
+      var jokeString;
+      var jokeXMLObject;
+      var request;
+      function getJoke(){
+        request = new XMLHttpRequest;
+        request.open("GET", "https://sv443.net/jokeapi/category/Any?format=xml");
+        request.send();
+        request.onload = function(response){
+            jokeString = request.responseText;
+            jokeXMLObject = request.responseXML;
+        }
+      }
+
+      document.getElementById('getJokeButton').addEventListener('click', getJoke);
+    </script>
+  </body>
+</html>
