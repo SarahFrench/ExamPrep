@@ -104,6 +104,30 @@ vs `ul#nav li a` would be Score: 0,1,0,3 and would be over-ruled by the rule abo
 
 !important flags mean CSS rules always win. Only way it loses is if another competitor rule is declared later in the document and the CSS rule would have greater specificity when compared without !important flags.
 
-# Multiple sources of styles
+# Multiple sources of styles: browsers, users, and authors
 
-![Image](cascading-order-of-precedence.png)
+CSS rules can come from:
+* **the user-agent/browser**; the default styling of a page that contains no styles of its own
+* **the user**; users may apply custom CSS to pages in their browser, e.g. to enhance accessibility
+* **the auther**; the webpage itself will likely have its own CSS rules, including a combination of:
+  - inline styles : style attribute in element opening tags
+  - embedded styles : <style> tags
+  - external styles (`<link rel="stylesheet"type="text/css" href="theme.css">`)
+
+There's a kind of inverted pyramid when it comes to precedence of styles from these different sources. It can be divided into styles with and without `!important`:
+
+Precedence, without `!important`:
+1) Author CSS
+2) User CSS
+3) User-agent/browser CSS
+
+This makes sense; browser styles are the bare minimum. If an author has set styling then it's likely important to the UX and needs to be upheld.
+
+Precedence, _with_ `!important`:
+1) User-agent/browser CSS
+2) User CSS
+3) Author CSS
+
+This also makes sense; if a browser has rules set as !important then they must be fundamental to the browser rendering things sensibly. Also, if a user has set important CSS then that should be respected; it could be needed for accessibility purposes.
+
+![Image describing cascading order of precedence from the CSS3 standard](cascading-order-of-precedence.png)
