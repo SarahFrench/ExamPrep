@@ -156,6 +156,8 @@ p:first-letter {
 
 These two blocks of CSS result in different behaviours due to the ordering of rules. The `:visited` pseudo-class rule overrules styles assigned using the `:hover` pseudo-class, because the `:visited` rule comes later in the styles and has the same specificity.
 
+[See it in action in this file](https://github.com/SarahFrench/ExamPrep/blob/master/chapter-4/obj-4-6-structure-css-files/psuedo-classes-hyperlinks.html)
+
 Case 1: when hovering over visited links the text is purple on a black background
 ```css
 a:link {
