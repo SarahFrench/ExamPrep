@@ -130,4 +130,6 @@ Precedence, _with_ `!important`:
 
 This also makes sense; if a browser has rules set as !important then they must be fundamental to the browser rendering things sensibly. Also, if a user has set important CSS then that should be respected; it could be needed for accessibility purposes.
 
+## More detail on precedence of style sources
+
 ![Image describing cascading order of precedence from the CSS3 standard](cascading-order-of-precedence.png)
