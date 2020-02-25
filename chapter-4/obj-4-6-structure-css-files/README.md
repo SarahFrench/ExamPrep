@@ -15,7 +15,7 @@ Note: Cascading in Cascading Style Sheets means that the last definition for a c
 
 Try this game: https://flukeout.github.io/
 
-* = all elements. e.g. `#footer > *` would select all elements inside the id=footer
+\* = all elements. e.g. `#footer > *` would select all elements inside the id=footer
 
 `div + p` select first y after an x
 `div ~ p` select all y after x
