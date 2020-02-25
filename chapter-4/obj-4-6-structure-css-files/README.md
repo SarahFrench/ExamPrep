@@ -133,3 +133,53 @@ This also makes sense; if a browser has rules set as !important then they must b
 ## More detail on precedence of style sources
 
 ![Image describing cascading order of precedence from the CSS3 standard](cascading-order-of-precedence.png)
+
+# Styling elements based on pseudo-elements and pseudo-classes
+
+Examples:
+
+```CSS
+a:hover {
+  //styles specifically for links being hovered
+}
+```
+
+```CSS
+p:first-letter {
+  font-family: cursive;
+  font-size: 3em;
+  text-shadow: 2px 2px red;
+}
+```
+
+## Interactions of rules
+
+These two blocks of CSS result in different behaviours due to the ordering of rules. The `:visited` pseudo-class rule overrules styles assigned using the `:hover` pseudo-class, because the `:visited` rule comes later in the styles and has the same specificity.
+
+Case 1: when hovering over visited links the text is purple on a black background
+```css
+a:link {
+  color: blue;
+}
+a:hover {
+  color: white;
+  background-color: black;
+}
+a:visited {
+  color: purple;
+}
+```
+
+Case 2: when hovering over visited links the text is white on a black background
+```css
+a:link {
+  color: blue;
+}
+a:visited {
+  color: purple;
+}
+a:hover {
+  color: white;
+  background-color: black;
+}
+```

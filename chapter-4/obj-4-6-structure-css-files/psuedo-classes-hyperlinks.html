@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Testing order of CSS rules on pseudoclasses</title>
+    <style>
+      a {
+        display: block;
+        margin-top: 2em;
+      }
+
+      a.case1:link {
+        color: blue;
+      }
+      a.case1:hover {
+        color: white;
+        background-color: black;
+      }
+      a.case1:visited {
+        color: purple;
+      }
+
+      a.case2:link {
+        color: blue;
+      }
+      a.case2:visited {
+        color: purple;
+      }
+      a.case2:hover {
+        color: white;
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="text-align:center;">Testing order of CSS rules on pseudoclasses</h1>
+    <div style="display:flex; flex-direction:row; justify-content:center; margin-bottom:2em;">
+      <div id="case1" style="margin-left: 2em; width: 30%">
+        <p>Case 1:</p>
+        <code>
+          a.case1:link {<br>
+            color: blue;<br>
+          }<br>
+          a.case1:hover {<br>
+            color: white;<br>
+            background-color: black;<br>
+          }<br>
+          a.case1:visited {<br>
+            color: purple;<br>
+          }<br>
+        </code>
+        <a class="case1" href="#case1">Link here displays case 1</a>
+        <p>After clicking the link, when you hover over it it will have purple text on a black background</p>
+      </div>
+      <div id="case2" style="margin-left: 2em; width: 30%">
+        <p>Case 2:</p>
+        <code>
+          a.case2:link {<br>
+            color: blue;<br>
+          }<br>
+          a.case2:visited {<br>
+            color: purple;<br>
+          }<br>
+          a.case2:hover {<br>
+            color: white;<br>
+            background-color: black;<br>
+          }<br>
+        </code>
+        <a class="case2" href="#case2">Link here displays case 2</a>
+        <p>After clicking the link, when you hover over it it will have white text on a black background</p>
+        <p>This styling is unaffected by the link being visited or not</p>
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:row; justify-content:center; margin-bottom:2em;">
+      <div>
+        <p>
+          The different behaviours depend on the order of CSS rules:
+        </p>
+        <ul>
+          <li>In Case 1 the rule for the :visited pseudo-class comes last in the embedded styles, so overwrites the hover rule for the color property.</li>
+          <li>In Case 2 the rule of hover comes last, so all anchor tags behave the same when they're hovered over; styles using :hover aren't overwritten by styles later in the CSS</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
