@@ -32,8 +32,8 @@ NOTE: `border-spacing` in book but doesn't seem to work in browser. Seems redund
 `padding-top`, `...-bottom` etc
 `padding` :
  - 1 value = same on top/bottom/left/right
- - 2 values = <top/bottom> <left-right>
- - 4 values = <top> <right> <bottom> <left>
+ - 2 values = `<top/bottom> <left-right>`
+ - 4 values = `<top> <right> <bottom> <left>`
 
  Margin works the same way
 
@@ -140,7 +140,7 @@ Uses top and left properties to define the offsets:
 ```
 
 - `static` : the DEFAULT. Defined as distance from top left of the document and any previous elements
-- `absolute`: defined as distance from top left of the first parent with relative/absolute/fixed (anything but static?) positioning. If one of these isn't found when travelling up through the DOM, then it'll default to the <html> parent element, and positioning will be done relative to the document.
+- `absolute`: defined as distance from top left of the first parent with relative/absolute/fixed (anything but static?) positioning. If one of these isn't found when travelling up through the DOM, then it'll default to the `<html>` parent element, and positioning will be done relative to the document.
 - `fixed` : defined as distance from top left of the _viewport_
 - `relative` : move elements relative to where they _would_ be in a normal static flow. Relative TO ITSELF.
 - `sticky` : 'Sticks' to the edges of the screen when scrolled past. If in a parent div, it'll travel until it reaches the end of the parent's space
