@@ -103,3 +103,7 @@ vs `ul#nav li a` would be Score: 0,1,0,3 and would be over-ruled by the rule abo
 !important at the end of a CSS rule is like adding a fifth column on the far left of the above scores.
 
 !important flags mean CSS rules always win. Only way it loses is if another competitor rule is declared later in the document and the CSS rule would have greater specificity when compared without !important flags.
+
+# Multiple sources of styles
+
+![Image](cascading-order-of-precedence.png)
