@@ -79,7 +79,7 @@ For the colour arguments you can also include a stop value - a position along th
 ### Box shadow
 Box shadow takes a LOT of parameters. They're all distance (in px etc) except for the last one, which is colour.
 
-`box-shadow` : <offset-x> <offset-y> <blur radius (all sides)> <expand radius (all sides)> <inset?> <colour of shadow>
+`box-shadow : <offset-x> <offset-y> \<blur radius (all sides)> \<expand radius (all sides)> <inset?> <colour of shadow>;`
 
 > NOTE: the inset keyword or the colour info can be put either side of the distance parameters and it still works, but you cannot put them inside the sequence of distance parameters; it'll break the way the CSS is read and no shadow will be rendered.
 
@@ -111,13 +111,13 @@ e.g.
 In a 100x100 image if you use clip(10px, 20px, 20px, 10px);
 Then you'll see a 10px x 10px square, where the upper left corner is at position 10,10 in the original image's dimensions.
 
-1) The <top> value, 10px, means that the top of the resulting rectangle will be 10px below the top of the image.
-2) The <right> value is the number of pixels between the left hand side of the image and the right hand side of the clipping rectangle
-3) The <bottom> value is the number of pixels between the image's top edge and the bottom edge of the clipping rectangle
-4) <left> is the number of pixels between the left edge of the image and left edge of the clipping rectangle.
+1) The `<top>` value, 10px, means that the top of the resulting rectangle will be 10px below the top of the image.
+2) The `<right>` value is the number of pixels between the left hand side of the image and the right hand side of the clipping rectangle
+3) The `<bottom>` value is the number of pixels between the image's top edge and the bottom edge of the clipping rectangle
+4) `<left>` is the number of pixels between the left edge of the image and left edge of the clipping rectangle.
 
-As a result, <bottom> - <top> = height of clipped rectangle
-As a result, <right> - <left> = width of clipped rectangle
+As a result, `<bottom>` - `<top>` = height of clipped rectangle
+As a result, `<right>` - `<left>` = width of clipped rectangle
 
 If the entered values are screwy you might end up 'over-clipping' and be left with nothing; what do you see if the righthand edge of the clipped view is further left than the lefthand edge?
 
