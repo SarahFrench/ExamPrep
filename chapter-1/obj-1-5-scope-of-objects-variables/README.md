@@ -74,6 +74,19 @@ Refers to the containing object;
   }
 ```
 
+If you set an inline event handler on an an element using a global scoped function [see example file](https://github.com/SarahFrench/ExamPrep/edit/master/chapter-1/obj-1-5-scope-of-objects-variables/this-practice.html) then this will refer to the global object `window`. You need to pass in `this` from the element containing the inline event handler to be able to use it (or, instead, use event.target).
+
+```html
+<button onclick="doSomething(this)"></button>
+<style>
+    doSomething(element){
+        element.disabled = true; //or whatever
+    }
+</style>
+```
+
+In callbacks used in event handlers made using `addEventHandler`, `this` refers to the element the event is emitted from.
+
 ## Custom name spaces for libraries
 
 You can create a namespace like this:
