@@ -189,3 +189,37 @@ You can name the grid lines between cols/rows to make using them easier:
 }
 
 ```
+
+## Implementing a layout using regions, grouping and nesting
+
+This section of the syllabus is also crap, because this feature has been experimental for the best part of a decade. Cannot even get it working in Chrome after turning on experimental features...
+
+See this article (from 2012...): https://www.html5rocks.com/en/tutorials/regions/adobe/
+
+
+You have elements that contain content and elements that the content/data will 'flow' into. This means people don't need to split content into the html structure of the page, and instead can deliver content as a single 'chunk'. CSS regions will then control how that content will populate a more complex HTML layout.
+
+You set paired CSS properties indicating where data is flowing into and out from:
+```html
+<article id="#content">
+  < lots and lots of content >
+</article>
+<div class="layout-container">
+  <div class="region section1"></div>
+  <div class="region section2"></div>
+  <div class="region section3"></div>
+</div>
+```
+```css
+#content{
+  flow-into: article;
+}
+
+.region{
+  flow-from: article;
+}
+
+.section1, .section2, .section3{
+  //styles here
+}
+```
