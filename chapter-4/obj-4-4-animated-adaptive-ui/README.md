@@ -121,6 +121,8 @@ $('.disableMe').attr("disabled", "disabled");
 
 Causes `<element class="disableMe" disabled="disabled">`
 
+You can undo it by using `$('.disableMe').removeAttr("disabled")`
+
 You could also do:
 
 ```javascript
