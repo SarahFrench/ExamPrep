@@ -29,7 +29,7 @@ Semantic HTML also helps screen readers immensely as the software can create a d
 
 `<hgroup>` groups related headers together at the top of an article/section. DEPRECIATED/not supported in all browsers
 
-`<mark>` highlights text, defaluts to yellow. background-color CSS can be used to change the colour
+`<mark>` highlights text, defaults to yellow. background-color CSS can be used to change the colour
 
 `<nav>` marks a section as a place where links help users navigate to other pages or within the page. This will massively help screen readers pick out links that are more important to users.
 
